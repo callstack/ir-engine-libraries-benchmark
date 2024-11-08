@@ -13,7 +13,9 @@
     "@callstack/react-native-basis-universal": "0.2.1",
     "@callstack/react-native-draco": "0.2.0",
     "react": "18.3.1",
-    "react-native": "0.76.1"
+    "react-native": "0.76.1",
+    "react-native-benchmarking-library": "file:.yalc/react-native-benchmarking-library",
+    "react-native-blob-util": "^0.19.11"
   },
   "devDependencies": {
     "@babel/core": "^7.25.2",
