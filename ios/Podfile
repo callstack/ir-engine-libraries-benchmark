@@ -23,6 +23,8 @@ target 'LibrariesBenchmark' do
     :app_path => "#{Pod::Config.instance.installation_root}/.."
   )
 
+  pod 'Resources', :path => './Resources'
+
   target 'LibrariesBenchmarkTests' do
     inherit! :complete
     # Pods for testing
