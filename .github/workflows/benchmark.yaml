@@ -60,25 +60,23 @@ jobs:
 
       - name: build javascript bundle
         run: |
-          cd apps/benchmarking-test-app
           npm run install:${{ matrix.engine }}
           npm run build:ios:release
 
       - uses: actions/cache/restore@v4
         id: cache-xcarchive
         with:
-          path: ./apps/benchmarking-test-app/BenchmarkingTestApp.xcarchive
+          path: ./LibrariesBenchmark.xcarchive
           key: ${{ runner.os }}-${{ matrix.engine }}-${{ hashFiles('**/Podfile.lock') }}
 
       - name: build archive
         if: steps.cache-xcarchive.outputs.cache-hit != 'true'
         run: |
-          cd apps/benchmarking-test-app
           npm run install:ios:${{ matrix.engine }}
 
-          xcodebuild -scheme "benchmarking-test-app" \
-          -archivePath "BenchmarkingTestApp.xcarchive" \
-          -workspace ios/benchmarking-test-app.xcworkspace \
+          xcodebuild -scheme "LibrariesBenchmark" \
+          -archivePath "LibrariesBenchmark.xcarchive" \
+          -workspace ios/LibrariesBenchmark.xcworkspace \
           -configuration Debug \
           -sdk iphoneos \
           -destination generic/platform=iOS \
@@ -86,18 +84,17 @@ jobs:
           DEVELOPMENT_TEAM=${{ secrets.DEVELOPMENT_TEAM_ID }} \
           clean archive
 
-          cp dist/main.ios.jsbundle BenchmarkingTestApp.xcarchive/Products/Applications/ReactTestApp.app
+          cp dist/main.ios.jsbundle LibrariesBenchmark.xcarchive/Products/Applications/ReactTestApp.app
 
       - uses: actions/cache/save@v4
         with:
-          path: ./apps/benchmarking-test-app/BenchmarkingTestApp.xcarchive
+          path: ./LibrariesBenchmark.xcarchive
           key: ${{ steps.cache-xcarchive.outputs.cache-primary-key }}
 
       - name: export ipa
         run: |
-          cd apps/benchmarking-test-app
           ls
-          xcodebuild -exportArchive -archivePath BenchmarkingTestApp.xcarchive -exportOptionsPlist BenchmarkingTestApp.xcarchive/Info.plist -exportPath ${{ runner.temp }}/build
+          xcodebuild -exportArchive -archivePath LibrariesBenchmark.xcarchive -exportOptionsPlist LibrariesBenchmark.xcarchive/Info.plist -exportPath ${{ runner.temp }}/build
           mv ${{ runner.temp }}/build/ReactTestApp.ipa ${{ runner.temp }}/build/${{matrix.engine}}Benchmarking.ipa
 
       - name: Upload application
@@ -111,7 +108,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: ${{matrix.engine}}Bundle
-          path: apps/benchmarking-test-app/dist/main.ios.jsbundle
+          path: dist/main.ios.jsbundle
           retention-days: 1
 
   benchmark:
@@ -196,15 +193,15 @@ jobs:
       - name: Download JSC Artifacts
         uses: actions/download-artifact@v4
         with:
-          name: "jscOutputFiles"
-          path: "jscOutput"
+          name: 'jscOutputFiles'
+          path: 'jscOutput'
           github-token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Download Hermes Artifacts
         uses: actions/download-artifact@v4
         with:
-          name: "hermesOutputFiles"
-          path: "hermesOutput"
+          name: 'hermesOutputFiles'
+          path: 'hermesOutput'
           github-token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Extract benchmark results from artifacts
@@ -234,8 +231,8 @@ jobs:
       - name: Store benchmark result
         uses: benchmark-action/github-action-benchmark@v1
         with:
-          name: "React Native Benchmarks"
-          tool: "customSmallerIsBetter"
+          name: 'React Native Benchmarks'
+          tool: 'customSmallerIsBetter'
           output-file-path: benchmark.json
           github-token: ${{ secrets.GITHUB_TOKEN }}
           auto-push: true
