@@ -1,0 +1,1 @@
+appium --relaxed-security --base-path=/wd/hub --default-capabilities "{\"appium:deviceName\": \"iPhone 15 Pro\", \"platformName\": \"iOS\", \"appium:app\": \"org.reactjs.native.example.LibrariesBenchmark\", \"appium:udid\":\"F07B2C45-0785-4147-8148-7C507FC9C849\", \"appium:automationName\": \"XCUITest\"}"
