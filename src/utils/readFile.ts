@@ -1,4 +1,6 @@
 import RNFetchBlob from 'react-native-blob-util';
+import {decode as atob} from 'base-64';
+
 
 export const readFile = async (path: string): Promise<Uint8Array> => {
   const filePath = RNFetchBlob.fs.asset(path);
