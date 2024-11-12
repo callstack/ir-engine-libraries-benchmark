@@ -1,16 +1,13 @@
 import React from 'react';
-import { useCallback, useState } from 'react';
-import { Button, Text, View } from 'react-native';
+import {useCallback, useState} from 'react';
+import {Button, Text, View} from 'react-native';
 
 export interface BenchmarkProps {
   name: string;
   run: () => Promise<void>;
 }
 
-export const Benchmark: React.FC<BenchmarkProps> = ({
-  name,
-  run,
-}) => {
+export const Benchmark: React.FC<BenchmarkProps> = ({name, run}) => {
   const [benchmarkRunTime, setBenchmarkRunTime] = useState<number | null>(null);
   const [error, setError] = useState<Error>();
   const [running, setRunning] = useState(false);
@@ -18,7 +15,7 @@ export const Benchmark: React.FC<BenchmarkProps> = ({
   const onBeginBenchmark = useCallback(async () => {
     setRunning(true);
     const startTime = Date.now();
-    await run().catch((err) => {
+    await run().catch(err => {
       setError(err);
     });
     const timeDelta = Date.now() - startTime;
@@ -33,7 +30,7 @@ export const Benchmark: React.FC<BenchmarkProps> = ({
 
   if (running) {
     return (
-      <View style={{ justifyContent: 'center', alignItems: 'center' }}>
+      <View style={{justifyContent: 'center', alignItems: 'center'}}>
         <Text>Running benchmark, please wait</Text>
       </View>
     );
@@ -43,7 +40,13 @@ export const Benchmark: React.FC<BenchmarkProps> = ({
     const completedLabel = `${name}Completed`;
     return (
       <View style={{justifyContent: 'center', alignItems: 'center'}}>
-        <Text style={{fontWeight: 'bold'}} testID={completedLabel} accessibilityValue={{text: `${benchmarkRunTime}`}}>Benchmark took: {benchmarkRunTime}ms</Text>
+        <Text>Benchmark time (ms):</Text>
+        <Text
+          style={{fontWeight: 'bold'}}
+          testID={completedLabel}
+          accessibilityValue={{text: `${benchmarkRunTime}`}}>
+          {benchmarkRunTime}
+        </Text>
       </View>
     );
   }
