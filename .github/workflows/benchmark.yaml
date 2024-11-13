@@ -88,7 +88,7 @@ jobs:
           DEVELOPMENT_TEAM=${{ secrets.DEVELOPMENT_TEAM_ID }} \
           clean archive
 
-          cp dist/main.ios.jsbundle LibrariesBenchmark.xcarchive/Products/Applications/ReactTestApp.app
+          cp dist/main.ios.jsbundle LibrariesBenchmark.xcarchive/Products/Applications/LibrariesBenchmark.app
 
       - uses: actions/cache/save@v4
         with:
@@ -99,7 +99,7 @@ jobs:
         run: |
           ls
           xcodebuild -exportArchive -archivePath LibrariesBenchmark.xcarchive -exportOptionsPlist LibrariesBenchmark.xcarchive/Info.plist -exportPath ${{ runner.temp }}/build
-          mv ${{ runner.temp }}/build/ReactTestApp.ipa ${{ runner.temp }}/build/${{matrix.engine}}Benchmarking.ipa
+          mv ${{ runner.temp }}/build/LibrariesBenchmark.ipa ${{ runner.temp }}/build/${{matrix.engine}}Benchmarking.ipa
 
       - name: Upload application
         uses: actions/upload-artifact@v4
