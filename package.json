@@ -7,7 +7,12 @@
     "ios": "react-native run-ios",
     "lint": "eslint .",
     "start": "react-native start",
-    "test": "jest"
+    "test": "jest",
+    "parse-benchmarks": "node packages/benchmark-parser/dist/src/index.js",
+    "build:ios:release": "npm run mkdist && react-native bundle --entry-file index.js --platform ios --dev false --bundle-output dist/main.ios.jsbundle --assets-dest dist",
+    "mkdist": "node -e \"require('node:fs').mkdirSync('dist', { recursive: true, mode: 0o755 })\"",
+    "install:ios:hermes": "(export USE_HERMES=1; pod install --project-directory=ios)",
+    "install:ios:jsc": "(export USE_HERMES=0; pod install --project-directory=ios)"
   },
   "dependencies": {
     "@callstack/react-native-basis-universal": "0.2.1",
