@@ -2,6 +2,14 @@
   "name": "LibrariesBenchmark",
   "version": "0.0.1",
   "private": true,
+  "description": "IR Engine Benchmark",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/callstack/react-native-wasm.git"
+  },
+  "homepage": "https://github.com/callstack/react-native-wasm#readme",
+  "author": "Callstack (https://github.com/callstack)",
+  "license": "MIT",
   "scripts": {
     "android": "react-native run-android",
     "ios": "react-native run-ios",
@@ -17,11 +25,14 @@
   "dependencies": {
     "@callstack/react-native-basis-universal": "0.3.0",
     "@callstack/react-native-draco": "0.2.0",
+    "@dimforge/rapier3d-compat": "0.11.2",
     "base-64": "^1.0.0",
     "react": "18.3.1",
     "react-native": "0.76.2",
     "react-native-blob-util": "^0.19.11",
-    "react-native-wgpu": "^0.1.19"
+    "react-native-wasm": "file:.yalc/react-native-wasm",
+    "react-native-wgpu": "^0.1.19",
+    "text-encoding-polyfill": "^0.6.7"
   },
   "devDependencies": {
     "@babel/core": "^7.25.2",
