@@ -9,6 +9,7 @@ import {
 import { BenchmarkHarness, BenchmarkDescriptor } from './react-native-benchmarking-library';
 import { advancedDracoBenchmark, simpleDracoBenchmark } from './benchmarks/draco';
 import { basisTranscoding, encoding } from './benchmarks/basis';
+import { rapierWorldSimulation } from './benchmarks/rapier';
 
 
 function App(): React.JSX.Element {
@@ -35,6 +36,11 @@ function App(): React.JSX.Element {
         title: 'Basis: File Transcoding From .basis',
         benchmarkType: 'headless',
         benchmarkFn: basisTranscoding(iterations),
+      },
+      {
+        title: 'Rapier: Basic Simulation',
+        benchmarkType: 'headless',
+        benchmarkFn: rapierWorldSimulation(iterations),
       },
     ]);
   }, [numIterations]);
