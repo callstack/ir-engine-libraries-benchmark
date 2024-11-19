@@ -5,6 +5,8 @@
 //
 
 #include "jsi-exports-bridge.h"
+#include <ReactNativeWebAssembly/Memory.h>
+#include <ReactNativeWebAssembly/NativeStates.h>
 #include "wasm-rt.h"
 
 #define HOSTFN(name, argCount)         \
@@ -44,7 +46,22 @@ jsi::Object createRapier__wasm3d__bgExports(jsi::Runtime &rt, jsi::Object&& impo
 
   mod.setNativeState(rt, inst);
 
-  // Fill Exports
+  // Memories
+  jsi::Object memories {rt};
+
+  
+  /* exported memory: 'memory' */
+  {
+    jsi::Object holder {rt};
+    auto memory = std::make_unique<Memory>(w2c_rapier__wasm3d__bg_memory(&inst->rootCtx));
+    holder.setNativeState(rt, std::make_shared<MemoryNativeState>(std::move(memory)));
+    memories.setProperty(rt, "memory", std::move(holder));
+  }
+  
+
+  mod.setProperty(rt, "memories", std::move(memories));
+
+  // Exported functions
   jsi::Object exports {rt};
 
   
@@ -3524,7 +3541,6 @@ jsi::Object createRapier__wasm3d__bgExports(jsi::Runtime &rt, jsi::Object&& impo
   exports.setNativeState(rt, inst);
   mod.setProperty(rt, "exports", std::move(exports));
 
-  // end full exports
   return std::move(mod);
 }
 
