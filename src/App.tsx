@@ -1,21 +1,25 @@
-import React, { useMemo } from 'react';
+import React, {useMemo} from 'react';
+import {ScrollView, StyleSheet, Text, TextInput, View} from 'react-native';
 import {
-  ScrollView,
-  StyleSheet,
-  Text,
-  TextInput,
-  View,
-} from 'react-native';
-import { BenchmarkHarness, BenchmarkDescriptor } from './react-native-benchmarking-library';
-import { advancedDracoBenchmark, simpleDracoBenchmark } from './benchmarks/draco';
-import { basisTranscoding, encoding } from './benchmarks/basis';
+  BenchmarkHarness,
+  BenchmarkDescriptor,
+} from './react-native-benchmarking-library';
+import {advancedDracoBenchmark, simpleDracoBenchmark} from './benchmarks/draco';
+import {basisTranscoding, encoding} from './benchmarks/basis';
 
+const DEFAULT_N_ITERATIONS = 1000;
+
+// These benchmarks take longer to run per iteration. Total benchmark time should be no longer than 1 minute.
+const MAX_BASIS_ENCODING_ITERATIONS = 5;
+const MAX_BASIS_TRANSCODING_ITERATIONS = 100;
 
 function App(): React.JSX.Element {
-  const [numIterations, setNumIterations] = React.useState<string>(String(5));
+  const [numIterations, setNumIterations] = React.useState<string>(
+    String(DEFAULT_N_ITERATIONS),
+  );
   const BENCHMARK_MATRIX: BenchmarkDescriptor[] = useMemo(() => {
     const iterations = parseInt(numIterations, 10);
-    return ([
+    return [
       {
         title: 'Draco: Decoding',
         benchmarkType: 'headless',
@@ -29,31 +33,34 @@ function App(): React.JSX.Element {
       {
         title: 'Basis: File Encoding To KTX2',
         benchmarkType: 'headless',
-        benchmarkFn: encoding(iterations),
+        benchmarkFn: encoding(
+          Math.min(MAX_BASIS_ENCODING_ITERATIONS, iterations),
+        ),
       },
       {
         title: 'Basis: File Transcoding From .basis',
         benchmarkType: 'headless',
-        benchmarkFn: basisTranscoding(iterations),
+        benchmarkFn: basisTranscoding(
+          Math.min(MAX_BASIS_TRANSCODING_ITERATIONS, iterations),
+        ),
       },
-    ]);
+    ];
   }, [numIterations]);
 
   return (
     <ScrollView
       contentInsetAdjustmentBehavior="automatic"
-      style={styles.container}
-    >
+      style={styles.container}>
       <Text style={styles.title}>IR Engine Benchmark suite</Text>
-      <View style={{ flexDirection: 'row', alignItems: 'center'}}>
+      <View style={{flexDirection: 'row', alignItems: 'center'}}>
         <Text style={styles.text}>Number of iterations</Text>
-      <TextInput
-        style={styles.input}
-        onChangeText={setNumIterations}
-        value={numIterations}
-        placeholder="Number of iterations"
-        keyboardType="numeric"
-      />
+        <TextInput
+          style={styles.input}
+          onChangeText={setNumIterations}
+          value={numIterations}
+          placeholder="Number of iterations"
+          keyboardType="numeric"
+        />
       </View>
       <BenchmarkHarness items={BENCHMARK_MATRIX} />
     </ScrollView>
