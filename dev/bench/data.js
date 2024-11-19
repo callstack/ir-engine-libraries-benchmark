@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1731929225421,
+  "lastUpdate": 1732036712146,
   "repoUrl": "https://github.com/callstack/ir-engine-libraries-benchmark",
   "entries": {
     "React Native Benchmarks": [
@@ -207,6 +207,80 @@ window.BENCHMARK_DATA = {
           {
             "name": "hermes/Apple iPhone 15 Pro/Draco: DecodingWallClock-ms.txt",
             "value": 91,
+            "unit": "ms"
+          },
+          {
+            "name": "Bundle Size",
+            "value": 1000,
+            "unit": "kiB"
+          },
+          {
+            "name": "Executable Size",
+            "value": 19164,
+            "unit": "kiB"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "31718268+hmallen99@users.noreply.github.com",
+            "name": "Henry Allen",
+            "username": "hmallen99"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "c1a9ec410de82fe31c418b59a5ce82fa16a8116b",
+          "message": "Increase default benchmark iterations (#5)\n\n* Update iterations parameter for KTX2 encoding\r\n\r\n* Bump Basis transcoding time\r\n\r\n* Update comment\r\n\r\n* Set to 100 for transcoding",
+          "timestamp": "2024-11-19T11:35:20-05:00",
+          "tree_id": "8fe79d544969a260d8994ad434fbe34e59bd6ad6",
+          "url": "https://github.com/callstack/ir-engine-libraries-benchmark/commit/c1a9ec410de82fe31c418b59a5ce82fa16a8116b"
+        },
+        "date": 1732036711884,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "jsc/Apple iPhone 15 Pro/Basis: File Encoding To KTX2WallClock-ms.txt",
+            "value": 63526,
+            "unit": "ms"
+          },
+          {
+            "name": "jsc/Apple iPhone 15 Pro/Basis: File Transcoding From .basisWallClock-ms.txt",
+            "value": 1551,
+            "unit": "ms"
+          },
+          {
+            "name": "jsc/Apple iPhone 15 Pro/Draco: Decoding + Attribute accessWallClock-ms.txt",
+            "value": 148,
+            "unit": "ms"
+          },
+          {
+            "name": "jsc/Apple iPhone 15 Pro/Draco: DecodingWallClock-ms.txt",
+            "value": 55,
+            "unit": "ms"
+          },
+          {
+            "name": "hermes/Apple iPhone 15 Pro/Basis: File Encoding To KTX2WallClock-ms.txt",
+            "value": 64098,
+            "unit": "ms"
+          },
+          {
+            "name": "hermes/Apple iPhone 15 Pro/Basis: File Transcoding From .basisWallClock-ms.txt",
+            "value": 1630,
+            "unit": "ms"
+          },
+          {
+            "name": "hermes/Apple iPhone 15 Pro/Draco: Decoding + Attribute accessWallClock-ms.txt",
+            "value": 139,
+            "unit": "ms"
+          },
+          {
+            "name": "hermes/Apple iPhone 15 Pro/Draco: DecodingWallClock-ms.txt",
+            "value": 81,
             "unit": "ms"
           },
           {
