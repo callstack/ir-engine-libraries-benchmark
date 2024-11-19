@@ -9,7 +9,7 @@ import {basisTranscoding, encoding} from './benchmarks/basis';
 
 const DEFAULT_N_ITERATIONS = 1000;
 
-// This benchmark is long-running, it should not run for more than 5 iterations in CI.
+// These benchmarks take longer to run per iteration. Total benchmark time should be no longer than 1 minute.
 const MAX_BASIS_ENCODING_ITERATIONS = 5;
 const MAX_BASIS_TRANSCODING_ITERATIONS = 50;
 
