@@ -11,6 +11,7 @@ const DEFAULT_N_ITERATIONS = 1000;
 
 // This benchmark is long-running, it should not run for more than 5 iterations in CI.
 const MAX_BASIS_ENCODING_ITERATIONS = 5;
+const MAX_BASIS_TRANSCODING_ITERATIONS = 50;
 
 function App(): React.JSX.Element {
   const [numIterations, setNumIterations] = React.useState<string>(
@@ -39,7 +40,9 @@ function App(): React.JSX.Element {
       {
         title: 'Basis: File Transcoding From .basis',
         benchmarkType: 'headless',
-        benchmarkFn: basisTranscoding(iterations),
+        benchmarkFn: basisTranscoding(
+          Math.min(MAX_BASIS_TRANSCODING_ITERATIONS, iterations),
+        ),
       },
     ];
   }, [numIterations]);
