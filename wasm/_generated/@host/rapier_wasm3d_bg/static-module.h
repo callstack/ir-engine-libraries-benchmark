@@ -5,11 +5,11 @@
 //
 
 #pragma once
-#include <ReactNativeWebAssembly/StaticLibraryModule.h>
+#include <ReactNativePolygen/StaticLibraryModule.h>
 
 namespace facebook::react {
 
-std::unique_ptr<Module> createRapier__wasm3d__bgModule();
+std::shared_ptr<Module> createRapier__wasm3d__bgModule();
 
 class WASMRapier__wasm3d__bgModule: public StaticLibraryModule {
 public:
@@ -20,3 +20,4 @@ public:
 };
 
 }
+  

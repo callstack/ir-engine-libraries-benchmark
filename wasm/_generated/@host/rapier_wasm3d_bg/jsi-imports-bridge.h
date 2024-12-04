@@ -6,15 +6,10 @@
 
 #pragma once
 #include <jsi/jsi.h>
+#include <ReactNativePolygen/gen-utils.h>
 #include "rapier_wasm3d_bg.h"
 
-
-struct w2c_wbg {
-  w2c_rapier__wasm3d__bg* root;
-  facebook::jsi::Runtime& rt;
-  facebook::jsi::Object importObj;
-};
-
+GEN_IMPORT_CONTEXT_TYPE(w2c_wbg, w2c_rapier__wasm3d__bg);
 
 namespace facebook::react {
 
@@ -22,14 +17,11 @@ class Rapier__wasm3d__bgModuleContext: public jsi::NativeState {
 public:
   Rapier__wasm3d__bgModuleContext(jsi::Runtime& rt, jsi::Object&& importObject)
     : importObject(std::move(importObject))
-      , wbgCtx{&rootCtx, rt, this->importObject.getPropertyAsObject(rt, "wbg")}
-      
+    , INIT_IMPORT_CTX(import_wbgCtx, "wbg")
   {}
 
   jsi::Object importObject;
   w2c_rapier__wasm3d__bg rootCtx;
-  w2c_wbg wbgCtx;
-  
+  w2c_wbg import_wbgCtx;
 };
-
 }

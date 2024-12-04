@@ -24,13 +24,13 @@
   },
   "dependencies": {
     "@callstack/react-native-basis-universal": "0.3.0",
+    "@callstack/polygen": "file:.yalc/@callstack/polygen",
     "@callstack/react-native-draco": "0.2.0",
     "@dimforge/rapier3d-compat": "0.11.2",
     "base-64": "^1.0.0",
     "react": "18.3.1",
     "react-native": "0.76.2",
     "react-native-blob-util": "^0.19.11",
-    "react-native-wasm": "file:.yalc/react-native-wasm",
     "react-native-wgpu": "^0.1.19",
     "text-encoding-polyfill": "^0.6.7"
   },
