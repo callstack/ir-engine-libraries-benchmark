@@ -1666,7 +1666,7 @@ DEPENDENCIES:
   - React-utils (from `../node_modules/react-native/ReactCommon/react/utils`)
   - ReactCodegen (from `build/generated/ios`)
   - ReactCommon/turbomodule/core (from `../node_modules/react-native/ReactCommon`)
-  - ReactNativeWebAssembly (from `../node_modules/react-native-wasm`)
+  - "ReactNativePolygen (from `../node_modules/@callstack/polygen`)"
   - "ReactNativeWebAssemblyHost (from `../wasm/_generated/@host`)"
   - Resources (from `./Resources`)
   - Yoga (from `../node_modules/react-native/ReactCommon/yoga`)
@@ -1809,8 +1809,8 @@ EXTERNAL SOURCES:
     :path: build/generated/ios
   ReactCommon:
     :path: "../node_modules/react-native/ReactCommon"
-  ReactNativeWebAssembly:
-    :path: "../node_modules/react-native-wasm"
+  ReactNativePolygen:
+    :path: "../node_modules/@callstack/polygen"
   ReactNativeWebAssemblyHost:
     :path: "../wasm/_generated/@host"
   Resources:
@@ -1891,4 +1891,4 @@ SPEC CHECKSUMS:
 
 PODFILE CHECKSUM: f8152c6fc2377e9046492f6e81125bca41a1aa36
 
-COCOAPODS: 1.15.2
+COCOAPODS: 1.16.2

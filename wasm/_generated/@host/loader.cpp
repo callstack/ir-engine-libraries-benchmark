@@ -22,10 +22,10 @@ const std::vector<std::string>& getAvailableModules() {
 std::unique_ptr<Module> createRapier__wasm3d__bgModule();
 
 std::shared_ptr<Module> loadWebAssemblyModule(std::span<uint8_t> moduleData) {
-//   auto metadata = ModuleMetadataView::fromBuffer(moduleData);
-//   auto& name = metadata.name;
+//  auto metadata = ModuleMetadataView::fromBuffer(moduleData);
+//  auto& name = metadata.name;
   return createRapier__wasm3d__bgModule();
-//   return nullptr;
+//  return nullptr;
 }
 }
   

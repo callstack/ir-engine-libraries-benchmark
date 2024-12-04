@@ -1,4 +1,4 @@
-import {register} from 'react-native-wasm';
+import {register} from '@callstack/polygen';
 register();
 import 'text-encoding-polyfill'; // Required for `rapier3d-compat`
 import RAPIER, {

@@ -9,6 +9,15 @@
 #include "jsi-exports-bridge.h"
 #include "wasm-rt.h"
 
+
+double getNumericVal(const facebook::jsi::Value& val) {
+  if (val.isBool()) {
+    return (double)val.asBool();
+  }
+  return val.asNumber();
+}
+  
+
 namespace facebook::react {
   std::shared_ptr<Rapier__wasm3d__bgModuleContext> getRapier__wasm3d__bgModuleContextContext(jsi::Runtime& rt, const jsi::Value& val) {
     auto obj = val.asObject(rt);
@@ -50,7 +59,7 @@ namespace facebook::react {
   exports.setProperty(rt, "version", HOSTFN("version", 1) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    w2c_rapier__wasm3d__bg_version(&nativeState->rootCtx, args[0].asNumber());
+    w2c_rapier__wasm3d__bg_version(&nativeState->rootCtx, getNumericVal(args[0]));
     return jsi::Value::undefined();
   }));
 
@@ -59,7 +68,7 @@ namespace facebook::react {
   exports.setProperty(rt, "__wbg_rawkinematiccharactercontroller_free", HOSTFN("__wbg_rawkinematiccharactercontroller_free", 1) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    w2c_rapier__wasm3d__bg_0x5F_wbg_rawkinematiccharactercontroller_free(&nativeState->rootCtx, args[0].asNumber());
+    w2c_rapier__wasm3d__bg_0x5F_wbg_rawkinematiccharactercontroller_free(&nativeState->rootCtx, getNumericVal(args[0]));
     return jsi::Value::undefined();
   }));
 
@@ -68,7 +77,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawkinematiccharactercontroller_new", HOSTFN("rawkinematiccharactercontroller_new", 1) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    auto res = w2c_rapier__wasm3d__bg_rawkinematiccharactercontroller_new(&nativeState->rootCtx, args[0].asNumber());
+    auto res = w2c_rapier__wasm3d__bg_rawkinematiccharactercontroller_new(&nativeState->rootCtx, getNumericVal(args[0]));
     return jsi::Value { (double)res };;
   }));
 
@@ -77,7 +86,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawkinematiccharactercontroller_up", HOSTFN("rawkinematiccharactercontroller_up", 1) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    auto res = w2c_rapier__wasm3d__bg_rawkinematiccharactercontroller_up(&nativeState->rootCtx, args[0].asNumber());
+    auto res = w2c_rapier__wasm3d__bg_rawkinematiccharactercontroller_up(&nativeState->rootCtx, getNumericVal(args[0]));
     return jsi::Value { (double)res };;
   }));
 
@@ -86,7 +95,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawkinematiccharactercontroller_setUp", HOSTFN("rawkinematiccharactercontroller_setUp", 2) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    w2c_rapier__wasm3d__bg_rawkinematiccharactercontroller_setUp(&nativeState->rootCtx, args[0].asNumber(), args[1].asNumber());
+    w2c_rapier__wasm3d__bg_rawkinematiccharactercontroller_setUp(&nativeState->rootCtx, getNumericVal(args[0]), getNumericVal(args[1]));
     return jsi::Value::undefined();
   }));
 
@@ -95,7 +104,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawkinematiccharactercontroller_offset", HOSTFN("rawkinematiccharactercontroller_offset", 1) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    auto res = w2c_rapier__wasm3d__bg_rawkinematiccharactercontroller_offset(&nativeState->rootCtx, args[0].asNumber());
+    auto res = w2c_rapier__wasm3d__bg_rawkinematiccharactercontroller_offset(&nativeState->rootCtx, getNumericVal(args[0]));
     return jsi::Value { (double)res };;
   }));
 
@@ -104,7 +113,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawkinematiccharactercontroller_setOffset", HOSTFN("rawkinematiccharactercontroller_setOffset", 2) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    w2c_rapier__wasm3d__bg_rawkinematiccharactercontroller_setOffset(&nativeState->rootCtx, args[0].asNumber(), args[1].asNumber());
+    w2c_rapier__wasm3d__bg_rawkinematiccharactercontroller_setOffset(&nativeState->rootCtx, getNumericVal(args[0]), getNumericVal(args[1]));
     return jsi::Value::undefined();
   }));
 
@@ -113,7 +122,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawkinematiccharactercontroller_slideEnabled", HOSTFN("rawkinematiccharactercontroller_slideEnabled", 1) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    auto res = w2c_rapier__wasm3d__bg_rawkinematiccharactercontroller_slideEnabled(&nativeState->rootCtx, args[0].asNumber());
+    auto res = w2c_rapier__wasm3d__bg_rawkinematiccharactercontroller_slideEnabled(&nativeState->rootCtx, getNumericVal(args[0]));
     return jsi::Value { (double)res };;
   }));
 
@@ -122,7 +131,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawkinematiccharactercontroller_setSlideEnabled", HOSTFN("rawkinematiccharactercontroller_setSlideEnabled", 2) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    w2c_rapier__wasm3d__bg_rawkinematiccharactercontroller_setSlideEnabled(&nativeState->rootCtx, args[0].asNumber(), args[1].asNumber());
+    w2c_rapier__wasm3d__bg_rawkinematiccharactercontroller_setSlideEnabled(&nativeState->rootCtx, getNumericVal(args[0]), getNumericVal(args[1]));
     return jsi::Value::undefined();
   }));
 
@@ -131,7 +140,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawkinematiccharactercontroller_autostepMaxHeight", HOSTFN("rawkinematiccharactercontroller_autostepMaxHeight", 2) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    w2c_rapier__wasm3d__bg_rawkinematiccharactercontroller_autostepMaxHeight(&nativeState->rootCtx, args[0].asNumber(), args[1].asNumber());
+    w2c_rapier__wasm3d__bg_rawkinematiccharactercontroller_autostepMaxHeight(&nativeState->rootCtx, getNumericVal(args[0]), getNumericVal(args[1]));
     return jsi::Value::undefined();
   }));
 
@@ -140,7 +149,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawkinematiccharactercontroller_autostepMinWidth", HOSTFN("rawkinematiccharactercontroller_autostepMinWidth", 2) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    w2c_rapier__wasm3d__bg_rawkinematiccharactercontroller_autostepMinWidth(&nativeState->rootCtx, args[0].asNumber(), args[1].asNumber());
+    w2c_rapier__wasm3d__bg_rawkinematiccharactercontroller_autostepMinWidth(&nativeState->rootCtx, getNumericVal(args[0]), getNumericVal(args[1]));
     return jsi::Value::undefined();
   }));
 
@@ -149,7 +158,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawkinematiccharactercontroller_autostepIncludesDynamicBodies", HOSTFN("rawkinematiccharactercontroller_autostepIncludesDynamicBodies", 1) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    auto res = w2c_rapier__wasm3d__bg_rawkinematiccharactercontroller_autostepIncludesDynamicBodies(&nativeState->rootCtx, args[0].asNumber());
+    auto res = w2c_rapier__wasm3d__bg_rawkinematiccharactercontroller_autostepIncludesDynamicBodies(&nativeState->rootCtx, getNumericVal(args[0]));
     return jsi::Value { (double)res };;
   }));
 
@@ -158,7 +167,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawkinematiccharactercontroller_autostepEnabled", HOSTFN("rawkinematiccharactercontroller_autostepEnabled", 1) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    auto res = w2c_rapier__wasm3d__bg_rawkinematiccharactercontroller_autostepEnabled(&nativeState->rootCtx, args[0].asNumber());
+    auto res = w2c_rapier__wasm3d__bg_rawkinematiccharactercontroller_autostepEnabled(&nativeState->rootCtx, getNumericVal(args[0]));
     return jsi::Value { (double)res };;
   }));
 
@@ -167,7 +176,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawkinematiccharactercontroller_enableAutostep", HOSTFN("rawkinematiccharactercontroller_enableAutostep", 4) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    w2c_rapier__wasm3d__bg_rawkinematiccharactercontroller_enableAutostep(&nativeState->rootCtx, args[0].asNumber(), args[1].asNumber(), args[2].asNumber(), args[3].asNumber());
+    w2c_rapier__wasm3d__bg_rawkinematiccharactercontroller_enableAutostep(&nativeState->rootCtx, getNumericVal(args[0]), getNumericVal(args[1]), getNumericVal(args[2]), getNumericVal(args[3]));
     return jsi::Value::undefined();
   }));
 
@@ -176,7 +185,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawkinematiccharactercontroller_disableAutostep", HOSTFN("rawkinematiccharactercontroller_disableAutostep", 1) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    w2c_rapier__wasm3d__bg_rawkinematiccharactercontroller_disableAutostep(&nativeState->rootCtx, args[0].asNumber());
+    w2c_rapier__wasm3d__bg_rawkinematiccharactercontroller_disableAutostep(&nativeState->rootCtx, getNumericVal(args[0]));
     return jsi::Value::undefined();
   }));
 
@@ -185,7 +194,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawkinematiccharactercontroller_maxSlopeClimbAngle", HOSTFN("rawkinematiccharactercontroller_maxSlopeClimbAngle", 1) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    auto res = w2c_rapier__wasm3d__bg_rawkinematiccharactercontroller_maxSlopeClimbAngle(&nativeState->rootCtx, args[0].asNumber());
+    auto res = w2c_rapier__wasm3d__bg_rawkinematiccharactercontroller_maxSlopeClimbAngle(&nativeState->rootCtx, getNumericVal(args[0]));
     return jsi::Value { (double)res };;
   }));
 
@@ -194,7 +203,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawkinematiccharactercontroller_setMaxSlopeClimbAngle", HOSTFN("rawkinematiccharactercontroller_setMaxSlopeClimbAngle", 2) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    w2c_rapier__wasm3d__bg_rawkinematiccharactercontroller_setMaxSlopeClimbAngle(&nativeState->rootCtx, args[0].asNumber(), args[1].asNumber());
+    w2c_rapier__wasm3d__bg_rawkinematiccharactercontroller_setMaxSlopeClimbAngle(&nativeState->rootCtx, getNumericVal(args[0]), getNumericVal(args[1]));
     return jsi::Value::undefined();
   }));
 
@@ -203,7 +212,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawkinematiccharactercontroller_minSlopeSlideAngle", HOSTFN("rawkinematiccharactercontroller_minSlopeSlideAngle", 1) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    auto res = w2c_rapier__wasm3d__bg_rawkinematiccharactercontroller_minSlopeSlideAngle(&nativeState->rootCtx, args[0].asNumber());
+    auto res = w2c_rapier__wasm3d__bg_rawkinematiccharactercontroller_minSlopeSlideAngle(&nativeState->rootCtx, getNumericVal(args[0]));
     return jsi::Value { (double)res };;
   }));
 
@@ -212,7 +221,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawkinematiccharactercontroller_setMinSlopeSlideAngle", HOSTFN("rawkinematiccharactercontroller_setMinSlopeSlideAngle", 2) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    w2c_rapier__wasm3d__bg_rawkinematiccharactercontroller_setMinSlopeSlideAngle(&nativeState->rootCtx, args[0].asNumber(), args[1].asNumber());
+    w2c_rapier__wasm3d__bg_rawkinematiccharactercontroller_setMinSlopeSlideAngle(&nativeState->rootCtx, getNumericVal(args[0]), getNumericVal(args[1]));
     return jsi::Value::undefined();
   }));
 
@@ -221,7 +230,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawkinematiccharactercontroller_snapToGroundDistance", HOSTFN("rawkinematiccharactercontroller_snapToGroundDistance", 2) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    w2c_rapier__wasm3d__bg_rawkinematiccharactercontroller_snapToGroundDistance(&nativeState->rootCtx, args[0].asNumber(), args[1].asNumber());
+    w2c_rapier__wasm3d__bg_rawkinematiccharactercontroller_snapToGroundDistance(&nativeState->rootCtx, getNumericVal(args[0]), getNumericVal(args[1]));
     return jsi::Value::undefined();
   }));
 
@@ -230,7 +239,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawkinematiccharactercontroller_enableSnapToGround", HOSTFN("rawkinematiccharactercontroller_enableSnapToGround", 2) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    w2c_rapier__wasm3d__bg_rawkinematiccharactercontroller_enableSnapToGround(&nativeState->rootCtx, args[0].asNumber(), args[1].asNumber());
+    w2c_rapier__wasm3d__bg_rawkinematiccharactercontroller_enableSnapToGround(&nativeState->rootCtx, getNumericVal(args[0]), getNumericVal(args[1]));
     return jsi::Value::undefined();
   }));
 
@@ -239,7 +248,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawkinematiccharactercontroller_disableSnapToGround", HOSTFN("rawkinematiccharactercontroller_disableSnapToGround", 1) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    w2c_rapier__wasm3d__bg_rawkinematiccharactercontroller_disableSnapToGround(&nativeState->rootCtx, args[0].asNumber());
+    w2c_rapier__wasm3d__bg_rawkinematiccharactercontroller_disableSnapToGround(&nativeState->rootCtx, getNumericVal(args[0]));
     return jsi::Value::undefined();
   }));
 
@@ -248,7 +257,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawkinematiccharactercontroller_snapToGroundEnabled", HOSTFN("rawkinematiccharactercontroller_snapToGroundEnabled", 1) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    auto res = w2c_rapier__wasm3d__bg_rawkinematiccharactercontroller_snapToGroundEnabled(&nativeState->rootCtx, args[0].asNumber());
+    auto res = w2c_rapier__wasm3d__bg_rawkinematiccharactercontroller_snapToGroundEnabled(&nativeState->rootCtx, getNumericVal(args[0]));
     return jsi::Value { (double)res };;
   }));
 
@@ -257,7 +266,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawkinematiccharactercontroller_computeColliderMovement", HOSTFN("rawkinematiccharactercontroller_computeColliderMovement", 14) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    w2c_rapier__wasm3d__bg_rawkinematiccharactercontroller_computeColliderMovement(&nativeState->rootCtx, args[0].asNumber(), args[1].asNumber(), args[2].asNumber(), args[3].asNumber(), args[4].asNumber(), args[5].asNumber(), args[6].asNumber(), args[7].asNumber(), args[8].asNumber(), args[9].asNumber(), args[10].asNumber(), args[11].asNumber(), args[12].asNumber(), args[13].asNumber());
+    w2c_rapier__wasm3d__bg_rawkinematiccharactercontroller_computeColliderMovement(&nativeState->rootCtx, getNumericVal(args[0]), getNumericVal(args[1]), getNumericVal(args[2]), getNumericVal(args[3]), getNumericVal(args[4]), getNumericVal(args[5]), getNumericVal(args[6]), getNumericVal(args[7]), getNumericVal(args[8]), getNumericVal(args[9]), getNumericVal(args[10]), getNumericVal(args[11]), getNumericVal(args[12]), getNumericVal(args[13]));
     return jsi::Value::undefined();
   }));
 
@@ -266,7 +275,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawkinematiccharactercontroller_computedMovement", HOSTFN("rawkinematiccharactercontroller_computedMovement", 1) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    auto res = w2c_rapier__wasm3d__bg_rawkinematiccharactercontroller_computedMovement(&nativeState->rootCtx, args[0].asNumber());
+    auto res = w2c_rapier__wasm3d__bg_rawkinematiccharactercontroller_computedMovement(&nativeState->rootCtx, getNumericVal(args[0]));
     return jsi::Value { (double)res };;
   }));
 
@@ -275,7 +284,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawkinematiccharactercontroller_computedGrounded", HOSTFN("rawkinematiccharactercontroller_computedGrounded", 1) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    auto res = w2c_rapier__wasm3d__bg_rawkinematiccharactercontroller_computedGrounded(&nativeState->rootCtx, args[0].asNumber());
+    auto res = w2c_rapier__wasm3d__bg_rawkinematiccharactercontroller_computedGrounded(&nativeState->rootCtx, getNumericVal(args[0]));
     return jsi::Value { (double)res };;
   }));
 
@@ -284,7 +293,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawkinematiccharactercontroller_numComputedCollisions", HOSTFN("rawkinematiccharactercontroller_numComputedCollisions", 1) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    auto res = w2c_rapier__wasm3d__bg_rawkinematiccharactercontroller_numComputedCollisions(&nativeState->rootCtx, args[0].asNumber());
+    auto res = w2c_rapier__wasm3d__bg_rawkinematiccharactercontroller_numComputedCollisions(&nativeState->rootCtx, getNumericVal(args[0]));
     return jsi::Value { (double)res };;
   }));
 
@@ -293,7 +302,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawkinematiccharactercontroller_computedCollision", HOSTFN("rawkinematiccharactercontroller_computedCollision", 3) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    auto res = w2c_rapier__wasm3d__bg_rawkinematiccharactercontroller_computedCollision(&nativeState->rootCtx, args[0].asNumber(), args[1].asNumber(), args[2].asNumber());
+    auto res = w2c_rapier__wasm3d__bg_rawkinematiccharactercontroller_computedCollision(&nativeState->rootCtx, getNumericVal(args[0]), getNumericVal(args[1]), getNumericVal(args[2]));
     return jsi::Value { (double)res };;
   }));
 
@@ -302,7 +311,7 @@ namespace facebook::react {
   exports.setProperty(rt, "__wbg_rawcharactercollision_free", HOSTFN("__wbg_rawcharactercollision_free", 1) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    w2c_rapier__wasm3d__bg_0x5F_wbg_rawcharactercollision_free(&nativeState->rootCtx, args[0].asNumber());
+    w2c_rapier__wasm3d__bg_0x5F_wbg_rawcharactercollision_free(&nativeState->rootCtx, getNumericVal(args[0]));
     return jsi::Value::undefined();
   }));
 
@@ -320,7 +329,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawcharactercollision_handle", HOSTFN("rawcharactercollision_handle", 1) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    auto res = w2c_rapier__wasm3d__bg_rawcharactercollision_handle(&nativeState->rootCtx, args[0].asNumber());
+    auto res = w2c_rapier__wasm3d__bg_rawcharactercollision_handle(&nativeState->rootCtx, getNumericVal(args[0]));
     return jsi::Value { (double)res };;
   }));
 
@@ -329,7 +338,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawcharactercollision_translationApplied", HOSTFN("rawcharactercollision_translationApplied", 1) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    auto res = w2c_rapier__wasm3d__bg_rawcharactercollision_translationApplied(&nativeState->rootCtx, args[0].asNumber());
+    auto res = w2c_rapier__wasm3d__bg_rawcharactercollision_translationApplied(&nativeState->rootCtx, getNumericVal(args[0]));
     return jsi::Value { (double)res };;
   }));
 
@@ -338,7 +347,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawcharactercollision_translationRemaining", HOSTFN("rawcharactercollision_translationRemaining", 1) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    auto res = w2c_rapier__wasm3d__bg_rawcharactercollision_translationRemaining(&nativeState->rootCtx, args[0].asNumber());
+    auto res = w2c_rapier__wasm3d__bg_rawcharactercollision_translationRemaining(&nativeState->rootCtx, getNumericVal(args[0]));
     return jsi::Value { (double)res };;
   }));
 
@@ -347,7 +356,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawcharactercollision_toi", HOSTFN("rawcharactercollision_toi", 1) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    auto res = w2c_rapier__wasm3d__bg_rawcharactercollision_toi(&nativeState->rootCtx, args[0].asNumber());
+    auto res = w2c_rapier__wasm3d__bg_rawcharactercollision_toi(&nativeState->rootCtx, getNumericVal(args[0]));
     return jsi::Value { (double)res };;
   }));
 
@@ -356,7 +365,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawcharactercollision_worldWitness1", HOSTFN("rawcharactercollision_worldWitness1", 1) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    auto res = w2c_rapier__wasm3d__bg_rawcharactercollision_worldWitness1(&nativeState->rootCtx, args[0].asNumber());
+    auto res = w2c_rapier__wasm3d__bg_rawcharactercollision_worldWitness1(&nativeState->rootCtx, getNumericVal(args[0]));
     return jsi::Value { (double)res };;
   }));
 
@@ -365,7 +374,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawcharactercollision_worldWitness2", HOSTFN("rawcharactercollision_worldWitness2", 1) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    auto res = w2c_rapier__wasm3d__bg_rawcharactercollision_worldWitness2(&nativeState->rootCtx, args[0].asNumber());
+    auto res = w2c_rapier__wasm3d__bg_rawcharactercollision_worldWitness2(&nativeState->rootCtx, getNumericVal(args[0]));
     return jsi::Value { (double)res };;
   }));
 
@@ -374,7 +383,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawcharactercollision_worldNormal1", HOSTFN("rawcharactercollision_worldNormal1", 1) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    auto res = w2c_rapier__wasm3d__bg_rawcharactercollision_worldNormal1(&nativeState->rootCtx, args[0].asNumber());
+    auto res = w2c_rapier__wasm3d__bg_rawcharactercollision_worldNormal1(&nativeState->rootCtx, getNumericVal(args[0]));
     return jsi::Value { (double)res };;
   }));
 
@@ -383,7 +392,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawcharactercollision_worldNormal2", HOSTFN("rawcharactercollision_worldNormal2", 1) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    auto res = w2c_rapier__wasm3d__bg_rawcharactercollision_worldNormal2(&nativeState->rootCtx, args[0].asNumber());
+    auto res = w2c_rapier__wasm3d__bg_rawcharactercollision_worldNormal2(&nativeState->rootCtx, getNumericVal(args[0]));
     return jsi::Value { (double)res };;
   }));
 
@@ -392,7 +401,7 @@ namespace facebook::react {
   exports.setProperty(rt, "__wbg_rawccdsolver_free", HOSTFN("__wbg_rawccdsolver_free", 1) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    w2c_rapier__wasm3d__bg_0x5F_wbg_rawccdsolver_free(&nativeState->rootCtx, args[0].asNumber());
+    w2c_rapier__wasm3d__bg_0x5F_wbg_rawccdsolver_free(&nativeState->rootCtx, getNumericVal(args[0]));
     return jsi::Value::undefined();
   }));
 
@@ -410,7 +419,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawimpulsejointset_jointType", HOSTFN("rawimpulsejointset_jointType", 2) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    auto res = w2c_rapier__wasm3d__bg_rawimpulsejointset_jointType(&nativeState->rootCtx, args[0].asNumber(), args[1].asNumber());
+    auto res = w2c_rapier__wasm3d__bg_rawimpulsejointset_jointType(&nativeState->rootCtx, getNumericVal(args[0]), getNumericVal(args[1]));
     return jsi::Value { (double)res };;
   }));
 
@@ -419,7 +428,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawimpulsejointset_jointBodyHandle1", HOSTFN("rawimpulsejointset_jointBodyHandle1", 2) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    auto res = w2c_rapier__wasm3d__bg_rawimpulsejointset_jointBodyHandle1(&nativeState->rootCtx, args[0].asNumber(), args[1].asNumber());
+    auto res = w2c_rapier__wasm3d__bg_rawimpulsejointset_jointBodyHandle1(&nativeState->rootCtx, getNumericVal(args[0]), getNumericVal(args[1]));
     return jsi::Value { (double)res };;
   }));
 
@@ -428,7 +437,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawimpulsejointset_jointBodyHandle2", HOSTFN("rawimpulsejointset_jointBodyHandle2", 2) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    auto res = w2c_rapier__wasm3d__bg_rawimpulsejointset_jointBodyHandle2(&nativeState->rootCtx, args[0].asNumber(), args[1].asNumber());
+    auto res = w2c_rapier__wasm3d__bg_rawimpulsejointset_jointBodyHandle2(&nativeState->rootCtx, getNumericVal(args[0]), getNumericVal(args[1]));
     return jsi::Value { (double)res };;
   }));
 
@@ -437,7 +446,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawimpulsejointset_jointFrameX1", HOSTFN("rawimpulsejointset_jointFrameX1", 2) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    auto res = w2c_rapier__wasm3d__bg_rawimpulsejointset_jointFrameX1(&nativeState->rootCtx, args[0].asNumber(), args[1].asNumber());
+    auto res = w2c_rapier__wasm3d__bg_rawimpulsejointset_jointFrameX1(&nativeState->rootCtx, getNumericVal(args[0]), getNumericVal(args[1]));
     return jsi::Value { (double)res };;
   }));
 
@@ -446,7 +455,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawimpulsejointset_jointFrameX2", HOSTFN("rawimpulsejointset_jointFrameX2", 2) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    auto res = w2c_rapier__wasm3d__bg_rawimpulsejointset_jointFrameX2(&nativeState->rootCtx, args[0].asNumber(), args[1].asNumber());
+    auto res = w2c_rapier__wasm3d__bg_rawimpulsejointset_jointFrameX2(&nativeState->rootCtx, getNumericVal(args[0]), getNumericVal(args[1]));
     return jsi::Value { (double)res };;
   }));
 
@@ -455,7 +464,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawimpulsejointset_jointAnchor1", HOSTFN("rawimpulsejointset_jointAnchor1", 2) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    auto res = w2c_rapier__wasm3d__bg_rawimpulsejointset_jointAnchor1(&nativeState->rootCtx, args[0].asNumber(), args[1].asNumber());
+    auto res = w2c_rapier__wasm3d__bg_rawimpulsejointset_jointAnchor1(&nativeState->rootCtx, getNumericVal(args[0]), getNumericVal(args[1]));
     return jsi::Value { (double)res };;
   }));
 
@@ -464,7 +473,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawimpulsejointset_jointAnchor2", HOSTFN("rawimpulsejointset_jointAnchor2", 2) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    auto res = w2c_rapier__wasm3d__bg_rawimpulsejointset_jointAnchor2(&nativeState->rootCtx, args[0].asNumber(), args[1].asNumber());
+    auto res = w2c_rapier__wasm3d__bg_rawimpulsejointset_jointAnchor2(&nativeState->rootCtx, getNumericVal(args[0]), getNumericVal(args[1]));
     return jsi::Value { (double)res };;
   }));
 
@@ -473,7 +482,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawimpulsejointset_jointSetAnchor1", HOSTFN("rawimpulsejointset_jointSetAnchor1", 3) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    w2c_rapier__wasm3d__bg_rawimpulsejointset_jointSetAnchor1(&nativeState->rootCtx, args[0].asNumber(), args[1].asNumber(), args[2].asNumber());
+    w2c_rapier__wasm3d__bg_rawimpulsejointset_jointSetAnchor1(&nativeState->rootCtx, getNumericVal(args[0]), getNumericVal(args[1]), getNumericVal(args[2]));
     return jsi::Value::undefined();
   }));
 
@@ -482,7 +491,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawimpulsejointset_jointSetAnchor2", HOSTFN("rawimpulsejointset_jointSetAnchor2", 3) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    w2c_rapier__wasm3d__bg_rawimpulsejointset_jointSetAnchor2(&nativeState->rootCtx, args[0].asNumber(), args[1].asNumber(), args[2].asNumber());
+    w2c_rapier__wasm3d__bg_rawimpulsejointset_jointSetAnchor2(&nativeState->rootCtx, getNumericVal(args[0]), getNumericVal(args[1]), getNumericVal(args[2]));
     return jsi::Value::undefined();
   }));
 
@@ -491,7 +500,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawimpulsejointset_jointContactsEnabled", HOSTFN("rawimpulsejointset_jointContactsEnabled", 2) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    auto res = w2c_rapier__wasm3d__bg_rawimpulsejointset_jointContactsEnabled(&nativeState->rootCtx, args[0].asNumber(), args[1].asNumber());
+    auto res = w2c_rapier__wasm3d__bg_rawimpulsejointset_jointContactsEnabled(&nativeState->rootCtx, getNumericVal(args[0]), getNumericVal(args[1]));
     return jsi::Value { (double)res };;
   }));
 
@@ -500,7 +509,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawimpulsejointset_jointSetContactsEnabled", HOSTFN("rawimpulsejointset_jointSetContactsEnabled", 3) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    w2c_rapier__wasm3d__bg_rawimpulsejointset_jointSetContactsEnabled(&nativeState->rootCtx, args[0].asNumber(), args[1].asNumber(), args[2].asNumber());
+    w2c_rapier__wasm3d__bg_rawimpulsejointset_jointSetContactsEnabled(&nativeState->rootCtx, getNumericVal(args[0]), getNumericVal(args[1]), getNumericVal(args[2]));
     return jsi::Value::undefined();
   }));
 
@@ -509,7 +518,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawimpulsejointset_jointLimitsEnabled", HOSTFN("rawimpulsejointset_jointLimitsEnabled", 3) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    auto res = w2c_rapier__wasm3d__bg_rawimpulsejointset_jointLimitsEnabled(&nativeState->rootCtx, args[0].asNumber(), args[1].asNumber(), args[2].asNumber());
+    auto res = w2c_rapier__wasm3d__bg_rawimpulsejointset_jointLimitsEnabled(&nativeState->rootCtx, getNumericVal(args[0]), getNumericVal(args[1]), getNumericVal(args[2]));
     return jsi::Value { (double)res };;
   }));
 
@@ -518,7 +527,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawimpulsejointset_jointLimitsMin", HOSTFN("rawimpulsejointset_jointLimitsMin", 3) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    auto res = w2c_rapier__wasm3d__bg_rawimpulsejointset_jointLimitsMin(&nativeState->rootCtx, args[0].asNumber(), args[1].asNumber(), args[2].asNumber());
+    auto res = w2c_rapier__wasm3d__bg_rawimpulsejointset_jointLimitsMin(&nativeState->rootCtx, getNumericVal(args[0]), getNumericVal(args[1]), getNumericVal(args[2]));
     return jsi::Value { (double)res };;
   }));
 
@@ -527,7 +536,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawimpulsejointset_jointLimitsMax", HOSTFN("rawimpulsejointset_jointLimitsMax", 3) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    auto res = w2c_rapier__wasm3d__bg_rawimpulsejointset_jointLimitsMax(&nativeState->rootCtx, args[0].asNumber(), args[1].asNumber(), args[2].asNumber());
+    auto res = w2c_rapier__wasm3d__bg_rawimpulsejointset_jointLimitsMax(&nativeState->rootCtx, getNumericVal(args[0]), getNumericVal(args[1]), getNumericVal(args[2]));
     return jsi::Value { (double)res };;
   }));
 
@@ -536,7 +545,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawimpulsejointset_jointSetLimits", HOSTFN("rawimpulsejointset_jointSetLimits", 5) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    w2c_rapier__wasm3d__bg_rawimpulsejointset_jointSetLimits(&nativeState->rootCtx, args[0].asNumber(), args[1].asNumber(), args[2].asNumber(), args[3].asNumber(), args[4].asNumber());
+    w2c_rapier__wasm3d__bg_rawimpulsejointset_jointSetLimits(&nativeState->rootCtx, getNumericVal(args[0]), getNumericVal(args[1]), getNumericVal(args[2]), getNumericVal(args[3]), getNumericVal(args[4]));
     return jsi::Value::undefined();
   }));
 
@@ -545,7 +554,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawimpulsejointset_jointConfigureMotorModel", HOSTFN("rawimpulsejointset_jointConfigureMotorModel", 4) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    w2c_rapier__wasm3d__bg_rawimpulsejointset_jointConfigureMotorModel(&nativeState->rootCtx, args[0].asNumber(), args[1].asNumber(), args[2].asNumber(), args[3].asNumber());
+    w2c_rapier__wasm3d__bg_rawimpulsejointset_jointConfigureMotorModel(&nativeState->rootCtx, getNumericVal(args[0]), getNumericVal(args[1]), getNumericVal(args[2]), getNumericVal(args[3]));
     return jsi::Value::undefined();
   }));
 
@@ -554,7 +563,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawimpulsejointset_jointConfigureMotorVelocity", HOSTFN("rawimpulsejointset_jointConfigureMotorVelocity", 5) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    w2c_rapier__wasm3d__bg_rawimpulsejointset_jointConfigureMotorVelocity(&nativeState->rootCtx, args[0].asNumber(), args[1].asNumber(), args[2].asNumber(), args[3].asNumber(), args[4].asNumber());
+    w2c_rapier__wasm3d__bg_rawimpulsejointset_jointConfigureMotorVelocity(&nativeState->rootCtx, getNumericVal(args[0]), getNumericVal(args[1]), getNumericVal(args[2]), getNumericVal(args[3]), getNumericVal(args[4]));
     return jsi::Value::undefined();
   }));
 
@@ -563,7 +572,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawimpulsejointset_jointConfigureMotorPosition", HOSTFN("rawimpulsejointset_jointConfigureMotorPosition", 6) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    w2c_rapier__wasm3d__bg_rawimpulsejointset_jointConfigureMotorPosition(&nativeState->rootCtx, args[0].asNumber(), args[1].asNumber(), args[2].asNumber(), args[3].asNumber(), args[4].asNumber(), args[5].asNumber());
+    w2c_rapier__wasm3d__bg_rawimpulsejointset_jointConfigureMotorPosition(&nativeState->rootCtx, getNumericVal(args[0]), getNumericVal(args[1]), getNumericVal(args[2]), getNumericVal(args[3]), getNumericVal(args[4]), getNumericVal(args[5]));
     return jsi::Value::undefined();
   }));
 
@@ -572,7 +581,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawimpulsejointset_jointConfigureMotor", HOSTFN("rawimpulsejointset_jointConfigureMotor", 7) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    w2c_rapier__wasm3d__bg_rawimpulsejointset_jointConfigureMotor(&nativeState->rootCtx, args[0].asNumber(), args[1].asNumber(), args[2].asNumber(), args[3].asNumber(), args[4].asNumber(), args[5].asNumber(), args[6].asNumber());
+    w2c_rapier__wasm3d__bg_rawimpulsejointset_jointConfigureMotor(&nativeState->rootCtx, getNumericVal(args[0]), getNumericVal(args[1]), getNumericVal(args[2]), getNumericVal(args[3]), getNumericVal(args[4]), getNumericVal(args[5]), getNumericVal(args[6]));
     return jsi::Value::undefined();
   }));
 
@@ -581,7 +590,7 @@ namespace facebook::react {
   exports.setProperty(rt, "__wbg_rawimpulsejointset_free", HOSTFN("__wbg_rawimpulsejointset_free", 1) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    w2c_rapier__wasm3d__bg_0x5F_wbg_rawimpulsejointset_free(&nativeState->rootCtx, args[0].asNumber());
+    w2c_rapier__wasm3d__bg_0x5F_wbg_rawimpulsejointset_free(&nativeState->rootCtx, getNumericVal(args[0]));
     return jsi::Value::undefined();
   }));
 
@@ -599,7 +608,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawimpulsejointset_createJoint", HOSTFN("rawimpulsejointset_createJoint", 5) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    auto res = w2c_rapier__wasm3d__bg_rawimpulsejointset_createJoint(&nativeState->rootCtx, args[0].asNumber(), args[1].asNumber(), args[2].asNumber(), args[3].asNumber(), args[4].asNumber());
+    auto res = w2c_rapier__wasm3d__bg_rawimpulsejointset_createJoint(&nativeState->rootCtx, getNumericVal(args[0]), getNumericVal(args[1]), getNumericVal(args[2]), getNumericVal(args[3]), getNumericVal(args[4]));
     return jsi::Value { (double)res };;
   }));
 
@@ -608,7 +617,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawimpulsejointset_remove", HOSTFN("rawimpulsejointset_remove", 3) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    w2c_rapier__wasm3d__bg_rawimpulsejointset_remove(&nativeState->rootCtx, args[0].asNumber(), args[1].asNumber(), args[2].asNumber());
+    w2c_rapier__wasm3d__bg_rawimpulsejointset_remove(&nativeState->rootCtx, getNumericVal(args[0]), getNumericVal(args[1]), getNumericVal(args[2]));
     return jsi::Value::undefined();
   }));
 
@@ -617,7 +626,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawimpulsejointset_len", HOSTFN("rawimpulsejointset_len", 1) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    auto res = w2c_rapier__wasm3d__bg_rawimpulsejointset_len(&nativeState->rootCtx, args[0].asNumber());
+    auto res = w2c_rapier__wasm3d__bg_rawimpulsejointset_len(&nativeState->rootCtx, getNumericVal(args[0]));
     return jsi::Value { (double)res };;
   }));
 
@@ -626,7 +635,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawimpulsejointset_contains", HOSTFN("rawimpulsejointset_contains", 2) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    auto res = w2c_rapier__wasm3d__bg_rawimpulsejointset_contains(&nativeState->rootCtx, args[0].asNumber(), args[1].asNumber());
+    auto res = w2c_rapier__wasm3d__bg_rawimpulsejointset_contains(&nativeState->rootCtx, getNumericVal(args[0]), getNumericVal(args[1]));
     return jsi::Value { (double)res };;
   }));
 
@@ -635,7 +644,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawimpulsejointset_forEachJointHandle", HOSTFN("rawimpulsejointset_forEachJointHandle", 2) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    w2c_rapier__wasm3d__bg_rawimpulsejointset_forEachJointHandle(&nativeState->rootCtx, args[0].asNumber(), args[1].asNumber());
+    w2c_rapier__wasm3d__bg_rawimpulsejointset_forEachJointHandle(&nativeState->rootCtx, getNumericVal(args[0]), getNumericVal(args[1]));
     return jsi::Value::undefined();
   }));
 
@@ -644,7 +653,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawimpulsejointset_forEachJointAttachedToRigidBody", HOSTFN("rawimpulsejointset_forEachJointAttachedToRigidBody", 3) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    w2c_rapier__wasm3d__bg_rawimpulsejointset_forEachJointAttachedToRigidBody(&nativeState->rootCtx, args[0].asNumber(), args[1].asNumber(), args[2].asNumber());
+    w2c_rapier__wasm3d__bg_rawimpulsejointset_forEachJointAttachedToRigidBody(&nativeState->rootCtx, getNumericVal(args[0]), getNumericVal(args[1]), getNumericVal(args[2]));
     return jsi::Value::undefined();
   }));
 
@@ -653,7 +662,7 @@ namespace facebook::react {
   exports.setProperty(rt, "__wbg_rawintegrationparameters_free", HOSTFN("__wbg_rawintegrationparameters_free", 1) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    w2c_rapier__wasm3d__bg_0x5F_wbg_rawintegrationparameters_free(&nativeState->rootCtx, args[0].asNumber());
+    w2c_rapier__wasm3d__bg_0x5F_wbg_rawintegrationparameters_free(&nativeState->rootCtx, getNumericVal(args[0]));
     return jsi::Value::undefined();
   }));
 
@@ -671,7 +680,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawintegrationparameters_dt", HOSTFN("rawintegrationparameters_dt", 1) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    auto res = w2c_rapier__wasm3d__bg_rawintegrationparameters_dt(&nativeState->rootCtx, args[0].asNumber());
+    auto res = w2c_rapier__wasm3d__bg_rawintegrationparameters_dt(&nativeState->rootCtx, getNumericVal(args[0]));
     return jsi::Value { (double)res };;
   }));
 
@@ -680,7 +689,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawintegrationparameters_allowedLinearError", HOSTFN("rawintegrationparameters_allowedLinearError", 1) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    auto res = w2c_rapier__wasm3d__bg_rawintegrationparameters_allowedLinearError(&nativeState->rootCtx, args[0].asNumber());
+    auto res = w2c_rapier__wasm3d__bg_rawintegrationparameters_allowedLinearError(&nativeState->rootCtx, getNumericVal(args[0]));
     return jsi::Value { (double)res };;
   }));
 
@@ -689,7 +698,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawintegrationparameters_predictionDistance", HOSTFN("rawintegrationparameters_predictionDistance", 1) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    auto res = w2c_rapier__wasm3d__bg_rawintegrationparameters_predictionDistance(&nativeState->rootCtx, args[0].asNumber());
+    auto res = w2c_rapier__wasm3d__bg_rawintegrationparameters_predictionDistance(&nativeState->rootCtx, getNumericVal(args[0]));
     return jsi::Value { (double)res };;
   }));
 
@@ -698,7 +707,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawintegrationparameters_maxVelocityIterations", HOSTFN("rawintegrationparameters_maxVelocityIterations", 1) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    auto res = w2c_rapier__wasm3d__bg_rawintegrationparameters_maxVelocityIterations(&nativeState->rootCtx, args[0].asNumber());
+    auto res = w2c_rapier__wasm3d__bg_rawintegrationparameters_maxVelocityIterations(&nativeState->rootCtx, getNumericVal(args[0]));
     return jsi::Value { (double)res };;
   }));
 
@@ -707,7 +716,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawintegrationparameters_maxVelocityFrictionIterations", HOSTFN("rawintegrationparameters_maxVelocityFrictionIterations", 1) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    auto res = w2c_rapier__wasm3d__bg_rawintegrationparameters_maxVelocityFrictionIterations(&nativeState->rootCtx, args[0].asNumber());
+    auto res = w2c_rapier__wasm3d__bg_rawintegrationparameters_maxVelocityFrictionIterations(&nativeState->rootCtx, getNumericVal(args[0]));
     return jsi::Value { (double)res };;
   }));
 
@@ -716,7 +725,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawintegrationparameters_maxStabilizationIterations", HOSTFN("rawintegrationparameters_maxStabilizationIterations", 1) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    auto res = w2c_rapier__wasm3d__bg_rawintegrationparameters_maxStabilizationIterations(&nativeState->rootCtx, args[0].asNumber());
+    auto res = w2c_rapier__wasm3d__bg_rawintegrationparameters_maxStabilizationIterations(&nativeState->rootCtx, getNumericVal(args[0]));
     return jsi::Value { (double)res };;
   }));
 
@@ -725,7 +734,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawintegrationparameters_minIslandSize", HOSTFN("rawintegrationparameters_minIslandSize", 1) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    auto res = w2c_rapier__wasm3d__bg_rawintegrationparameters_minIslandSize(&nativeState->rootCtx, args[0].asNumber());
+    auto res = w2c_rapier__wasm3d__bg_rawintegrationparameters_minIslandSize(&nativeState->rootCtx, getNumericVal(args[0]));
     return jsi::Value { (double)res };;
   }));
 
@@ -734,7 +743,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawintegrationparameters_maxCcdSubsteps", HOSTFN("rawintegrationparameters_maxCcdSubsteps", 1) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    auto res = w2c_rapier__wasm3d__bg_rawintegrationparameters_maxCcdSubsteps(&nativeState->rootCtx, args[0].asNumber());
+    auto res = w2c_rapier__wasm3d__bg_rawintegrationparameters_maxCcdSubsteps(&nativeState->rootCtx, getNumericVal(args[0]));
     return jsi::Value { (double)res };;
   }));
 
@@ -743,7 +752,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawintegrationparameters_set_dt", HOSTFN("rawintegrationparameters_set_dt", 2) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    w2c_rapier__wasm3d__bg_rawintegrationparameters_set_dt(&nativeState->rootCtx, args[0].asNumber(), args[1].asNumber());
+    w2c_rapier__wasm3d__bg_rawintegrationparameters_set_dt(&nativeState->rootCtx, getNumericVal(args[0]), getNumericVal(args[1]));
     return jsi::Value::undefined();
   }));
 
@@ -752,7 +761,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawintegrationparameters_set_erp", HOSTFN("rawintegrationparameters_set_erp", 2) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    w2c_rapier__wasm3d__bg_rawintegrationparameters_set_erp(&nativeState->rootCtx, args[0].asNumber(), args[1].asNumber());
+    w2c_rapier__wasm3d__bg_rawintegrationparameters_set_erp(&nativeState->rootCtx, getNumericVal(args[0]), getNumericVal(args[1]));
     return jsi::Value::undefined();
   }));
 
@@ -761,7 +770,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawintegrationparameters_set_allowedLinearError", HOSTFN("rawintegrationparameters_set_allowedLinearError", 2) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    w2c_rapier__wasm3d__bg_rawintegrationparameters_set_allowedLinearError(&nativeState->rootCtx, args[0].asNumber(), args[1].asNumber());
+    w2c_rapier__wasm3d__bg_rawintegrationparameters_set_allowedLinearError(&nativeState->rootCtx, getNumericVal(args[0]), getNumericVal(args[1]));
     return jsi::Value::undefined();
   }));
 
@@ -770,7 +779,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawintegrationparameters_set_predictionDistance", HOSTFN("rawintegrationparameters_set_predictionDistance", 2) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    w2c_rapier__wasm3d__bg_rawintegrationparameters_set_predictionDistance(&nativeState->rootCtx, args[0].asNumber(), args[1].asNumber());
+    w2c_rapier__wasm3d__bg_rawintegrationparameters_set_predictionDistance(&nativeState->rootCtx, getNumericVal(args[0]), getNumericVal(args[1]));
     return jsi::Value::undefined();
   }));
 
@@ -779,7 +788,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawintegrationparameters_set_maxVelocityIterations", HOSTFN("rawintegrationparameters_set_maxVelocityIterations", 2) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    w2c_rapier__wasm3d__bg_rawintegrationparameters_set_maxVelocityIterations(&nativeState->rootCtx, args[0].asNumber(), args[1].asNumber());
+    w2c_rapier__wasm3d__bg_rawintegrationparameters_set_maxVelocityIterations(&nativeState->rootCtx, getNumericVal(args[0]), getNumericVal(args[1]));
     return jsi::Value::undefined();
   }));
 
@@ -788,7 +797,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawintegrationparameters_set_maxVelocityFrictionIterations", HOSTFN("rawintegrationparameters_set_maxVelocityFrictionIterations", 2) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    w2c_rapier__wasm3d__bg_rawintegrationparameters_set_maxVelocityFrictionIterations(&nativeState->rootCtx, args[0].asNumber(), args[1].asNumber());
+    w2c_rapier__wasm3d__bg_rawintegrationparameters_set_maxVelocityFrictionIterations(&nativeState->rootCtx, getNumericVal(args[0]), getNumericVal(args[1]));
     return jsi::Value::undefined();
   }));
 
@@ -797,7 +806,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawintegrationparameters_set_maxStabilizationIterations", HOSTFN("rawintegrationparameters_set_maxStabilizationIterations", 2) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    w2c_rapier__wasm3d__bg_rawintegrationparameters_set_maxStabilizationIterations(&nativeState->rootCtx, args[0].asNumber(), args[1].asNumber());
+    w2c_rapier__wasm3d__bg_rawintegrationparameters_set_maxStabilizationIterations(&nativeState->rootCtx, getNumericVal(args[0]), getNumericVal(args[1]));
     return jsi::Value::undefined();
   }));
 
@@ -806,7 +815,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawintegrationparameters_set_minIslandSize", HOSTFN("rawintegrationparameters_set_minIslandSize", 2) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    w2c_rapier__wasm3d__bg_rawintegrationparameters_set_minIslandSize(&nativeState->rootCtx, args[0].asNumber(), args[1].asNumber());
+    w2c_rapier__wasm3d__bg_rawintegrationparameters_set_minIslandSize(&nativeState->rootCtx, getNumericVal(args[0]), getNumericVal(args[1]));
     return jsi::Value::undefined();
   }));
 
@@ -815,7 +824,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawintegrationparameters_set_maxCcdSubsteps", HOSTFN("rawintegrationparameters_set_maxCcdSubsteps", 2) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    w2c_rapier__wasm3d__bg_rawintegrationparameters_set_maxCcdSubsteps(&nativeState->rootCtx, args[0].asNumber(), args[1].asNumber());
+    w2c_rapier__wasm3d__bg_rawintegrationparameters_set_maxCcdSubsteps(&nativeState->rootCtx, getNumericVal(args[0]), getNumericVal(args[1]));
     return jsi::Value::undefined();
   }));
 
@@ -824,7 +833,7 @@ namespace facebook::react {
   exports.setProperty(rt, "__wbg_rawislandmanager_free", HOSTFN("__wbg_rawislandmanager_free", 1) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    w2c_rapier__wasm3d__bg_0x5F_wbg_rawislandmanager_free(&nativeState->rootCtx, args[0].asNumber());
+    w2c_rapier__wasm3d__bg_0x5F_wbg_rawislandmanager_free(&nativeState->rootCtx, getNumericVal(args[0]));
     return jsi::Value::undefined();
   }));
 
@@ -842,7 +851,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawislandmanager_forEachActiveRigidBodyHandle", HOSTFN("rawislandmanager_forEachActiveRigidBodyHandle", 2) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    w2c_rapier__wasm3d__bg_rawislandmanager_forEachActiveRigidBodyHandle(&nativeState->rootCtx, args[0].asNumber(), args[1].asNumber());
+    w2c_rapier__wasm3d__bg_rawislandmanager_forEachActiveRigidBodyHandle(&nativeState->rootCtx, getNumericVal(args[0]), getNumericVal(args[1]));
     return jsi::Value::undefined();
   }));
 
@@ -851,7 +860,7 @@ namespace facebook::react {
   exports.setProperty(rt, "__wbg_rawgenericjoint_free", HOSTFN("__wbg_rawgenericjoint_free", 1) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    w2c_rapier__wasm3d__bg_0x5F_wbg_rawgenericjoint_free(&nativeState->rootCtx, args[0].asNumber());
+    w2c_rapier__wasm3d__bg_0x5F_wbg_rawgenericjoint_free(&nativeState->rootCtx, getNumericVal(args[0]));
     return jsi::Value::undefined();
   }));
 
@@ -860,7 +869,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawgenericjoint_spherical", HOSTFN("rawgenericjoint_spherical", 2) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    auto res = w2c_rapier__wasm3d__bg_rawgenericjoint_spherical(&nativeState->rootCtx, args[0].asNumber(), args[1].asNumber());
+    auto res = w2c_rapier__wasm3d__bg_rawgenericjoint_spherical(&nativeState->rootCtx, getNumericVal(args[0]), getNumericVal(args[1]));
     return jsi::Value { (double)res };;
   }));
 
@@ -869,7 +878,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawgenericjoint_prismatic", HOSTFN("rawgenericjoint_prismatic", 6) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    auto res = w2c_rapier__wasm3d__bg_rawgenericjoint_prismatic(&nativeState->rootCtx, args[0].asNumber(), args[1].asNumber(), args[2].asNumber(), args[3].asNumber(), args[4].asNumber(), args[5].asNumber());
+    auto res = w2c_rapier__wasm3d__bg_rawgenericjoint_prismatic(&nativeState->rootCtx, getNumericVal(args[0]), getNumericVal(args[1]), getNumericVal(args[2]), getNumericVal(args[3]), getNumericVal(args[4]), getNumericVal(args[5]));
     return jsi::Value { (double)res };;
   }));
 
@@ -878,7 +887,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawgenericjoint_fixed", HOSTFN("rawgenericjoint_fixed", 4) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    auto res = w2c_rapier__wasm3d__bg_rawgenericjoint_fixed(&nativeState->rootCtx, args[0].asNumber(), args[1].asNumber(), args[2].asNumber(), args[3].asNumber());
+    auto res = w2c_rapier__wasm3d__bg_rawgenericjoint_fixed(&nativeState->rootCtx, getNumericVal(args[0]), getNumericVal(args[1]), getNumericVal(args[2]), getNumericVal(args[3]));
     return jsi::Value { (double)res };;
   }));
 
@@ -887,7 +896,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawgenericjoint_revolute", HOSTFN("rawgenericjoint_revolute", 3) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    auto res = w2c_rapier__wasm3d__bg_rawgenericjoint_revolute(&nativeState->rootCtx, args[0].asNumber(), args[1].asNumber(), args[2].asNumber());
+    auto res = w2c_rapier__wasm3d__bg_rawgenericjoint_revolute(&nativeState->rootCtx, getNumericVal(args[0]), getNumericVal(args[1]), getNumericVal(args[2]));
     return jsi::Value { (double)res };;
   }));
 
@@ -896,7 +905,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawmultibodyjointset_jointType", HOSTFN("rawmultibodyjointset_jointType", 2) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    auto res = w2c_rapier__wasm3d__bg_rawmultibodyjointset_jointType(&nativeState->rootCtx, args[0].asNumber(), args[1].asNumber());
+    auto res = w2c_rapier__wasm3d__bg_rawmultibodyjointset_jointType(&nativeState->rootCtx, getNumericVal(args[0]), getNumericVal(args[1]));
     return jsi::Value { (double)res };;
   }));
 
@@ -905,7 +914,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawmultibodyjointset_jointFrameX1", HOSTFN("rawmultibodyjointset_jointFrameX1", 2) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    auto res = w2c_rapier__wasm3d__bg_rawmultibodyjointset_jointFrameX1(&nativeState->rootCtx, args[0].asNumber(), args[1].asNumber());
+    auto res = w2c_rapier__wasm3d__bg_rawmultibodyjointset_jointFrameX1(&nativeState->rootCtx, getNumericVal(args[0]), getNumericVal(args[1]));
     return jsi::Value { (double)res };;
   }));
 
@@ -914,7 +923,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawmultibodyjointset_jointFrameX2", HOSTFN("rawmultibodyjointset_jointFrameX2", 2) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    auto res = w2c_rapier__wasm3d__bg_rawmultibodyjointset_jointFrameX2(&nativeState->rootCtx, args[0].asNumber(), args[1].asNumber());
+    auto res = w2c_rapier__wasm3d__bg_rawmultibodyjointset_jointFrameX2(&nativeState->rootCtx, getNumericVal(args[0]), getNumericVal(args[1]));
     return jsi::Value { (double)res };;
   }));
 
@@ -923,7 +932,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawmultibodyjointset_jointAnchor1", HOSTFN("rawmultibodyjointset_jointAnchor1", 2) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    auto res = w2c_rapier__wasm3d__bg_rawmultibodyjointset_jointAnchor1(&nativeState->rootCtx, args[0].asNumber(), args[1].asNumber());
+    auto res = w2c_rapier__wasm3d__bg_rawmultibodyjointset_jointAnchor1(&nativeState->rootCtx, getNumericVal(args[0]), getNumericVal(args[1]));
     return jsi::Value { (double)res };;
   }));
 
@@ -932,7 +941,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawmultibodyjointset_jointAnchor2", HOSTFN("rawmultibodyjointset_jointAnchor2", 2) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    auto res = w2c_rapier__wasm3d__bg_rawmultibodyjointset_jointAnchor2(&nativeState->rootCtx, args[0].asNumber(), args[1].asNumber());
+    auto res = w2c_rapier__wasm3d__bg_rawmultibodyjointset_jointAnchor2(&nativeState->rootCtx, getNumericVal(args[0]), getNumericVal(args[1]));
     return jsi::Value { (double)res };;
   }));
 
@@ -941,7 +950,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawmultibodyjointset_jointContactsEnabled", HOSTFN("rawmultibodyjointset_jointContactsEnabled", 2) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    auto res = w2c_rapier__wasm3d__bg_rawmultibodyjointset_jointContactsEnabled(&nativeState->rootCtx, args[0].asNumber(), args[1].asNumber());
+    auto res = w2c_rapier__wasm3d__bg_rawmultibodyjointset_jointContactsEnabled(&nativeState->rootCtx, getNumericVal(args[0]), getNumericVal(args[1]));
     return jsi::Value { (double)res };;
   }));
 
@@ -950,7 +959,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawmultibodyjointset_jointSetContactsEnabled", HOSTFN("rawmultibodyjointset_jointSetContactsEnabled", 3) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    w2c_rapier__wasm3d__bg_rawmultibodyjointset_jointSetContactsEnabled(&nativeState->rootCtx, args[0].asNumber(), args[1].asNumber(), args[2].asNumber());
+    w2c_rapier__wasm3d__bg_rawmultibodyjointset_jointSetContactsEnabled(&nativeState->rootCtx, getNumericVal(args[0]), getNumericVal(args[1]), getNumericVal(args[2]));
     return jsi::Value::undefined();
   }));
 
@@ -959,7 +968,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawmultibodyjointset_jointLimitsEnabled", HOSTFN("rawmultibodyjointset_jointLimitsEnabled", 3) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    auto res = w2c_rapier__wasm3d__bg_rawmultibodyjointset_jointLimitsEnabled(&nativeState->rootCtx, args[0].asNumber(), args[1].asNumber(), args[2].asNumber());
+    auto res = w2c_rapier__wasm3d__bg_rawmultibodyjointset_jointLimitsEnabled(&nativeState->rootCtx, getNumericVal(args[0]), getNumericVal(args[1]), getNumericVal(args[2]));
     return jsi::Value { (double)res };;
   }));
 
@@ -968,7 +977,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawmultibodyjointset_jointLimitsMin", HOSTFN("rawmultibodyjointset_jointLimitsMin", 3) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    auto res = w2c_rapier__wasm3d__bg_rawmultibodyjointset_jointLimitsMin(&nativeState->rootCtx, args[0].asNumber(), args[1].asNumber(), args[2].asNumber());
+    auto res = w2c_rapier__wasm3d__bg_rawmultibodyjointset_jointLimitsMin(&nativeState->rootCtx, getNumericVal(args[0]), getNumericVal(args[1]), getNumericVal(args[2]));
     return jsi::Value { (double)res };;
   }));
 
@@ -977,7 +986,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawmultibodyjointset_jointLimitsMax", HOSTFN("rawmultibodyjointset_jointLimitsMax", 3) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    auto res = w2c_rapier__wasm3d__bg_rawmultibodyjointset_jointLimitsMax(&nativeState->rootCtx, args[0].asNumber(), args[1].asNumber(), args[2].asNumber());
+    auto res = w2c_rapier__wasm3d__bg_rawmultibodyjointset_jointLimitsMax(&nativeState->rootCtx, getNumericVal(args[0]), getNumericVal(args[1]), getNumericVal(args[2]));
     return jsi::Value { (double)res };;
   }));
 
@@ -986,7 +995,7 @@ namespace facebook::react {
   exports.setProperty(rt, "__wbg_rawmultibodyjointset_free", HOSTFN("__wbg_rawmultibodyjointset_free", 1) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    w2c_rapier__wasm3d__bg_0x5F_wbg_rawmultibodyjointset_free(&nativeState->rootCtx, args[0].asNumber());
+    w2c_rapier__wasm3d__bg_0x5F_wbg_rawmultibodyjointset_free(&nativeState->rootCtx, getNumericVal(args[0]));
     return jsi::Value::undefined();
   }));
 
@@ -1004,7 +1013,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawmultibodyjointset_createJoint", HOSTFN("rawmultibodyjointset_createJoint", 5) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    auto res = w2c_rapier__wasm3d__bg_rawmultibodyjointset_createJoint(&nativeState->rootCtx, args[0].asNumber(), args[1].asNumber(), args[2].asNumber(), args[3].asNumber(), args[4].asNumber());
+    auto res = w2c_rapier__wasm3d__bg_rawmultibodyjointset_createJoint(&nativeState->rootCtx, getNumericVal(args[0]), getNumericVal(args[1]), getNumericVal(args[2]), getNumericVal(args[3]), getNumericVal(args[4]));
     return jsi::Value { (double)res };;
   }));
 
@@ -1013,7 +1022,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawmultibodyjointset_remove", HOSTFN("rawmultibodyjointset_remove", 3) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    w2c_rapier__wasm3d__bg_rawmultibodyjointset_remove(&nativeState->rootCtx, args[0].asNumber(), args[1].asNumber(), args[2].asNumber());
+    w2c_rapier__wasm3d__bg_rawmultibodyjointset_remove(&nativeState->rootCtx, getNumericVal(args[0]), getNumericVal(args[1]), getNumericVal(args[2]));
     return jsi::Value::undefined();
   }));
 
@@ -1022,7 +1031,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawmultibodyjointset_contains", HOSTFN("rawmultibodyjointset_contains", 2) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    auto res = w2c_rapier__wasm3d__bg_rawmultibodyjointset_contains(&nativeState->rootCtx, args[0].asNumber(), args[1].asNumber());
+    auto res = w2c_rapier__wasm3d__bg_rawmultibodyjointset_contains(&nativeState->rootCtx, getNumericVal(args[0]), getNumericVal(args[1]));
     return jsi::Value { (double)res };;
   }));
 
@@ -1031,7 +1040,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawmultibodyjointset_forEachJointHandle", HOSTFN("rawmultibodyjointset_forEachJointHandle", 2) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    w2c_rapier__wasm3d__bg_rawmultibodyjointset_forEachJointHandle(&nativeState->rootCtx, args[0].asNumber(), args[1].asNumber());
+    w2c_rapier__wasm3d__bg_rawmultibodyjointset_forEachJointHandle(&nativeState->rootCtx, getNumericVal(args[0]), getNumericVal(args[1]));
     return jsi::Value::undefined();
   }));
 
@@ -1040,7 +1049,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawmultibodyjointset_forEachJointAttachedToRigidBody", HOSTFN("rawmultibodyjointset_forEachJointAttachedToRigidBody", 3) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    w2c_rapier__wasm3d__bg_rawmultibodyjointset_forEachJointAttachedToRigidBody(&nativeState->rootCtx, args[0].asNumber(), args[1].asNumber(), args[2].asNumber());
+    w2c_rapier__wasm3d__bg_rawmultibodyjointset_forEachJointAttachedToRigidBody(&nativeState->rootCtx, getNumericVal(args[0]), getNumericVal(args[1]), getNumericVal(args[2]));
     return jsi::Value::undefined();
   }));
 
@@ -1049,7 +1058,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawrigidbodyset_rbTranslation", HOSTFN("rawrigidbodyset_rbTranslation", 2) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    auto res = w2c_rapier__wasm3d__bg_rawrigidbodyset_rbTranslation(&nativeState->rootCtx, args[0].asNumber(), args[1].asNumber());
+    auto res = w2c_rapier__wasm3d__bg_rawrigidbodyset_rbTranslation(&nativeState->rootCtx, getNumericVal(args[0]), getNumericVal(args[1]));
     return jsi::Value { (double)res };;
   }));
 
@@ -1058,7 +1067,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawrigidbodyset_rbRotation", HOSTFN("rawrigidbodyset_rbRotation", 2) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    auto res = w2c_rapier__wasm3d__bg_rawrigidbodyset_rbRotation(&nativeState->rootCtx, args[0].asNumber(), args[1].asNumber());
+    auto res = w2c_rapier__wasm3d__bg_rawrigidbodyset_rbRotation(&nativeState->rootCtx, getNumericVal(args[0]), getNumericVal(args[1]));
     return jsi::Value { (double)res };;
   }));
 
@@ -1067,7 +1076,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawrigidbodyset_rbSleep", HOSTFN("rawrigidbodyset_rbSleep", 2) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    w2c_rapier__wasm3d__bg_rawrigidbodyset_rbSleep(&nativeState->rootCtx, args[0].asNumber(), args[1].asNumber());
+    w2c_rapier__wasm3d__bg_rawrigidbodyset_rbSleep(&nativeState->rootCtx, getNumericVal(args[0]), getNumericVal(args[1]));
     return jsi::Value::undefined();
   }));
 
@@ -1076,7 +1085,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawrigidbodyset_rbIsSleeping", HOSTFN("rawrigidbodyset_rbIsSleeping", 2) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    auto res = w2c_rapier__wasm3d__bg_rawrigidbodyset_rbIsSleeping(&nativeState->rootCtx, args[0].asNumber(), args[1].asNumber());
+    auto res = w2c_rapier__wasm3d__bg_rawrigidbodyset_rbIsSleeping(&nativeState->rootCtx, getNumericVal(args[0]), getNumericVal(args[1]));
     return jsi::Value { (double)res };;
   }));
 
@@ -1085,7 +1094,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawrigidbodyset_rbIsMoving", HOSTFN("rawrigidbodyset_rbIsMoving", 2) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    auto res = w2c_rapier__wasm3d__bg_rawrigidbodyset_rbIsMoving(&nativeState->rootCtx, args[0].asNumber(), args[1].asNumber());
+    auto res = w2c_rapier__wasm3d__bg_rawrigidbodyset_rbIsMoving(&nativeState->rootCtx, getNumericVal(args[0]), getNumericVal(args[1]));
     return jsi::Value { (double)res };;
   }));
 
@@ -1094,7 +1103,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawrigidbodyset_rbNextTranslation", HOSTFN("rawrigidbodyset_rbNextTranslation", 2) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    auto res = w2c_rapier__wasm3d__bg_rawrigidbodyset_rbNextTranslation(&nativeState->rootCtx, args[0].asNumber(), args[1].asNumber());
+    auto res = w2c_rapier__wasm3d__bg_rawrigidbodyset_rbNextTranslation(&nativeState->rootCtx, getNumericVal(args[0]), getNumericVal(args[1]));
     return jsi::Value { (double)res };;
   }));
 
@@ -1103,7 +1112,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawrigidbodyset_rbNextRotation", HOSTFN("rawrigidbodyset_rbNextRotation", 2) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    auto res = w2c_rapier__wasm3d__bg_rawrigidbodyset_rbNextRotation(&nativeState->rootCtx, args[0].asNumber(), args[1].asNumber());
+    auto res = w2c_rapier__wasm3d__bg_rawrigidbodyset_rbNextRotation(&nativeState->rootCtx, getNumericVal(args[0]), getNumericVal(args[1]));
     return jsi::Value { (double)res };;
   }));
 
@@ -1112,7 +1121,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawrigidbodyset_rbSetTranslation", HOSTFN("rawrigidbodyset_rbSetTranslation", 6) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    w2c_rapier__wasm3d__bg_rawrigidbodyset_rbSetTranslation(&nativeState->rootCtx, args[0].asNumber(), args[1].asNumber(), args[2].asNumber(), args[3].asNumber(), args[4].asNumber(), args[5].asNumber());
+    w2c_rapier__wasm3d__bg_rawrigidbodyset_rbSetTranslation(&nativeState->rootCtx, getNumericVal(args[0]), getNumericVal(args[1]), getNumericVal(args[2]), getNumericVal(args[3]), getNumericVal(args[4]), getNumericVal(args[5]));
     return jsi::Value::undefined();
   }));
 
@@ -1121,7 +1130,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawrigidbodyset_rbSetRotation", HOSTFN("rawrigidbodyset_rbSetRotation", 7) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    w2c_rapier__wasm3d__bg_rawrigidbodyset_rbSetRotation(&nativeState->rootCtx, args[0].asNumber(), args[1].asNumber(), args[2].asNumber(), args[3].asNumber(), args[4].asNumber(), args[5].asNumber(), args[6].asNumber());
+    w2c_rapier__wasm3d__bg_rawrigidbodyset_rbSetRotation(&nativeState->rootCtx, getNumericVal(args[0]), getNumericVal(args[1]), getNumericVal(args[2]), getNumericVal(args[3]), getNumericVal(args[4]), getNumericVal(args[5]), getNumericVal(args[6]));
     return jsi::Value::undefined();
   }));
 
@@ -1130,7 +1139,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawrigidbodyset_rbSetLinvel", HOSTFN("rawrigidbodyset_rbSetLinvel", 4) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    w2c_rapier__wasm3d__bg_rawrigidbodyset_rbSetLinvel(&nativeState->rootCtx, args[0].asNumber(), args[1].asNumber(), args[2].asNumber(), args[3].asNumber());
+    w2c_rapier__wasm3d__bg_rawrigidbodyset_rbSetLinvel(&nativeState->rootCtx, getNumericVal(args[0]), getNumericVal(args[1]), getNumericVal(args[2]), getNumericVal(args[3]));
     return jsi::Value::undefined();
   }));
 
@@ -1139,7 +1148,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawrigidbodyset_rbSetAngvel", HOSTFN("rawrigidbodyset_rbSetAngvel", 4) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    w2c_rapier__wasm3d__bg_rawrigidbodyset_rbSetAngvel(&nativeState->rootCtx, args[0].asNumber(), args[1].asNumber(), args[2].asNumber(), args[3].asNumber());
+    w2c_rapier__wasm3d__bg_rawrigidbodyset_rbSetAngvel(&nativeState->rootCtx, getNumericVal(args[0]), getNumericVal(args[1]), getNumericVal(args[2]), getNumericVal(args[3]));
     return jsi::Value::undefined();
   }));
 
@@ -1148,7 +1157,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawrigidbodyset_rbSetNextKinematicTranslation", HOSTFN("rawrigidbodyset_rbSetNextKinematicTranslation", 5) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    w2c_rapier__wasm3d__bg_rawrigidbodyset_rbSetNextKinematicTranslation(&nativeState->rootCtx, args[0].asNumber(), args[1].asNumber(), args[2].asNumber(), args[3].asNumber(), args[4].asNumber());
+    w2c_rapier__wasm3d__bg_rawrigidbodyset_rbSetNextKinematicTranslation(&nativeState->rootCtx, getNumericVal(args[0]), getNumericVal(args[1]), getNumericVal(args[2]), getNumericVal(args[3]), getNumericVal(args[4]));
     return jsi::Value::undefined();
   }));
 
@@ -1157,7 +1166,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawrigidbodyset_rbSetNextKinematicRotation", HOSTFN("rawrigidbodyset_rbSetNextKinematicRotation", 6) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    w2c_rapier__wasm3d__bg_rawrigidbodyset_rbSetNextKinematicRotation(&nativeState->rootCtx, args[0].asNumber(), args[1].asNumber(), args[2].asNumber(), args[3].asNumber(), args[4].asNumber(), args[5].asNumber());
+    w2c_rapier__wasm3d__bg_rawrigidbodyset_rbSetNextKinematicRotation(&nativeState->rootCtx, getNumericVal(args[0]), getNumericVal(args[1]), getNumericVal(args[2]), getNumericVal(args[3]), getNumericVal(args[4]), getNumericVal(args[5]));
     return jsi::Value::undefined();
   }));
 
@@ -1166,7 +1175,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawrigidbodyset_rbRecomputeMassPropertiesFromColliders", HOSTFN("rawrigidbodyset_rbRecomputeMassPropertiesFromColliders", 3) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    w2c_rapier__wasm3d__bg_rawrigidbodyset_rbRecomputeMassPropertiesFromColliders(&nativeState->rootCtx, args[0].asNumber(), args[1].asNumber(), args[2].asNumber());
+    w2c_rapier__wasm3d__bg_rawrigidbodyset_rbRecomputeMassPropertiesFromColliders(&nativeState->rootCtx, getNumericVal(args[0]), getNumericVal(args[1]), getNumericVal(args[2]));
     return jsi::Value::undefined();
   }));
 
@@ -1175,7 +1184,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawrigidbodyset_rbSetAdditionalMass", HOSTFN("rawrigidbodyset_rbSetAdditionalMass", 4) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    w2c_rapier__wasm3d__bg_rawrigidbodyset_rbSetAdditionalMass(&nativeState->rootCtx, args[0].asNumber(), args[1].asNumber(), args[2].asNumber(), args[3].asNumber());
+    w2c_rapier__wasm3d__bg_rawrigidbodyset_rbSetAdditionalMass(&nativeState->rootCtx, getNumericVal(args[0]), getNumericVal(args[1]), getNumericVal(args[2]), getNumericVal(args[3]));
     return jsi::Value::undefined();
   }));
 
@@ -1184,7 +1193,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawrigidbodyset_rbSetAdditionalMassProperties", HOSTFN("rawrigidbodyset_rbSetAdditionalMassProperties", 7) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    w2c_rapier__wasm3d__bg_rawrigidbodyset_rbSetAdditionalMassProperties(&nativeState->rootCtx, args[0].asNumber(), args[1].asNumber(), args[2].asNumber(), args[3].asNumber(), args[4].asNumber(), args[5].asNumber(), args[6].asNumber());
+    w2c_rapier__wasm3d__bg_rawrigidbodyset_rbSetAdditionalMassProperties(&nativeState->rootCtx, getNumericVal(args[0]), getNumericVal(args[1]), getNumericVal(args[2]), getNumericVal(args[3]), getNumericVal(args[4]), getNumericVal(args[5]), getNumericVal(args[6]));
     return jsi::Value::undefined();
   }));
 
@@ -1193,7 +1202,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawrigidbodyset_rbLinvel", HOSTFN("rawrigidbodyset_rbLinvel", 2) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    auto res = w2c_rapier__wasm3d__bg_rawrigidbodyset_rbLinvel(&nativeState->rootCtx, args[0].asNumber(), args[1].asNumber());
+    auto res = w2c_rapier__wasm3d__bg_rawrigidbodyset_rbLinvel(&nativeState->rootCtx, getNumericVal(args[0]), getNumericVal(args[1]));
     return jsi::Value { (double)res };;
   }));
 
@@ -1202,7 +1211,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawrigidbodyset_rbAngvel", HOSTFN("rawrigidbodyset_rbAngvel", 2) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    auto res = w2c_rapier__wasm3d__bg_rawrigidbodyset_rbAngvel(&nativeState->rootCtx, args[0].asNumber(), args[1].asNumber());
+    auto res = w2c_rapier__wasm3d__bg_rawrigidbodyset_rbAngvel(&nativeState->rootCtx, getNumericVal(args[0]), getNumericVal(args[1]));
     return jsi::Value { (double)res };;
   }));
 
@@ -1211,7 +1220,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawrigidbodyset_rbLockTranslations", HOSTFN("rawrigidbodyset_rbLockTranslations", 4) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    w2c_rapier__wasm3d__bg_rawrigidbodyset_rbLockTranslations(&nativeState->rootCtx, args[0].asNumber(), args[1].asNumber(), args[2].asNumber(), args[3].asNumber());
+    w2c_rapier__wasm3d__bg_rawrigidbodyset_rbLockTranslations(&nativeState->rootCtx, getNumericVal(args[0]), getNumericVal(args[1]), getNumericVal(args[2]), getNumericVal(args[3]));
     return jsi::Value::undefined();
   }));
 
@@ -1220,7 +1229,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawrigidbodyset_rbSetEnabledTranslations", HOSTFN("rawrigidbodyset_rbSetEnabledTranslations", 6) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    w2c_rapier__wasm3d__bg_rawrigidbodyset_rbSetEnabledTranslations(&nativeState->rootCtx, args[0].asNumber(), args[1].asNumber(), args[2].asNumber(), args[3].asNumber(), args[4].asNumber(), args[5].asNumber());
+    w2c_rapier__wasm3d__bg_rawrigidbodyset_rbSetEnabledTranslations(&nativeState->rootCtx, getNumericVal(args[0]), getNumericVal(args[1]), getNumericVal(args[2]), getNumericVal(args[3]), getNumericVal(args[4]), getNumericVal(args[5]));
     return jsi::Value::undefined();
   }));
 
@@ -1229,7 +1238,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawrigidbodyset_rbLockRotations", HOSTFN("rawrigidbodyset_rbLockRotations", 4) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    w2c_rapier__wasm3d__bg_rawrigidbodyset_rbLockRotations(&nativeState->rootCtx, args[0].asNumber(), args[1].asNumber(), args[2].asNumber(), args[3].asNumber());
+    w2c_rapier__wasm3d__bg_rawrigidbodyset_rbLockRotations(&nativeState->rootCtx, getNumericVal(args[0]), getNumericVal(args[1]), getNumericVal(args[2]), getNumericVal(args[3]));
     return jsi::Value::undefined();
   }));
 
@@ -1238,7 +1247,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawrigidbodyset_rbSetEnabledRotations", HOSTFN("rawrigidbodyset_rbSetEnabledRotations", 6) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    w2c_rapier__wasm3d__bg_rawrigidbodyset_rbSetEnabledRotations(&nativeState->rootCtx, args[0].asNumber(), args[1].asNumber(), args[2].asNumber(), args[3].asNumber(), args[4].asNumber(), args[5].asNumber());
+    w2c_rapier__wasm3d__bg_rawrigidbodyset_rbSetEnabledRotations(&nativeState->rootCtx, getNumericVal(args[0]), getNumericVal(args[1]), getNumericVal(args[2]), getNumericVal(args[3]), getNumericVal(args[4]), getNumericVal(args[5]));
     return jsi::Value::undefined();
   }));
 
@@ -1247,7 +1256,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawrigidbodyset_rbDominanceGroup", HOSTFN("rawrigidbodyset_rbDominanceGroup", 2) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    auto res = w2c_rapier__wasm3d__bg_rawrigidbodyset_rbDominanceGroup(&nativeState->rootCtx, args[0].asNumber(), args[1].asNumber());
+    auto res = w2c_rapier__wasm3d__bg_rawrigidbodyset_rbDominanceGroup(&nativeState->rootCtx, getNumericVal(args[0]), getNumericVal(args[1]));
     return jsi::Value { (double)res };;
   }));
 
@@ -1256,7 +1265,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawrigidbodyset_rbSetDominanceGroup", HOSTFN("rawrigidbodyset_rbSetDominanceGroup", 3) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    w2c_rapier__wasm3d__bg_rawrigidbodyset_rbSetDominanceGroup(&nativeState->rootCtx, args[0].asNumber(), args[1].asNumber(), args[2].asNumber());
+    w2c_rapier__wasm3d__bg_rawrigidbodyset_rbSetDominanceGroup(&nativeState->rootCtx, getNumericVal(args[0]), getNumericVal(args[1]), getNumericVal(args[2]));
     return jsi::Value::undefined();
   }));
 
@@ -1265,7 +1274,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawrigidbodyset_rbEnableCcd", HOSTFN("rawrigidbodyset_rbEnableCcd", 3) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    w2c_rapier__wasm3d__bg_rawrigidbodyset_rbEnableCcd(&nativeState->rootCtx, args[0].asNumber(), args[1].asNumber(), args[2].asNumber());
+    w2c_rapier__wasm3d__bg_rawrigidbodyset_rbEnableCcd(&nativeState->rootCtx, getNumericVal(args[0]), getNumericVal(args[1]), getNumericVal(args[2]));
     return jsi::Value::undefined();
   }));
 
@@ -1274,7 +1283,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawrigidbodyset_rbMass", HOSTFN("rawrigidbodyset_rbMass", 2) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    auto res = w2c_rapier__wasm3d__bg_rawrigidbodyset_rbMass(&nativeState->rootCtx, args[0].asNumber(), args[1].asNumber());
+    auto res = w2c_rapier__wasm3d__bg_rawrigidbodyset_rbMass(&nativeState->rootCtx, getNumericVal(args[0]), getNumericVal(args[1]));
     return jsi::Value { (double)res };;
   }));
 
@@ -1283,7 +1292,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawrigidbodyset_rbInvMass", HOSTFN("rawrigidbodyset_rbInvMass", 2) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    auto res = w2c_rapier__wasm3d__bg_rawrigidbodyset_rbInvMass(&nativeState->rootCtx, args[0].asNumber(), args[1].asNumber());
+    auto res = w2c_rapier__wasm3d__bg_rawrigidbodyset_rbInvMass(&nativeState->rootCtx, getNumericVal(args[0]), getNumericVal(args[1]));
     return jsi::Value { (double)res };;
   }));
 
@@ -1292,7 +1301,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawrigidbodyset_rbEffectiveInvMass", HOSTFN("rawrigidbodyset_rbEffectiveInvMass", 2) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    auto res = w2c_rapier__wasm3d__bg_rawrigidbodyset_rbEffectiveInvMass(&nativeState->rootCtx, args[0].asNumber(), args[1].asNumber());
+    auto res = w2c_rapier__wasm3d__bg_rawrigidbodyset_rbEffectiveInvMass(&nativeState->rootCtx, getNumericVal(args[0]), getNumericVal(args[1]));
     return jsi::Value { (double)res };;
   }));
 
@@ -1301,7 +1310,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawrigidbodyset_rbLocalCom", HOSTFN("rawrigidbodyset_rbLocalCom", 2) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    auto res = w2c_rapier__wasm3d__bg_rawrigidbodyset_rbLocalCom(&nativeState->rootCtx, args[0].asNumber(), args[1].asNumber());
+    auto res = w2c_rapier__wasm3d__bg_rawrigidbodyset_rbLocalCom(&nativeState->rootCtx, getNumericVal(args[0]), getNumericVal(args[1]));
     return jsi::Value { (double)res };;
   }));
 
@@ -1310,7 +1319,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawrigidbodyset_rbWorldCom", HOSTFN("rawrigidbodyset_rbWorldCom", 2) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    auto res = w2c_rapier__wasm3d__bg_rawrigidbodyset_rbWorldCom(&nativeState->rootCtx, args[0].asNumber(), args[1].asNumber());
+    auto res = w2c_rapier__wasm3d__bg_rawrigidbodyset_rbWorldCom(&nativeState->rootCtx, getNumericVal(args[0]), getNumericVal(args[1]));
     return jsi::Value { (double)res };;
   }));
 
@@ -1319,7 +1328,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawrigidbodyset_rbInvPrincipalInertiaSqrt", HOSTFN("rawrigidbodyset_rbInvPrincipalInertiaSqrt", 2) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    auto res = w2c_rapier__wasm3d__bg_rawrigidbodyset_rbInvPrincipalInertiaSqrt(&nativeState->rootCtx, args[0].asNumber(), args[1].asNumber());
+    auto res = w2c_rapier__wasm3d__bg_rawrigidbodyset_rbInvPrincipalInertiaSqrt(&nativeState->rootCtx, getNumericVal(args[0]), getNumericVal(args[1]));
     return jsi::Value { (double)res };;
   }));
 
@@ -1328,7 +1337,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawrigidbodyset_rbPrincipalInertiaLocalFrame", HOSTFN("rawrigidbodyset_rbPrincipalInertiaLocalFrame", 2) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    auto res = w2c_rapier__wasm3d__bg_rawrigidbodyset_rbPrincipalInertiaLocalFrame(&nativeState->rootCtx, args[0].asNumber(), args[1].asNumber());
+    auto res = w2c_rapier__wasm3d__bg_rawrigidbodyset_rbPrincipalInertiaLocalFrame(&nativeState->rootCtx, getNumericVal(args[0]), getNumericVal(args[1]));
     return jsi::Value { (double)res };;
   }));
 
@@ -1337,7 +1346,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawrigidbodyset_rbPrincipalInertia", HOSTFN("rawrigidbodyset_rbPrincipalInertia", 2) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    auto res = w2c_rapier__wasm3d__bg_rawrigidbodyset_rbPrincipalInertia(&nativeState->rootCtx, args[0].asNumber(), args[1].asNumber());
+    auto res = w2c_rapier__wasm3d__bg_rawrigidbodyset_rbPrincipalInertia(&nativeState->rootCtx, getNumericVal(args[0]), getNumericVal(args[1]));
     return jsi::Value { (double)res };;
   }));
 
@@ -1346,7 +1355,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawrigidbodyset_rbEffectiveWorldInvInertiaSqrt", HOSTFN("rawrigidbodyset_rbEffectiveWorldInvInertiaSqrt", 2) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    auto res = w2c_rapier__wasm3d__bg_rawrigidbodyset_rbEffectiveWorldInvInertiaSqrt(&nativeState->rootCtx, args[0].asNumber(), args[1].asNumber());
+    auto res = w2c_rapier__wasm3d__bg_rawrigidbodyset_rbEffectiveWorldInvInertiaSqrt(&nativeState->rootCtx, getNumericVal(args[0]), getNumericVal(args[1]));
     return jsi::Value { (double)res };;
   }));
 
@@ -1355,7 +1364,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawrigidbodyset_rbEffectiveAngularInertia", HOSTFN("rawrigidbodyset_rbEffectiveAngularInertia", 2) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    auto res = w2c_rapier__wasm3d__bg_rawrigidbodyset_rbEffectiveAngularInertia(&nativeState->rootCtx, args[0].asNumber(), args[1].asNumber());
+    auto res = w2c_rapier__wasm3d__bg_rawrigidbodyset_rbEffectiveAngularInertia(&nativeState->rootCtx, getNumericVal(args[0]), getNumericVal(args[1]));
     return jsi::Value { (double)res };;
   }));
 
@@ -1364,7 +1373,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawrigidbodyset_rbWakeUp", HOSTFN("rawrigidbodyset_rbWakeUp", 2) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    w2c_rapier__wasm3d__bg_rawrigidbodyset_rbWakeUp(&nativeState->rootCtx, args[0].asNumber(), args[1].asNumber());
+    w2c_rapier__wasm3d__bg_rawrigidbodyset_rbWakeUp(&nativeState->rootCtx, getNumericVal(args[0]), getNumericVal(args[1]));
     return jsi::Value::undefined();
   }));
 
@@ -1373,7 +1382,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawrigidbodyset_rbIsCcdEnabled", HOSTFN("rawrigidbodyset_rbIsCcdEnabled", 2) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    auto res = w2c_rapier__wasm3d__bg_rawrigidbodyset_rbIsCcdEnabled(&nativeState->rootCtx, args[0].asNumber(), args[1].asNumber());
+    auto res = w2c_rapier__wasm3d__bg_rawrigidbodyset_rbIsCcdEnabled(&nativeState->rootCtx, getNumericVal(args[0]), getNumericVal(args[1]));
     return jsi::Value { (double)res };;
   }));
 
@@ -1382,7 +1391,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawrigidbodyset_rbNumColliders", HOSTFN("rawrigidbodyset_rbNumColliders", 2) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    auto res = w2c_rapier__wasm3d__bg_rawrigidbodyset_rbNumColliders(&nativeState->rootCtx, args[0].asNumber(), args[1].asNumber());
+    auto res = w2c_rapier__wasm3d__bg_rawrigidbodyset_rbNumColliders(&nativeState->rootCtx, getNumericVal(args[0]), getNumericVal(args[1]));
     return jsi::Value { (double)res };;
   }));
 
@@ -1391,7 +1400,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawrigidbodyset_rbCollider", HOSTFN("rawrigidbodyset_rbCollider", 3) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    auto res = w2c_rapier__wasm3d__bg_rawrigidbodyset_rbCollider(&nativeState->rootCtx, args[0].asNumber(), args[1].asNumber(), args[2].asNumber());
+    auto res = w2c_rapier__wasm3d__bg_rawrigidbodyset_rbCollider(&nativeState->rootCtx, getNumericVal(args[0]), getNumericVal(args[1]), getNumericVal(args[2]));
     return jsi::Value { (double)res };;
   }));
 
@@ -1400,7 +1409,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawrigidbodyset_rbBodyType", HOSTFN("rawrigidbodyset_rbBodyType", 2) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    auto res = w2c_rapier__wasm3d__bg_rawrigidbodyset_rbBodyType(&nativeState->rootCtx, args[0].asNumber(), args[1].asNumber());
+    auto res = w2c_rapier__wasm3d__bg_rawrigidbodyset_rbBodyType(&nativeState->rootCtx, getNumericVal(args[0]), getNumericVal(args[1]));
     return jsi::Value { (double)res };;
   }));
 
@@ -1409,7 +1418,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawrigidbodyset_rbSetBodyType", HOSTFN("rawrigidbodyset_rbSetBodyType", 4) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    w2c_rapier__wasm3d__bg_rawrigidbodyset_rbSetBodyType(&nativeState->rootCtx, args[0].asNumber(), args[1].asNumber(), args[2].asNumber(), args[3].asNumber());
+    w2c_rapier__wasm3d__bg_rawrigidbodyset_rbSetBodyType(&nativeState->rootCtx, getNumericVal(args[0]), getNumericVal(args[1]), getNumericVal(args[2]), getNumericVal(args[3]));
     return jsi::Value::undefined();
   }));
 
@@ -1418,7 +1427,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawrigidbodyset_rbIsFixed", HOSTFN("rawrigidbodyset_rbIsFixed", 2) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    auto res = w2c_rapier__wasm3d__bg_rawrigidbodyset_rbIsFixed(&nativeState->rootCtx, args[0].asNumber(), args[1].asNumber());
+    auto res = w2c_rapier__wasm3d__bg_rawrigidbodyset_rbIsFixed(&nativeState->rootCtx, getNumericVal(args[0]), getNumericVal(args[1]));
     return jsi::Value { (double)res };;
   }));
 
@@ -1427,7 +1436,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawrigidbodyset_rbIsKinematic", HOSTFN("rawrigidbodyset_rbIsKinematic", 2) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    auto res = w2c_rapier__wasm3d__bg_rawrigidbodyset_rbIsKinematic(&nativeState->rootCtx, args[0].asNumber(), args[1].asNumber());
+    auto res = w2c_rapier__wasm3d__bg_rawrigidbodyset_rbIsKinematic(&nativeState->rootCtx, getNumericVal(args[0]), getNumericVal(args[1]));
     return jsi::Value { (double)res };;
   }));
 
@@ -1436,7 +1445,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawrigidbodyset_rbIsDynamic", HOSTFN("rawrigidbodyset_rbIsDynamic", 2) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    auto res = w2c_rapier__wasm3d__bg_rawrigidbodyset_rbIsDynamic(&nativeState->rootCtx, args[0].asNumber(), args[1].asNumber());
+    auto res = w2c_rapier__wasm3d__bg_rawrigidbodyset_rbIsDynamic(&nativeState->rootCtx, getNumericVal(args[0]), getNumericVal(args[1]));
     return jsi::Value { (double)res };;
   }));
 
@@ -1445,7 +1454,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawrigidbodyset_rbLinearDamping", HOSTFN("rawrigidbodyset_rbLinearDamping", 2) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    auto res = w2c_rapier__wasm3d__bg_rawrigidbodyset_rbLinearDamping(&nativeState->rootCtx, args[0].asNumber(), args[1].asNumber());
+    auto res = w2c_rapier__wasm3d__bg_rawrigidbodyset_rbLinearDamping(&nativeState->rootCtx, getNumericVal(args[0]), getNumericVal(args[1]));
     return jsi::Value { (double)res };;
   }));
 
@@ -1454,7 +1463,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawrigidbodyset_rbAngularDamping", HOSTFN("rawrigidbodyset_rbAngularDamping", 2) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    auto res = w2c_rapier__wasm3d__bg_rawrigidbodyset_rbAngularDamping(&nativeState->rootCtx, args[0].asNumber(), args[1].asNumber());
+    auto res = w2c_rapier__wasm3d__bg_rawrigidbodyset_rbAngularDamping(&nativeState->rootCtx, getNumericVal(args[0]), getNumericVal(args[1]));
     return jsi::Value { (double)res };;
   }));
 
@@ -1463,7 +1472,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawrigidbodyset_rbSetLinearDamping", HOSTFN("rawrigidbodyset_rbSetLinearDamping", 3) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    w2c_rapier__wasm3d__bg_rawrigidbodyset_rbSetLinearDamping(&nativeState->rootCtx, args[0].asNumber(), args[1].asNumber(), args[2].asNumber());
+    w2c_rapier__wasm3d__bg_rawrigidbodyset_rbSetLinearDamping(&nativeState->rootCtx, getNumericVal(args[0]), getNumericVal(args[1]), getNumericVal(args[2]));
     return jsi::Value::undefined();
   }));
 
@@ -1472,7 +1481,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawrigidbodyset_rbSetAngularDamping", HOSTFN("rawrigidbodyset_rbSetAngularDamping", 3) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    w2c_rapier__wasm3d__bg_rawrigidbodyset_rbSetAngularDamping(&nativeState->rootCtx, args[0].asNumber(), args[1].asNumber(), args[2].asNumber());
+    w2c_rapier__wasm3d__bg_rawrigidbodyset_rbSetAngularDamping(&nativeState->rootCtx, getNumericVal(args[0]), getNumericVal(args[1]), getNumericVal(args[2]));
     return jsi::Value::undefined();
   }));
 
@@ -1481,7 +1490,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawrigidbodyset_rbSetEnabled", HOSTFN("rawrigidbodyset_rbSetEnabled", 3) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    w2c_rapier__wasm3d__bg_rawrigidbodyset_rbSetEnabled(&nativeState->rootCtx, args[0].asNumber(), args[1].asNumber(), args[2].asNumber());
+    w2c_rapier__wasm3d__bg_rawrigidbodyset_rbSetEnabled(&nativeState->rootCtx, getNumericVal(args[0]), getNumericVal(args[1]), getNumericVal(args[2]));
     return jsi::Value::undefined();
   }));
 
@@ -1490,7 +1499,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawrigidbodyset_rbIsEnabled", HOSTFN("rawrigidbodyset_rbIsEnabled", 2) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    auto res = w2c_rapier__wasm3d__bg_rawrigidbodyset_rbIsEnabled(&nativeState->rootCtx, args[0].asNumber(), args[1].asNumber());
+    auto res = w2c_rapier__wasm3d__bg_rawrigidbodyset_rbIsEnabled(&nativeState->rootCtx, getNumericVal(args[0]), getNumericVal(args[1]));
     return jsi::Value { (double)res };;
   }));
 
@@ -1499,7 +1508,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawrigidbodyset_rbGravityScale", HOSTFN("rawrigidbodyset_rbGravityScale", 2) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    auto res = w2c_rapier__wasm3d__bg_rawrigidbodyset_rbGravityScale(&nativeState->rootCtx, args[0].asNumber(), args[1].asNumber());
+    auto res = w2c_rapier__wasm3d__bg_rawrigidbodyset_rbGravityScale(&nativeState->rootCtx, getNumericVal(args[0]), getNumericVal(args[1]));
     return jsi::Value { (double)res };;
   }));
 
@@ -1508,7 +1517,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawrigidbodyset_rbSetGravityScale", HOSTFN("rawrigidbodyset_rbSetGravityScale", 4) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    w2c_rapier__wasm3d__bg_rawrigidbodyset_rbSetGravityScale(&nativeState->rootCtx, args[0].asNumber(), args[1].asNumber(), args[2].asNumber(), args[3].asNumber());
+    w2c_rapier__wasm3d__bg_rawrigidbodyset_rbSetGravityScale(&nativeState->rootCtx, getNumericVal(args[0]), getNumericVal(args[1]), getNumericVal(args[2]), getNumericVal(args[3]));
     return jsi::Value::undefined();
   }));
 
@@ -1517,7 +1526,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawrigidbodyset_rbResetForces", HOSTFN("rawrigidbodyset_rbResetForces", 3) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    w2c_rapier__wasm3d__bg_rawrigidbodyset_rbResetForces(&nativeState->rootCtx, args[0].asNumber(), args[1].asNumber(), args[2].asNumber());
+    w2c_rapier__wasm3d__bg_rawrigidbodyset_rbResetForces(&nativeState->rootCtx, getNumericVal(args[0]), getNumericVal(args[1]), getNumericVal(args[2]));
     return jsi::Value::undefined();
   }));
 
@@ -1526,7 +1535,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawrigidbodyset_rbResetTorques", HOSTFN("rawrigidbodyset_rbResetTorques", 3) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    w2c_rapier__wasm3d__bg_rawrigidbodyset_rbResetTorques(&nativeState->rootCtx, args[0].asNumber(), args[1].asNumber(), args[2].asNumber());
+    w2c_rapier__wasm3d__bg_rawrigidbodyset_rbResetTorques(&nativeState->rootCtx, getNumericVal(args[0]), getNumericVal(args[1]), getNumericVal(args[2]));
     return jsi::Value::undefined();
   }));
 
@@ -1535,7 +1544,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawrigidbodyset_rbAddForce", HOSTFN("rawrigidbodyset_rbAddForce", 4) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    w2c_rapier__wasm3d__bg_rawrigidbodyset_rbAddForce(&nativeState->rootCtx, args[0].asNumber(), args[1].asNumber(), args[2].asNumber(), args[3].asNumber());
+    w2c_rapier__wasm3d__bg_rawrigidbodyset_rbAddForce(&nativeState->rootCtx, getNumericVal(args[0]), getNumericVal(args[1]), getNumericVal(args[2]), getNumericVal(args[3]));
     return jsi::Value::undefined();
   }));
 
@@ -1544,7 +1553,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawrigidbodyset_rbApplyImpulse", HOSTFN("rawrigidbodyset_rbApplyImpulse", 4) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    w2c_rapier__wasm3d__bg_rawrigidbodyset_rbApplyImpulse(&nativeState->rootCtx, args[0].asNumber(), args[1].asNumber(), args[2].asNumber(), args[3].asNumber());
+    w2c_rapier__wasm3d__bg_rawrigidbodyset_rbApplyImpulse(&nativeState->rootCtx, getNumericVal(args[0]), getNumericVal(args[1]), getNumericVal(args[2]), getNumericVal(args[3]));
     return jsi::Value::undefined();
   }));
 
@@ -1553,7 +1562,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawrigidbodyset_rbAddTorque", HOSTFN("rawrigidbodyset_rbAddTorque", 4) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    w2c_rapier__wasm3d__bg_rawrigidbodyset_rbAddTorque(&nativeState->rootCtx, args[0].asNumber(), args[1].asNumber(), args[2].asNumber(), args[3].asNumber());
+    w2c_rapier__wasm3d__bg_rawrigidbodyset_rbAddTorque(&nativeState->rootCtx, getNumericVal(args[0]), getNumericVal(args[1]), getNumericVal(args[2]), getNumericVal(args[3]));
     return jsi::Value::undefined();
   }));
 
@@ -1562,7 +1571,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawrigidbodyset_rbApplyTorqueImpulse", HOSTFN("rawrigidbodyset_rbApplyTorqueImpulse", 4) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    w2c_rapier__wasm3d__bg_rawrigidbodyset_rbApplyTorqueImpulse(&nativeState->rootCtx, args[0].asNumber(), args[1].asNumber(), args[2].asNumber(), args[3].asNumber());
+    w2c_rapier__wasm3d__bg_rawrigidbodyset_rbApplyTorqueImpulse(&nativeState->rootCtx, getNumericVal(args[0]), getNumericVal(args[1]), getNumericVal(args[2]), getNumericVal(args[3]));
     return jsi::Value::undefined();
   }));
 
@@ -1571,7 +1580,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawrigidbodyset_rbAddForceAtPoint", HOSTFN("rawrigidbodyset_rbAddForceAtPoint", 5) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    w2c_rapier__wasm3d__bg_rawrigidbodyset_rbAddForceAtPoint(&nativeState->rootCtx, args[0].asNumber(), args[1].asNumber(), args[2].asNumber(), args[3].asNumber(), args[4].asNumber());
+    w2c_rapier__wasm3d__bg_rawrigidbodyset_rbAddForceAtPoint(&nativeState->rootCtx, getNumericVal(args[0]), getNumericVal(args[1]), getNumericVal(args[2]), getNumericVal(args[3]), getNumericVal(args[4]));
     return jsi::Value::undefined();
   }));
 
@@ -1580,7 +1589,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawrigidbodyset_rbApplyImpulseAtPoint", HOSTFN("rawrigidbodyset_rbApplyImpulseAtPoint", 5) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    w2c_rapier__wasm3d__bg_rawrigidbodyset_rbApplyImpulseAtPoint(&nativeState->rootCtx, args[0].asNumber(), args[1].asNumber(), args[2].asNumber(), args[3].asNumber(), args[4].asNumber());
+    w2c_rapier__wasm3d__bg_rawrigidbodyset_rbApplyImpulseAtPoint(&nativeState->rootCtx, getNumericVal(args[0]), getNumericVal(args[1]), getNumericVal(args[2]), getNumericVal(args[3]), getNumericVal(args[4]));
     return jsi::Value::undefined();
   }));
 
@@ -1589,7 +1598,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawrigidbodyset_rbUserData", HOSTFN("rawrigidbodyset_rbUserData", 2) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    auto res = w2c_rapier__wasm3d__bg_rawrigidbodyset_rbUserData(&nativeState->rootCtx, args[0].asNumber(), args[1].asNumber());
+    auto res = w2c_rapier__wasm3d__bg_rawrigidbodyset_rbUserData(&nativeState->rootCtx, getNumericVal(args[0]), getNumericVal(args[1]));
     return jsi::Value { (double)res };;
   }));
 
@@ -1598,7 +1607,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawrigidbodyset_rbSetUserData", HOSTFN("rawrigidbodyset_rbSetUserData", 3) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    w2c_rapier__wasm3d__bg_rawrigidbodyset_rbSetUserData(&nativeState->rootCtx, args[0].asNumber(), args[1].asNumber(), args[2].asNumber());
+    w2c_rapier__wasm3d__bg_rawrigidbodyset_rbSetUserData(&nativeState->rootCtx, getNumericVal(args[0]), getNumericVal(args[1]), getNumericVal(args[2]));
     return jsi::Value::undefined();
   }));
 
@@ -1607,7 +1616,7 @@ namespace facebook::react {
   exports.setProperty(rt, "__wbg_rawrigidbodyset_free", HOSTFN("__wbg_rawrigidbodyset_free", 1) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    w2c_rapier__wasm3d__bg_0x5F_wbg_rawrigidbodyset_free(&nativeState->rootCtx, args[0].asNumber());
+    w2c_rapier__wasm3d__bg_0x5F_wbg_rawrigidbodyset_free(&nativeState->rootCtx, getNumericVal(args[0]));
     return jsi::Value::undefined();
   }));
 
@@ -1625,7 +1634,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawrigidbodyset_createRigidBody", HOSTFN("rawrigidbodyset_createRigidBody", 25) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    auto res = w2c_rapier__wasm3d__bg_rawrigidbodyset_createRigidBody(&nativeState->rootCtx, args[0].asNumber(), args[1].asNumber(), args[2].asNumber(), args[3].asNumber(), args[4].asNumber(), args[5].asNumber(), args[6].asNumber(), args[7].asNumber(), args[8].asNumber(), args[9].asNumber(), args[10].asNumber(), args[11].asNumber(), args[12].asNumber(), args[13].asNumber(), args[14].asNumber(), args[15].asNumber(), args[16].asNumber(), args[17].asNumber(), args[18].asNumber(), args[19].asNumber(), args[20].asNumber(), args[21].asNumber(), args[22].asNumber(), args[23].asNumber(), args[24].asNumber());
+    auto res = w2c_rapier__wasm3d__bg_rawrigidbodyset_createRigidBody(&nativeState->rootCtx, getNumericVal(args[0]), getNumericVal(args[1]), getNumericVal(args[2]), getNumericVal(args[3]), getNumericVal(args[4]), getNumericVal(args[5]), getNumericVal(args[6]), getNumericVal(args[7]), getNumericVal(args[8]), getNumericVal(args[9]), getNumericVal(args[10]), getNumericVal(args[11]), getNumericVal(args[12]), getNumericVal(args[13]), getNumericVal(args[14]), getNumericVal(args[15]), getNumericVal(args[16]), getNumericVal(args[17]), getNumericVal(args[18]), getNumericVal(args[19]), getNumericVal(args[20]), getNumericVal(args[21]), getNumericVal(args[22]), getNumericVal(args[23]), getNumericVal(args[24]));
     return jsi::Value { (double)res };;
   }));
 
@@ -1634,7 +1643,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawrigidbodyset_remove", HOSTFN("rawrigidbodyset_remove", 6) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    w2c_rapier__wasm3d__bg_rawrigidbodyset_remove(&nativeState->rootCtx, args[0].asNumber(), args[1].asNumber(), args[2].asNumber(), args[3].asNumber(), args[4].asNumber(), args[5].asNumber());
+    w2c_rapier__wasm3d__bg_rawrigidbodyset_remove(&nativeState->rootCtx, getNumericVal(args[0]), getNumericVal(args[1]), getNumericVal(args[2]), getNumericVal(args[3]), getNumericVal(args[4]), getNumericVal(args[5]));
     return jsi::Value::undefined();
   }));
 
@@ -1643,7 +1652,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawrigidbodyset_len", HOSTFN("rawrigidbodyset_len", 1) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    auto res = w2c_rapier__wasm3d__bg_rawrigidbodyset_len(&nativeState->rootCtx, args[0].asNumber());
+    auto res = w2c_rapier__wasm3d__bg_rawrigidbodyset_len(&nativeState->rootCtx, getNumericVal(args[0]));
     return jsi::Value { (double)res };;
   }));
 
@@ -1652,7 +1661,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawrigidbodyset_contains", HOSTFN("rawrigidbodyset_contains", 2) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    auto res = w2c_rapier__wasm3d__bg_rawrigidbodyset_contains(&nativeState->rootCtx, args[0].asNumber(), args[1].asNumber());
+    auto res = w2c_rapier__wasm3d__bg_rawrigidbodyset_contains(&nativeState->rootCtx, getNumericVal(args[0]), getNumericVal(args[1]));
     return jsi::Value { (double)res };;
   }));
 
@@ -1661,7 +1670,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawrigidbodyset_forEachRigidBodyHandle", HOSTFN("rawrigidbodyset_forEachRigidBodyHandle", 2) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    w2c_rapier__wasm3d__bg_rawrigidbodyset_forEachRigidBodyHandle(&nativeState->rootCtx, args[0].asNumber(), args[1].asNumber());
+    w2c_rapier__wasm3d__bg_rawrigidbodyset_forEachRigidBodyHandle(&nativeState->rootCtx, getNumericVal(args[0]), getNumericVal(args[1]));
     return jsi::Value::undefined();
   }));
 
@@ -1670,7 +1679,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawrigidbodyset_propagateModifiedBodyPositionsToColliders", HOSTFN("rawrigidbodyset_propagateModifiedBodyPositionsToColliders", 2) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    w2c_rapier__wasm3d__bg_rawrigidbodyset_propagateModifiedBodyPositionsToColliders(&nativeState->rootCtx, args[0].asNumber(), args[1].asNumber());
+    w2c_rapier__wasm3d__bg_rawrigidbodyset_propagateModifiedBodyPositionsToColliders(&nativeState->rootCtx, getNumericVal(args[0]), getNumericVal(args[1]));
     return jsi::Value::undefined();
   }));
 
@@ -1679,7 +1688,7 @@ namespace facebook::react {
   exports.setProperty(rt, "__wbg_rawbroadphase_free", HOSTFN("__wbg_rawbroadphase_free", 1) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    w2c_rapier__wasm3d__bg_0x5F_wbg_rawbroadphase_free(&nativeState->rootCtx, args[0].asNumber());
+    w2c_rapier__wasm3d__bg_0x5F_wbg_rawbroadphase_free(&nativeState->rootCtx, getNumericVal(args[0]));
     return jsi::Value::undefined();
   }));
 
@@ -1697,7 +1706,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawcolliderset_coTranslation", HOSTFN("rawcolliderset_coTranslation", 2) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    auto res = w2c_rapier__wasm3d__bg_rawcolliderset_coTranslation(&nativeState->rootCtx, args[0].asNumber(), args[1].asNumber());
+    auto res = w2c_rapier__wasm3d__bg_rawcolliderset_coTranslation(&nativeState->rootCtx, getNumericVal(args[0]), getNumericVal(args[1]));
     return jsi::Value { (double)res };;
   }));
 
@@ -1706,7 +1715,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawcolliderset_coRotation", HOSTFN("rawcolliderset_coRotation", 2) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    auto res = w2c_rapier__wasm3d__bg_rawcolliderset_coRotation(&nativeState->rootCtx, args[0].asNumber(), args[1].asNumber());
+    auto res = w2c_rapier__wasm3d__bg_rawcolliderset_coRotation(&nativeState->rootCtx, getNumericVal(args[0]), getNumericVal(args[1]));
     return jsi::Value { (double)res };;
   }));
 
@@ -1715,7 +1724,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawcolliderset_coSetTranslation", HOSTFN("rawcolliderset_coSetTranslation", 5) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    w2c_rapier__wasm3d__bg_rawcolliderset_coSetTranslation(&nativeState->rootCtx, args[0].asNumber(), args[1].asNumber(), args[2].asNumber(), args[3].asNumber(), args[4].asNumber());
+    w2c_rapier__wasm3d__bg_rawcolliderset_coSetTranslation(&nativeState->rootCtx, getNumericVal(args[0]), getNumericVal(args[1]), getNumericVal(args[2]), getNumericVal(args[3]), getNumericVal(args[4]));
     return jsi::Value::undefined();
   }));
 
@@ -1724,7 +1733,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawcolliderset_coSetTranslationWrtParent", HOSTFN("rawcolliderset_coSetTranslationWrtParent", 5) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    w2c_rapier__wasm3d__bg_rawcolliderset_coSetTranslationWrtParent(&nativeState->rootCtx, args[0].asNumber(), args[1].asNumber(), args[2].asNumber(), args[3].asNumber(), args[4].asNumber());
+    w2c_rapier__wasm3d__bg_rawcolliderset_coSetTranslationWrtParent(&nativeState->rootCtx, getNumericVal(args[0]), getNumericVal(args[1]), getNumericVal(args[2]), getNumericVal(args[3]), getNumericVal(args[4]));
     return jsi::Value::undefined();
   }));
 
@@ -1733,7 +1742,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawcolliderset_coSetRotation", HOSTFN("rawcolliderset_coSetRotation", 6) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    w2c_rapier__wasm3d__bg_rawcolliderset_coSetRotation(&nativeState->rootCtx, args[0].asNumber(), args[1].asNumber(), args[2].asNumber(), args[3].asNumber(), args[4].asNumber(), args[5].asNumber());
+    w2c_rapier__wasm3d__bg_rawcolliderset_coSetRotation(&nativeState->rootCtx, getNumericVal(args[0]), getNumericVal(args[1]), getNumericVal(args[2]), getNumericVal(args[3]), getNumericVal(args[4]), getNumericVal(args[5]));
     return jsi::Value::undefined();
   }));
 
@@ -1742,7 +1751,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawcolliderset_coSetRotationWrtParent", HOSTFN("rawcolliderset_coSetRotationWrtParent", 6) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    w2c_rapier__wasm3d__bg_rawcolliderset_coSetRotationWrtParent(&nativeState->rootCtx, args[0].asNumber(), args[1].asNumber(), args[2].asNumber(), args[3].asNumber(), args[4].asNumber(), args[5].asNumber());
+    w2c_rapier__wasm3d__bg_rawcolliderset_coSetRotationWrtParent(&nativeState->rootCtx, getNumericVal(args[0]), getNumericVal(args[1]), getNumericVal(args[2]), getNumericVal(args[3]), getNumericVal(args[4]), getNumericVal(args[5]));
     return jsi::Value::undefined();
   }));
 
@@ -1751,7 +1760,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawcolliderset_coIsSensor", HOSTFN("rawcolliderset_coIsSensor", 2) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    auto res = w2c_rapier__wasm3d__bg_rawcolliderset_coIsSensor(&nativeState->rootCtx, args[0].asNumber(), args[1].asNumber());
+    auto res = w2c_rapier__wasm3d__bg_rawcolliderset_coIsSensor(&nativeState->rootCtx, getNumericVal(args[0]), getNumericVal(args[1]));
     return jsi::Value { (double)res };;
   }));
 
@@ -1760,7 +1769,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawcolliderset_coShapeType", HOSTFN("rawcolliderset_coShapeType", 2) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    auto res = w2c_rapier__wasm3d__bg_rawcolliderset_coShapeType(&nativeState->rootCtx, args[0].asNumber(), args[1].asNumber());
+    auto res = w2c_rapier__wasm3d__bg_rawcolliderset_coShapeType(&nativeState->rootCtx, getNumericVal(args[0]), getNumericVal(args[1]));
     return jsi::Value { (double)res };;
   }));
 
@@ -1769,7 +1778,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawcolliderset_coHalfspaceNormal", HOSTFN("rawcolliderset_coHalfspaceNormal", 2) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    auto res = w2c_rapier__wasm3d__bg_rawcolliderset_coHalfspaceNormal(&nativeState->rootCtx, args[0].asNumber(), args[1].asNumber());
+    auto res = w2c_rapier__wasm3d__bg_rawcolliderset_coHalfspaceNormal(&nativeState->rootCtx, getNumericVal(args[0]), getNumericVal(args[1]));
     return jsi::Value { (double)res };;
   }));
 
@@ -1778,7 +1787,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawcolliderset_coHalfExtents", HOSTFN("rawcolliderset_coHalfExtents", 2) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    auto res = w2c_rapier__wasm3d__bg_rawcolliderset_coHalfExtents(&nativeState->rootCtx, args[0].asNumber(), args[1].asNumber());
+    auto res = w2c_rapier__wasm3d__bg_rawcolliderset_coHalfExtents(&nativeState->rootCtx, getNumericVal(args[0]), getNumericVal(args[1]));
     return jsi::Value { (double)res };;
   }));
 
@@ -1787,7 +1796,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawcolliderset_coSetHalfExtents", HOSTFN("rawcolliderset_coSetHalfExtents", 3) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    w2c_rapier__wasm3d__bg_rawcolliderset_coSetHalfExtents(&nativeState->rootCtx, args[0].asNumber(), args[1].asNumber(), args[2].asNumber());
+    w2c_rapier__wasm3d__bg_rawcolliderset_coSetHalfExtents(&nativeState->rootCtx, getNumericVal(args[0]), getNumericVal(args[1]), getNumericVal(args[2]));
     return jsi::Value::undefined();
   }));
 
@@ -1796,7 +1805,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawcolliderset_coRadius", HOSTFN("rawcolliderset_coRadius", 3) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    w2c_rapier__wasm3d__bg_rawcolliderset_coRadius(&nativeState->rootCtx, args[0].asNumber(), args[1].asNumber(), args[2].asNumber());
+    w2c_rapier__wasm3d__bg_rawcolliderset_coRadius(&nativeState->rootCtx, getNumericVal(args[0]), getNumericVal(args[1]), getNumericVal(args[2]));
     return jsi::Value::undefined();
   }));
 
@@ -1805,7 +1814,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawcolliderset_coSetRadius", HOSTFN("rawcolliderset_coSetRadius", 3) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    w2c_rapier__wasm3d__bg_rawcolliderset_coSetRadius(&nativeState->rootCtx, args[0].asNumber(), args[1].asNumber(), args[2].asNumber());
+    w2c_rapier__wasm3d__bg_rawcolliderset_coSetRadius(&nativeState->rootCtx, getNumericVal(args[0]), getNumericVal(args[1]), getNumericVal(args[2]));
     return jsi::Value::undefined();
   }));
 
@@ -1814,7 +1823,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawcolliderset_coHalfHeight", HOSTFN("rawcolliderset_coHalfHeight", 3) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    w2c_rapier__wasm3d__bg_rawcolliderset_coHalfHeight(&nativeState->rootCtx, args[0].asNumber(), args[1].asNumber(), args[2].asNumber());
+    w2c_rapier__wasm3d__bg_rawcolliderset_coHalfHeight(&nativeState->rootCtx, getNumericVal(args[0]), getNumericVal(args[1]), getNumericVal(args[2]));
     return jsi::Value::undefined();
   }));
 
@@ -1823,7 +1832,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawcolliderset_coSetHalfHeight", HOSTFN("rawcolliderset_coSetHalfHeight", 3) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    w2c_rapier__wasm3d__bg_rawcolliderset_coSetHalfHeight(&nativeState->rootCtx, args[0].asNumber(), args[1].asNumber(), args[2].asNumber());
+    w2c_rapier__wasm3d__bg_rawcolliderset_coSetHalfHeight(&nativeState->rootCtx, getNumericVal(args[0]), getNumericVal(args[1]), getNumericVal(args[2]));
     return jsi::Value::undefined();
   }));
 
@@ -1832,7 +1841,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawcolliderset_coRoundRadius", HOSTFN("rawcolliderset_coRoundRadius", 3) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    w2c_rapier__wasm3d__bg_rawcolliderset_coRoundRadius(&nativeState->rootCtx, args[0].asNumber(), args[1].asNumber(), args[2].asNumber());
+    w2c_rapier__wasm3d__bg_rawcolliderset_coRoundRadius(&nativeState->rootCtx, getNumericVal(args[0]), getNumericVal(args[1]), getNumericVal(args[2]));
     return jsi::Value::undefined();
   }));
 
@@ -1841,7 +1850,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawcolliderset_coSetRoundRadius", HOSTFN("rawcolliderset_coSetRoundRadius", 3) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    w2c_rapier__wasm3d__bg_rawcolliderset_coSetRoundRadius(&nativeState->rootCtx, args[0].asNumber(), args[1].asNumber(), args[2].asNumber());
+    w2c_rapier__wasm3d__bg_rawcolliderset_coSetRoundRadius(&nativeState->rootCtx, getNumericVal(args[0]), getNumericVal(args[1]), getNumericVal(args[2]));
     return jsi::Value::undefined();
   }));
 
@@ -1850,7 +1859,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawcolliderset_coVertices", HOSTFN("rawcolliderset_coVertices", 3) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    w2c_rapier__wasm3d__bg_rawcolliderset_coVertices(&nativeState->rootCtx, args[0].asNumber(), args[1].asNumber(), args[2].asNumber());
+    w2c_rapier__wasm3d__bg_rawcolliderset_coVertices(&nativeState->rootCtx, getNumericVal(args[0]), getNumericVal(args[1]), getNumericVal(args[2]));
     return jsi::Value::undefined();
   }));
 
@@ -1859,7 +1868,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawcolliderset_coIndices", HOSTFN("rawcolliderset_coIndices", 3) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    w2c_rapier__wasm3d__bg_rawcolliderset_coIndices(&nativeState->rootCtx, args[0].asNumber(), args[1].asNumber(), args[2].asNumber());
+    w2c_rapier__wasm3d__bg_rawcolliderset_coIndices(&nativeState->rootCtx, getNumericVal(args[0]), getNumericVal(args[1]), getNumericVal(args[2]));
     return jsi::Value::undefined();
   }));
 
@@ -1868,7 +1877,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawcolliderset_coHeightfieldHeights", HOSTFN("rawcolliderset_coHeightfieldHeights", 3) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    w2c_rapier__wasm3d__bg_rawcolliderset_coHeightfieldHeights(&nativeState->rootCtx, args[0].asNumber(), args[1].asNumber(), args[2].asNumber());
+    w2c_rapier__wasm3d__bg_rawcolliderset_coHeightfieldHeights(&nativeState->rootCtx, getNumericVal(args[0]), getNumericVal(args[1]), getNumericVal(args[2]));
     return jsi::Value::undefined();
   }));
 
@@ -1877,7 +1886,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawcolliderset_coHeightfieldScale", HOSTFN("rawcolliderset_coHeightfieldScale", 2) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    auto res = w2c_rapier__wasm3d__bg_rawcolliderset_coHeightfieldScale(&nativeState->rootCtx, args[0].asNumber(), args[1].asNumber());
+    auto res = w2c_rapier__wasm3d__bg_rawcolliderset_coHeightfieldScale(&nativeState->rootCtx, getNumericVal(args[0]), getNumericVal(args[1]));
     return jsi::Value { (double)res };;
   }));
 
@@ -1886,7 +1895,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawcolliderset_coHeightfieldNRows", HOSTFN("rawcolliderset_coHeightfieldNRows", 3) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    w2c_rapier__wasm3d__bg_rawcolliderset_coHeightfieldNRows(&nativeState->rootCtx, args[0].asNumber(), args[1].asNumber(), args[2].asNumber());
+    w2c_rapier__wasm3d__bg_rawcolliderset_coHeightfieldNRows(&nativeState->rootCtx, getNumericVal(args[0]), getNumericVal(args[1]), getNumericVal(args[2]));
     return jsi::Value::undefined();
   }));
 
@@ -1895,7 +1904,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawcolliderset_coHeightfieldNCols", HOSTFN("rawcolliderset_coHeightfieldNCols", 3) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    w2c_rapier__wasm3d__bg_rawcolliderset_coHeightfieldNCols(&nativeState->rootCtx, args[0].asNumber(), args[1].asNumber(), args[2].asNumber());
+    w2c_rapier__wasm3d__bg_rawcolliderset_coHeightfieldNCols(&nativeState->rootCtx, getNumericVal(args[0]), getNumericVal(args[1]), getNumericVal(args[2]));
     return jsi::Value::undefined();
   }));
 
@@ -1904,7 +1913,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawcolliderset_coParent", HOSTFN("rawcolliderset_coParent", 3) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    w2c_rapier__wasm3d__bg_rawcolliderset_coParent(&nativeState->rootCtx, args[0].asNumber(), args[1].asNumber(), args[2].asNumber());
+    w2c_rapier__wasm3d__bg_rawcolliderset_coParent(&nativeState->rootCtx, getNumericVal(args[0]), getNumericVal(args[1]), getNumericVal(args[2]));
     return jsi::Value::undefined();
   }));
 
@@ -1913,7 +1922,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawcolliderset_coSetEnabled", HOSTFN("rawcolliderset_coSetEnabled", 3) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    w2c_rapier__wasm3d__bg_rawcolliderset_coSetEnabled(&nativeState->rootCtx, args[0].asNumber(), args[1].asNumber(), args[2].asNumber());
+    w2c_rapier__wasm3d__bg_rawcolliderset_coSetEnabled(&nativeState->rootCtx, getNumericVal(args[0]), getNumericVal(args[1]), getNumericVal(args[2]));
     return jsi::Value::undefined();
   }));
 
@@ -1922,7 +1931,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawcolliderset_coIsEnabled", HOSTFN("rawcolliderset_coIsEnabled", 2) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    auto res = w2c_rapier__wasm3d__bg_rawcolliderset_coIsEnabled(&nativeState->rootCtx, args[0].asNumber(), args[1].asNumber());
+    auto res = w2c_rapier__wasm3d__bg_rawcolliderset_coIsEnabled(&nativeState->rootCtx, getNumericVal(args[0]), getNumericVal(args[1]));
     return jsi::Value { (double)res };;
   }));
 
@@ -1931,7 +1940,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawcolliderset_coFriction", HOSTFN("rawcolliderset_coFriction", 2) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    auto res = w2c_rapier__wasm3d__bg_rawcolliderset_coFriction(&nativeState->rootCtx, args[0].asNumber(), args[1].asNumber());
+    auto res = w2c_rapier__wasm3d__bg_rawcolliderset_coFriction(&nativeState->rootCtx, getNumericVal(args[0]), getNumericVal(args[1]));
     return jsi::Value { (double)res };;
   }));
 
@@ -1940,7 +1949,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawcolliderset_coRestitution", HOSTFN("rawcolliderset_coRestitution", 2) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    auto res = w2c_rapier__wasm3d__bg_rawcolliderset_coRestitution(&nativeState->rootCtx, args[0].asNumber(), args[1].asNumber());
+    auto res = w2c_rapier__wasm3d__bg_rawcolliderset_coRestitution(&nativeState->rootCtx, getNumericVal(args[0]), getNumericVal(args[1]));
     return jsi::Value { (double)res };;
   }));
 
@@ -1949,7 +1958,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawcolliderset_coDensity", HOSTFN("rawcolliderset_coDensity", 2) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    auto res = w2c_rapier__wasm3d__bg_rawcolliderset_coDensity(&nativeState->rootCtx, args[0].asNumber(), args[1].asNumber());
+    auto res = w2c_rapier__wasm3d__bg_rawcolliderset_coDensity(&nativeState->rootCtx, getNumericVal(args[0]), getNumericVal(args[1]));
     return jsi::Value { (double)res };;
   }));
 
@@ -1958,7 +1967,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawcolliderset_coMass", HOSTFN("rawcolliderset_coMass", 2) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    auto res = w2c_rapier__wasm3d__bg_rawcolliderset_coMass(&nativeState->rootCtx, args[0].asNumber(), args[1].asNumber());
+    auto res = w2c_rapier__wasm3d__bg_rawcolliderset_coMass(&nativeState->rootCtx, getNumericVal(args[0]), getNumericVal(args[1]));
     return jsi::Value { (double)res };;
   }));
 
@@ -1967,7 +1976,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawcolliderset_coVolume", HOSTFN("rawcolliderset_coVolume", 2) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    auto res = w2c_rapier__wasm3d__bg_rawcolliderset_coVolume(&nativeState->rootCtx, args[0].asNumber(), args[1].asNumber());
+    auto res = w2c_rapier__wasm3d__bg_rawcolliderset_coVolume(&nativeState->rootCtx, getNumericVal(args[0]), getNumericVal(args[1]));
     return jsi::Value { (double)res };;
   }));
 
@@ -1976,7 +1985,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawcolliderset_coCollisionGroups", HOSTFN("rawcolliderset_coCollisionGroups", 2) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    auto res = w2c_rapier__wasm3d__bg_rawcolliderset_coCollisionGroups(&nativeState->rootCtx, args[0].asNumber(), args[1].asNumber());
+    auto res = w2c_rapier__wasm3d__bg_rawcolliderset_coCollisionGroups(&nativeState->rootCtx, getNumericVal(args[0]), getNumericVal(args[1]));
     return jsi::Value { (double)res };;
   }));
 
@@ -1985,7 +1994,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawcolliderset_coSolverGroups", HOSTFN("rawcolliderset_coSolverGroups", 2) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    auto res = w2c_rapier__wasm3d__bg_rawcolliderset_coSolverGroups(&nativeState->rootCtx, args[0].asNumber(), args[1].asNumber());
+    auto res = w2c_rapier__wasm3d__bg_rawcolliderset_coSolverGroups(&nativeState->rootCtx, getNumericVal(args[0]), getNumericVal(args[1]));
     return jsi::Value { (double)res };;
   }));
 
@@ -1994,7 +2003,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawcolliderset_coActiveHooks", HOSTFN("rawcolliderset_coActiveHooks", 2) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    auto res = w2c_rapier__wasm3d__bg_rawcolliderset_coActiveHooks(&nativeState->rootCtx, args[0].asNumber(), args[1].asNumber());
+    auto res = w2c_rapier__wasm3d__bg_rawcolliderset_coActiveHooks(&nativeState->rootCtx, getNumericVal(args[0]), getNumericVal(args[1]));
     return jsi::Value { (double)res };;
   }));
 
@@ -2003,7 +2012,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawcolliderset_coActiveCollisionTypes", HOSTFN("rawcolliderset_coActiveCollisionTypes", 2) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    auto res = w2c_rapier__wasm3d__bg_rawcolliderset_coActiveCollisionTypes(&nativeState->rootCtx, args[0].asNumber(), args[1].asNumber());
+    auto res = w2c_rapier__wasm3d__bg_rawcolliderset_coActiveCollisionTypes(&nativeState->rootCtx, getNumericVal(args[0]), getNumericVal(args[1]));
     return jsi::Value { (double)res };;
   }));
 
@@ -2012,7 +2021,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawcolliderset_coActiveEvents", HOSTFN("rawcolliderset_coActiveEvents", 2) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    auto res = w2c_rapier__wasm3d__bg_rawcolliderset_coActiveEvents(&nativeState->rootCtx, args[0].asNumber(), args[1].asNumber());
+    auto res = w2c_rapier__wasm3d__bg_rawcolliderset_coActiveEvents(&nativeState->rootCtx, getNumericVal(args[0]), getNumericVal(args[1]));
     return jsi::Value { (double)res };;
   }));
 
@@ -2021,7 +2030,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawcolliderset_coContactForceEventThreshold", HOSTFN("rawcolliderset_coContactForceEventThreshold", 2) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    auto res = w2c_rapier__wasm3d__bg_rawcolliderset_coContactForceEventThreshold(&nativeState->rootCtx, args[0].asNumber(), args[1].asNumber());
+    auto res = w2c_rapier__wasm3d__bg_rawcolliderset_coContactForceEventThreshold(&nativeState->rootCtx, getNumericVal(args[0]), getNumericVal(args[1]));
     return jsi::Value { (double)res };;
   }));
 
@@ -2030,7 +2039,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawcolliderset_coContainsPoint", HOSTFN("rawcolliderset_coContainsPoint", 3) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    auto res = w2c_rapier__wasm3d__bg_rawcolliderset_coContainsPoint(&nativeState->rootCtx, args[0].asNumber(), args[1].asNumber(), args[2].asNumber());
+    auto res = w2c_rapier__wasm3d__bg_rawcolliderset_coContainsPoint(&nativeState->rootCtx, getNumericVal(args[0]), getNumericVal(args[1]), getNumericVal(args[2]));
     return jsi::Value { (double)res };;
   }));
 
@@ -2039,7 +2048,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawcolliderset_coCastShape", HOSTFN("rawcolliderset_coCastShape", 9) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    auto res = w2c_rapier__wasm3d__bg_rawcolliderset_coCastShape(&nativeState->rootCtx, args[0].asNumber(), args[1].asNumber(), args[2].asNumber(), args[3].asNumber(), args[4].asNumber(), args[5].asNumber(), args[6].asNumber(), args[7].asNumber(), args[8].asNumber());
+    auto res = w2c_rapier__wasm3d__bg_rawcolliderset_coCastShape(&nativeState->rootCtx, getNumericVal(args[0]), getNumericVal(args[1]), getNumericVal(args[2]), getNumericVal(args[3]), getNumericVal(args[4]), getNumericVal(args[5]), getNumericVal(args[6]), getNumericVal(args[7]), getNumericVal(args[8]));
     return jsi::Value { (double)res };;
   }));
 
@@ -2048,7 +2057,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawcolliderset_coCastCollider", HOSTFN("rawcolliderset_coCastCollider", 7) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    auto res = w2c_rapier__wasm3d__bg_rawcolliderset_coCastCollider(&nativeState->rootCtx, args[0].asNumber(), args[1].asNumber(), args[2].asNumber(), args[3].asNumber(), args[4].asNumber(), args[5].asNumber(), args[6].asNumber());
+    auto res = w2c_rapier__wasm3d__bg_rawcolliderset_coCastCollider(&nativeState->rootCtx, getNumericVal(args[0]), getNumericVal(args[1]), getNumericVal(args[2]), getNumericVal(args[3]), getNumericVal(args[4]), getNumericVal(args[5]), getNumericVal(args[6]));
     return jsi::Value { (double)res };;
   }));
 
@@ -2057,7 +2066,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawcolliderset_coIntersectsShape", HOSTFN("rawcolliderset_coIntersectsShape", 5) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    auto res = w2c_rapier__wasm3d__bg_rawcolliderset_coIntersectsShape(&nativeState->rootCtx, args[0].asNumber(), args[1].asNumber(), args[2].asNumber(), args[3].asNumber(), args[4].asNumber());
+    auto res = w2c_rapier__wasm3d__bg_rawcolliderset_coIntersectsShape(&nativeState->rootCtx, getNumericVal(args[0]), getNumericVal(args[1]), getNumericVal(args[2]), getNumericVal(args[3]), getNumericVal(args[4]));
     return jsi::Value { (double)res };;
   }));
 
@@ -2066,7 +2075,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawcolliderset_coContactShape", HOSTFN("rawcolliderset_coContactShape", 6) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    auto res = w2c_rapier__wasm3d__bg_rawcolliderset_coContactShape(&nativeState->rootCtx, args[0].asNumber(), args[1].asNumber(), args[2].asNumber(), args[3].asNumber(), args[4].asNumber(), args[5].asNumber());
+    auto res = w2c_rapier__wasm3d__bg_rawcolliderset_coContactShape(&nativeState->rootCtx, getNumericVal(args[0]), getNumericVal(args[1]), getNumericVal(args[2]), getNumericVal(args[3]), getNumericVal(args[4]), getNumericVal(args[5]));
     return jsi::Value { (double)res };;
   }));
 
@@ -2075,7 +2084,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawcolliderset_coContactCollider", HOSTFN("rawcolliderset_coContactCollider", 4) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    auto res = w2c_rapier__wasm3d__bg_rawcolliderset_coContactCollider(&nativeState->rootCtx, args[0].asNumber(), args[1].asNumber(), args[2].asNumber(), args[3].asNumber());
+    auto res = w2c_rapier__wasm3d__bg_rawcolliderset_coContactCollider(&nativeState->rootCtx, getNumericVal(args[0]), getNumericVal(args[1]), getNumericVal(args[2]), getNumericVal(args[3]));
     return jsi::Value { (double)res };;
   }));
 
@@ -2084,7 +2093,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawcolliderset_coProjectPoint", HOSTFN("rawcolliderset_coProjectPoint", 4) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    auto res = w2c_rapier__wasm3d__bg_rawcolliderset_coProjectPoint(&nativeState->rootCtx, args[0].asNumber(), args[1].asNumber(), args[2].asNumber(), args[3].asNumber());
+    auto res = w2c_rapier__wasm3d__bg_rawcolliderset_coProjectPoint(&nativeState->rootCtx, getNumericVal(args[0]), getNumericVal(args[1]), getNumericVal(args[2]), getNumericVal(args[3]));
     return jsi::Value { (double)res };;
   }));
 
@@ -2093,7 +2102,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawcolliderset_coIntersectsRay", HOSTFN("rawcolliderset_coIntersectsRay", 5) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    auto res = w2c_rapier__wasm3d__bg_rawcolliderset_coIntersectsRay(&nativeState->rootCtx, args[0].asNumber(), args[1].asNumber(), args[2].asNumber(), args[3].asNumber(), args[4].asNumber());
+    auto res = w2c_rapier__wasm3d__bg_rawcolliderset_coIntersectsRay(&nativeState->rootCtx, getNumericVal(args[0]), getNumericVal(args[1]), getNumericVal(args[2]), getNumericVal(args[3]), getNumericVal(args[4]));
     return jsi::Value { (double)res };;
   }));
 
@@ -2102,7 +2111,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawcolliderset_coCastRay", HOSTFN("rawcolliderset_coCastRay", 6) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    auto res = w2c_rapier__wasm3d__bg_rawcolliderset_coCastRay(&nativeState->rootCtx, args[0].asNumber(), args[1].asNumber(), args[2].asNumber(), args[3].asNumber(), args[4].asNumber(), args[5].asNumber());
+    auto res = w2c_rapier__wasm3d__bg_rawcolliderset_coCastRay(&nativeState->rootCtx, getNumericVal(args[0]), getNumericVal(args[1]), getNumericVal(args[2]), getNumericVal(args[3]), getNumericVal(args[4]), getNumericVal(args[5]));
     return jsi::Value { (double)res };;
   }));
 
@@ -2111,7 +2120,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawcolliderset_coCastRayAndGetNormal", HOSTFN("rawcolliderset_coCastRayAndGetNormal", 6) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    auto res = w2c_rapier__wasm3d__bg_rawcolliderset_coCastRayAndGetNormal(&nativeState->rootCtx, args[0].asNumber(), args[1].asNumber(), args[2].asNumber(), args[3].asNumber(), args[4].asNumber(), args[5].asNumber());
+    auto res = w2c_rapier__wasm3d__bg_rawcolliderset_coCastRayAndGetNormal(&nativeState->rootCtx, getNumericVal(args[0]), getNumericVal(args[1]), getNumericVal(args[2]), getNumericVal(args[3]), getNumericVal(args[4]), getNumericVal(args[5]));
     return jsi::Value { (double)res };;
   }));
 
@@ -2120,7 +2129,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawcolliderset_coSetSensor", HOSTFN("rawcolliderset_coSetSensor", 3) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    w2c_rapier__wasm3d__bg_rawcolliderset_coSetSensor(&nativeState->rootCtx, args[0].asNumber(), args[1].asNumber(), args[2].asNumber());
+    w2c_rapier__wasm3d__bg_rawcolliderset_coSetSensor(&nativeState->rootCtx, getNumericVal(args[0]), getNumericVal(args[1]), getNumericVal(args[2]));
     return jsi::Value::undefined();
   }));
 
@@ -2129,7 +2138,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawcolliderset_coSetRestitution", HOSTFN("rawcolliderset_coSetRestitution", 3) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    w2c_rapier__wasm3d__bg_rawcolliderset_coSetRestitution(&nativeState->rootCtx, args[0].asNumber(), args[1].asNumber(), args[2].asNumber());
+    w2c_rapier__wasm3d__bg_rawcolliderset_coSetRestitution(&nativeState->rootCtx, getNumericVal(args[0]), getNumericVal(args[1]), getNumericVal(args[2]));
     return jsi::Value::undefined();
   }));
 
@@ -2138,7 +2147,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawcolliderset_coSetFriction", HOSTFN("rawcolliderset_coSetFriction", 3) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    w2c_rapier__wasm3d__bg_rawcolliderset_coSetFriction(&nativeState->rootCtx, args[0].asNumber(), args[1].asNumber(), args[2].asNumber());
+    w2c_rapier__wasm3d__bg_rawcolliderset_coSetFriction(&nativeState->rootCtx, getNumericVal(args[0]), getNumericVal(args[1]), getNumericVal(args[2]));
     return jsi::Value::undefined();
   }));
 
@@ -2147,7 +2156,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawcolliderset_coFrictionCombineRule", HOSTFN("rawcolliderset_coFrictionCombineRule", 2) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    auto res = w2c_rapier__wasm3d__bg_rawcolliderset_coFrictionCombineRule(&nativeState->rootCtx, args[0].asNumber(), args[1].asNumber());
+    auto res = w2c_rapier__wasm3d__bg_rawcolliderset_coFrictionCombineRule(&nativeState->rootCtx, getNumericVal(args[0]), getNumericVal(args[1]));
     return jsi::Value { (double)res };;
   }));
 
@@ -2156,7 +2165,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawcolliderset_coSetFrictionCombineRule", HOSTFN("rawcolliderset_coSetFrictionCombineRule", 3) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    w2c_rapier__wasm3d__bg_rawcolliderset_coSetFrictionCombineRule(&nativeState->rootCtx, args[0].asNumber(), args[1].asNumber(), args[2].asNumber());
+    w2c_rapier__wasm3d__bg_rawcolliderset_coSetFrictionCombineRule(&nativeState->rootCtx, getNumericVal(args[0]), getNumericVal(args[1]), getNumericVal(args[2]));
     return jsi::Value::undefined();
   }));
 
@@ -2165,7 +2174,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawcolliderset_coRestitutionCombineRule", HOSTFN("rawcolliderset_coRestitutionCombineRule", 2) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    auto res = w2c_rapier__wasm3d__bg_rawcolliderset_coRestitutionCombineRule(&nativeState->rootCtx, args[0].asNumber(), args[1].asNumber());
+    auto res = w2c_rapier__wasm3d__bg_rawcolliderset_coRestitutionCombineRule(&nativeState->rootCtx, getNumericVal(args[0]), getNumericVal(args[1]));
     return jsi::Value { (double)res };;
   }));
 
@@ -2174,7 +2183,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawcolliderset_coSetRestitutionCombineRule", HOSTFN("rawcolliderset_coSetRestitutionCombineRule", 3) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    w2c_rapier__wasm3d__bg_rawcolliderset_coSetRestitutionCombineRule(&nativeState->rootCtx, args[0].asNumber(), args[1].asNumber(), args[2].asNumber());
+    w2c_rapier__wasm3d__bg_rawcolliderset_coSetRestitutionCombineRule(&nativeState->rootCtx, getNumericVal(args[0]), getNumericVal(args[1]), getNumericVal(args[2]));
     return jsi::Value::undefined();
   }));
 
@@ -2183,7 +2192,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawcolliderset_coSetCollisionGroups", HOSTFN("rawcolliderset_coSetCollisionGroups", 3) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    w2c_rapier__wasm3d__bg_rawcolliderset_coSetCollisionGroups(&nativeState->rootCtx, args[0].asNumber(), args[1].asNumber(), args[2].asNumber());
+    w2c_rapier__wasm3d__bg_rawcolliderset_coSetCollisionGroups(&nativeState->rootCtx, getNumericVal(args[0]), getNumericVal(args[1]), getNumericVal(args[2]));
     return jsi::Value::undefined();
   }));
 
@@ -2192,7 +2201,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawcolliderset_coSetSolverGroups", HOSTFN("rawcolliderset_coSetSolverGroups", 3) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    w2c_rapier__wasm3d__bg_rawcolliderset_coSetSolverGroups(&nativeState->rootCtx, args[0].asNumber(), args[1].asNumber(), args[2].asNumber());
+    w2c_rapier__wasm3d__bg_rawcolliderset_coSetSolverGroups(&nativeState->rootCtx, getNumericVal(args[0]), getNumericVal(args[1]), getNumericVal(args[2]));
     return jsi::Value::undefined();
   }));
 
@@ -2201,7 +2210,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawcolliderset_coSetActiveHooks", HOSTFN("rawcolliderset_coSetActiveHooks", 3) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    w2c_rapier__wasm3d__bg_rawcolliderset_coSetActiveHooks(&nativeState->rootCtx, args[0].asNumber(), args[1].asNumber(), args[2].asNumber());
+    w2c_rapier__wasm3d__bg_rawcolliderset_coSetActiveHooks(&nativeState->rootCtx, getNumericVal(args[0]), getNumericVal(args[1]), getNumericVal(args[2]));
     return jsi::Value::undefined();
   }));
 
@@ -2210,7 +2219,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawcolliderset_coSetActiveEvents", HOSTFN("rawcolliderset_coSetActiveEvents", 3) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    w2c_rapier__wasm3d__bg_rawcolliderset_coSetActiveEvents(&nativeState->rootCtx, args[0].asNumber(), args[1].asNumber(), args[2].asNumber());
+    w2c_rapier__wasm3d__bg_rawcolliderset_coSetActiveEvents(&nativeState->rootCtx, getNumericVal(args[0]), getNumericVal(args[1]), getNumericVal(args[2]));
     return jsi::Value::undefined();
   }));
 
@@ -2219,7 +2228,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawcolliderset_coSetActiveCollisionTypes", HOSTFN("rawcolliderset_coSetActiveCollisionTypes", 3) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    w2c_rapier__wasm3d__bg_rawcolliderset_coSetActiveCollisionTypes(&nativeState->rootCtx, args[0].asNumber(), args[1].asNumber(), args[2].asNumber());
+    w2c_rapier__wasm3d__bg_rawcolliderset_coSetActiveCollisionTypes(&nativeState->rootCtx, getNumericVal(args[0]), getNumericVal(args[1]), getNumericVal(args[2]));
     return jsi::Value::undefined();
   }));
 
@@ -2228,7 +2237,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawcolliderset_coSetShape", HOSTFN("rawcolliderset_coSetShape", 3) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    w2c_rapier__wasm3d__bg_rawcolliderset_coSetShape(&nativeState->rootCtx, args[0].asNumber(), args[1].asNumber(), args[2].asNumber());
+    w2c_rapier__wasm3d__bg_rawcolliderset_coSetShape(&nativeState->rootCtx, getNumericVal(args[0]), getNumericVal(args[1]), getNumericVal(args[2]));
     return jsi::Value::undefined();
   }));
 
@@ -2237,7 +2246,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawcolliderset_coSetContactForceEventThreshold", HOSTFN("rawcolliderset_coSetContactForceEventThreshold", 3) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    w2c_rapier__wasm3d__bg_rawcolliderset_coSetContactForceEventThreshold(&nativeState->rootCtx, args[0].asNumber(), args[1].asNumber(), args[2].asNumber());
+    w2c_rapier__wasm3d__bg_rawcolliderset_coSetContactForceEventThreshold(&nativeState->rootCtx, getNumericVal(args[0]), getNumericVal(args[1]), getNumericVal(args[2]));
     return jsi::Value::undefined();
   }));
 
@@ -2246,7 +2255,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawcolliderset_coSetDensity", HOSTFN("rawcolliderset_coSetDensity", 3) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    w2c_rapier__wasm3d__bg_rawcolliderset_coSetDensity(&nativeState->rootCtx, args[0].asNumber(), args[1].asNumber(), args[2].asNumber());
+    w2c_rapier__wasm3d__bg_rawcolliderset_coSetDensity(&nativeState->rootCtx, getNumericVal(args[0]), getNumericVal(args[1]), getNumericVal(args[2]));
     return jsi::Value::undefined();
   }));
 
@@ -2255,7 +2264,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawcolliderset_coSetMass", HOSTFN("rawcolliderset_coSetMass", 3) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    w2c_rapier__wasm3d__bg_rawcolliderset_coSetMass(&nativeState->rootCtx, args[0].asNumber(), args[1].asNumber(), args[2].asNumber());
+    w2c_rapier__wasm3d__bg_rawcolliderset_coSetMass(&nativeState->rootCtx, getNumericVal(args[0]), getNumericVal(args[1]), getNumericVal(args[2]));
     return jsi::Value::undefined();
   }));
 
@@ -2264,7 +2273,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawcolliderset_coSetMassProperties", HOSTFN("rawcolliderset_coSetMassProperties", 6) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    w2c_rapier__wasm3d__bg_rawcolliderset_coSetMassProperties(&nativeState->rootCtx, args[0].asNumber(), args[1].asNumber(), args[2].asNumber(), args[3].asNumber(), args[4].asNumber(), args[5].asNumber());
+    w2c_rapier__wasm3d__bg_rawcolliderset_coSetMassProperties(&nativeState->rootCtx, getNumericVal(args[0]), getNumericVal(args[1]), getNumericVal(args[2]), getNumericVal(args[3]), getNumericVal(args[4]), getNumericVal(args[5]));
     return jsi::Value::undefined();
   }));
 
@@ -2273,7 +2282,7 @@ namespace facebook::react {
   exports.setProperty(rt, "__wbg_rawcolliderset_free", HOSTFN("__wbg_rawcolliderset_free", 1) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    w2c_rapier__wasm3d__bg_0x5F_wbg_rawcolliderset_free(&nativeState->rootCtx, args[0].asNumber());
+    w2c_rapier__wasm3d__bg_0x5F_wbg_rawcolliderset_free(&nativeState->rootCtx, getNumericVal(args[0]));
     return jsi::Value::undefined();
   }));
 
@@ -2291,7 +2300,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawcolliderset_len", HOSTFN("rawcolliderset_len", 1) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    auto res = w2c_rapier__wasm3d__bg_rawcolliderset_len(&nativeState->rootCtx, args[0].asNumber());
+    auto res = w2c_rapier__wasm3d__bg_rawcolliderset_len(&nativeState->rootCtx, getNumericVal(args[0]));
     return jsi::Value { (double)res };;
   }));
 
@@ -2300,7 +2309,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawcolliderset_contains", HOSTFN("rawcolliderset_contains", 2) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    auto res = w2c_rapier__wasm3d__bg_rawcolliderset_contains(&nativeState->rootCtx, args[0].asNumber(), args[1].asNumber());
+    auto res = w2c_rapier__wasm3d__bg_rawcolliderset_contains(&nativeState->rootCtx, getNumericVal(args[0]), getNumericVal(args[1]));
     return jsi::Value { (double)res };;
   }));
 
@@ -2309,7 +2318,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawcolliderset_createCollider", HOSTFN("rawcolliderset_createCollider", 26) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    w2c_rapier__wasm3d__bg_rawcolliderset_createCollider(&nativeState->rootCtx, args[0].asNumber(), args[1].asNumber(), args[2].asNumber(), args[3].asNumber(), args[4].asNumber(), args[5].asNumber(), args[6].asNumber(), args[7].asNumber(), args[8].asNumber(), args[9].asNumber(), args[10].asNumber(), args[11].asNumber(), args[12].asNumber(), args[13].asNumber(), args[14].asNumber(), args[15].asNumber(), args[16].asNumber(), args[17].asNumber(), args[18].asNumber(), args[19].asNumber(), args[20].asNumber(), args[21].asNumber(), args[22].asNumber(), args[23].asNumber(), args[24].asNumber(), args[25].asNumber());
+    w2c_rapier__wasm3d__bg_rawcolliderset_createCollider(&nativeState->rootCtx, getNumericVal(args[0]), getNumericVal(args[1]), getNumericVal(args[2]), getNumericVal(args[3]), getNumericVal(args[4]), getNumericVal(args[5]), getNumericVal(args[6]), getNumericVal(args[7]), getNumericVal(args[8]), getNumericVal(args[9]), getNumericVal(args[10]), getNumericVal(args[11]), getNumericVal(args[12]), getNumericVal(args[13]), getNumericVal(args[14]), getNumericVal(args[15]), getNumericVal(args[16]), getNumericVal(args[17]), getNumericVal(args[18]), getNumericVal(args[19]), getNumericVal(args[20]), getNumericVal(args[21]), getNumericVal(args[22]), getNumericVal(args[23]), getNumericVal(args[24]), getNumericVal(args[25]));
     return jsi::Value::undefined();
   }));
 
@@ -2318,7 +2327,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawcolliderset_remove", HOSTFN("rawcolliderset_remove", 5) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    w2c_rapier__wasm3d__bg_rawcolliderset_remove(&nativeState->rootCtx, args[0].asNumber(), args[1].asNumber(), args[2].asNumber(), args[3].asNumber(), args[4].asNumber());
+    w2c_rapier__wasm3d__bg_rawcolliderset_remove(&nativeState->rootCtx, getNumericVal(args[0]), getNumericVal(args[1]), getNumericVal(args[2]), getNumericVal(args[3]), getNumericVal(args[4]));
     return jsi::Value::undefined();
   }));
 
@@ -2327,7 +2336,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawcolliderset_forEachColliderHandle", HOSTFN("rawcolliderset_forEachColliderHandle", 2) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    w2c_rapier__wasm3d__bg_rawcolliderset_forEachColliderHandle(&nativeState->rootCtx, args[0].asNumber(), args[1].asNumber());
+    w2c_rapier__wasm3d__bg_rawcolliderset_forEachColliderHandle(&nativeState->rootCtx, getNumericVal(args[0]), getNumericVal(args[1]));
     return jsi::Value::undefined();
   }));
 
@@ -2336,7 +2345,7 @@ namespace facebook::react {
   exports.setProperty(rt, "__wbg_rawshapecontact_free", HOSTFN("__wbg_rawshapecontact_free", 1) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    w2c_rapier__wasm3d__bg_0x5F_wbg_rawshapecontact_free(&nativeState->rootCtx, args[0].asNumber());
+    w2c_rapier__wasm3d__bg_0x5F_wbg_rawshapecontact_free(&nativeState->rootCtx, getNumericVal(args[0]));
     return jsi::Value::undefined();
   }));
 
@@ -2345,7 +2354,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawshapecontact_distance", HOSTFN("rawshapecontact_distance", 1) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    auto res = w2c_rapier__wasm3d__bg_rawshapecontact_distance(&nativeState->rootCtx, args[0].asNumber());
+    auto res = w2c_rapier__wasm3d__bg_rawshapecontact_distance(&nativeState->rootCtx, getNumericVal(args[0]));
     return jsi::Value { (double)res };;
   }));
 
@@ -2354,7 +2363,7 @@ namespace facebook::react {
   exports.setProperty(rt, "__wbg_rawnarrowphase_free", HOSTFN("__wbg_rawnarrowphase_free", 1) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    w2c_rapier__wasm3d__bg_0x5F_wbg_rawnarrowphase_free(&nativeState->rootCtx, args[0].asNumber());
+    w2c_rapier__wasm3d__bg_0x5F_wbg_rawnarrowphase_free(&nativeState->rootCtx, getNumericVal(args[0]));
     return jsi::Value::undefined();
   }));
 
@@ -2372,7 +2381,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawnarrowphase_contacts_with", HOSTFN("rawnarrowphase_contacts_with", 3) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    w2c_rapier__wasm3d__bg_rawnarrowphase_contacts_with(&nativeState->rootCtx, args[0].asNumber(), args[1].asNumber(), args[2].asNumber());
+    w2c_rapier__wasm3d__bg_rawnarrowphase_contacts_with(&nativeState->rootCtx, getNumericVal(args[0]), getNumericVal(args[1]), getNumericVal(args[2]));
     return jsi::Value::undefined();
   }));
 
@@ -2381,7 +2390,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawnarrowphase_contact_pair", HOSTFN("rawnarrowphase_contact_pair", 3) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    auto res = w2c_rapier__wasm3d__bg_rawnarrowphase_contact_pair(&nativeState->rootCtx, args[0].asNumber(), args[1].asNumber(), args[2].asNumber());
+    auto res = w2c_rapier__wasm3d__bg_rawnarrowphase_contact_pair(&nativeState->rootCtx, getNumericVal(args[0]), getNumericVal(args[1]), getNumericVal(args[2]));
     return jsi::Value { (double)res };;
   }));
 
@@ -2390,7 +2399,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawnarrowphase_intersections_with", HOSTFN("rawnarrowphase_intersections_with", 3) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    w2c_rapier__wasm3d__bg_rawnarrowphase_intersections_with(&nativeState->rootCtx, args[0].asNumber(), args[1].asNumber(), args[2].asNumber());
+    w2c_rapier__wasm3d__bg_rawnarrowphase_intersections_with(&nativeState->rootCtx, getNumericVal(args[0]), getNumericVal(args[1]), getNumericVal(args[2]));
     return jsi::Value::undefined();
   }));
 
@@ -2399,7 +2408,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawnarrowphase_intersection_pair", HOSTFN("rawnarrowphase_intersection_pair", 3) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    auto res = w2c_rapier__wasm3d__bg_rawnarrowphase_intersection_pair(&nativeState->rootCtx, args[0].asNumber(), args[1].asNumber(), args[2].asNumber());
+    auto res = w2c_rapier__wasm3d__bg_rawnarrowphase_intersection_pair(&nativeState->rootCtx, getNumericVal(args[0]), getNumericVal(args[1]), getNumericVal(args[2]));
     return jsi::Value { (double)res };;
   }));
 
@@ -2408,7 +2417,7 @@ namespace facebook::react {
   exports.setProperty(rt, "__wbg_rawcontactmanifold_free", HOSTFN("__wbg_rawcontactmanifold_free", 1) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    w2c_rapier__wasm3d__bg_0x5F_wbg_rawcontactmanifold_free(&nativeState->rootCtx, args[0].asNumber());
+    w2c_rapier__wasm3d__bg_0x5F_wbg_rawcontactmanifold_free(&nativeState->rootCtx, getNumericVal(args[0]));
     return jsi::Value::undefined();
   }));
 
@@ -2417,7 +2426,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawcontactpair_collider1", HOSTFN("rawcontactpair_collider1", 1) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    auto res = w2c_rapier__wasm3d__bg_rawcontactpair_collider1(&nativeState->rootCtx, args[0].asNumber());
+    auto res = w2c_rapier__wasm3d__bg_rawcontactpair_collider1(&nativeState->rootCtx, getNumericVal(args[0]));
     return jsi::Value { (double)res };;
   }));
 
@@ -2426,7 +2435,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawcontactpair_collider2", HOSTFN("rawcontactpair_collider2", 1) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    auto res = w2c_rapier__wasm3d__bg_rawcontactpair_collider2(&nativeState->rootCtx, args[0].asNumber());
+    auto res = w2c_rapier__wasm3d__bg_rawcontactpair_collider2(&nativeState->rootCtx, getNumericVal(args[0]));
     return jsi::Value { (double)res };;
   }));
 
@@ -2435,7 +2444,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawcontactpair_numContactManifolds", HOSTFN("rawcontactpair_numContactManifolds", 1) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    auto res = w2c_rapier__wasm3d__bg_rawcontactpair_numContactManifolds(&nativeState->rootCtx, args[0].asNumber());
+    auto res = w2c_rapier__wasm3d__bg_rawcontactpair_numContactManifolds(&nativeState->rootCtx, getNumericVal(args[0]));
     return jsi::Value { (double)res };;
   }));
 
@@ -2444,7 +2453,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawcontactpair_contactManifold", HOSTFN("rawcontactpair_contactManifold", 2) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    auto res = w2c_rapier__wasm3d__bg_rawcontactpair_contactManifold(&nativeState->rootCtx, args[0].asNumber(), args[1].asNumber());
+    auto res = w2c_rapier__wasm3d__bg_rawcontactpair_contactManifold(&nativeState->rootCtx, getNumericVal(args[0]), getNumericVal(args[1]));
     return jsi::Value { (double)res };;
   }));
 
@@ -2453,7 +2462,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawcontactmanifold_normal", HOSTFN("rawcontactmanifold_normal", 1) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    auto res = w2c_rapier__wasm3d__bg_rawcontactmanifold_normal(&nativeState->rootCtx, args[0].asNumber());
+    auto res = w2c_rapier__wasm3d__bg_rawcontactmanifold_normal(&nativeState->rootCtx, getNumericVal(args[0]));
     return jsi::Value { (double)res };;
   }));
 
@@ -2462,7 +2471,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawcontactmanifold_local_n1", HOSTFN("rawcontactmanifold_local_n1", 1) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    auto res = w2c_rapier__wasm3d__bg_rawcontactmanifold_local_n1(&nativeState->rootCtx, args[0].asNumber());
+    auto res = w2c_rapier__wasm3d__bg_rawcontactmanifold_local_n1(&nativeState->rootCtx, getNumericVal(args[0]));
     return jsi::Value { (double)res };;
   }));
 
@@ -2471,7 +2480,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawcontactmanifold_local_n2", HOSTFN("rawcontactmanifold_local_n2", 1) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    auto res = w2c_rapier__wasm3d__bg_rawcontactmanifold_local_n2(&nativeState->rootCtx, args[0].asNumber());
+    auto res = w2c_rapier__wasm3d__bg_rawcontactmanifold_local_n2(&nativeState->rootCtx, getNumericVal(args[0]));
     return jsi::Value { (double)res };;
   }));
 
@@ -2480,7 +2489,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawcontactmanifold_subshape1", HOSTFN("rawcontactmanifold_subshape1", 1) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    auto res = w2c_rapier__wasm3d__bg_rawcontactmanifold_subshape1(&nativeState->rootCtx, args[0].asNumber());
+    auto res = w2c_rapier__wasm3d__bg_rawcontactmanifold_subshape1(&nativeState->rootCtx, getNumericVal(args[0]));
     return jsi::Value { (double)res };;
   }));
 
@@ -2489,7 +2498,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawcontactmanifold_subshape2", HOSTFN("rawcontactmanifold_subshape2", 1) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    auto res = w2c_rapier__wasm3d__bg_rawcontactmanifold_subshape2(&nativeState->rootCtx, args[0].asNumber());
+    auto res = w2c_rapier__wasm3d__bg_rawcontactmanifold_subshape2(&nativeState->rootCtx, getNumericVal(args[0]));
     return jsi::Value { (double)res };;
   }));
 
@@ -2498,7 +2507,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawcontactmanifold_num_contacts", HOSTFN("rawcontactmanifold_num_contacts", 1) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    auto res = w2c_rapier__wasm3d__bg_rawcontactmanifold_num_contacts(&nativeState->rootCtx, args[0].asNumber());
+    auto res = w2c_rapier__wasm3d__bg_rawcontactmanifold_num_contacts(&nativeState->rootCtx, getNumericVal(args[0]));
     return jsi::Value { (double)res };;
   }));
 
@@ -2507,7 +2516,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawcontactmanifold_contact_local_p1", HOSTFN("rawcontactmanifold_contact_local_p1", 2) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    auto res = w2c_rapier__wasm3d__bg_rawcontactmanifold_contact_local_p1(&nativeState->rootCtx, args[0].asNumber(), args[1].asNumber());
+    auto res = w2c_rapier__wasm3d__bg_rawcontactmanifold_contact_local_p1(&nativeState->rootCtx, getNumericVal(args[0]), getNumericVal(args[1]));
     return jsi::Value { (double)res };;
   }));
 
@@ -2516,7 +2525,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawcontactmanifold_contact_local_p2", HOSTFN("rawcontactmanifold_contact_local_p2", 2) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    auto res = w2c_rapier__wasm3d__bg_rawcontactmanifold_contact_local_p2(&nativeState->rootCtx, args[0].asNumber(), args[1].asNumber());
+    auto res = w2c_rapier__wasm3d__bg_rawcontactmanifold_contact_local_p2(&nativeState->rootCtx, getNumericVal(args[0]), getNumericVal(args[1]));
     return jsi::Value { (double)res };;
   }));
 
@@ -2525,7 +2534,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawcontactmanifold_contact_dist", HOSTFN("rawcontactmanifold_contact_dist", 2) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    auto res = w2c_rapier__wasm3d__bg_rawcontactmanifold_contact_dist(&nativeState->rootCtx, args[0].asNumber(), args[1].asNumber());
+    auto res = w2c_rapier__wasm3d__bg_rawcontactmanifold_contact_dist(&nativeState->rootCtx, getNumericVal(args[0]), getNumericVal(args[1]));
     return jsi::Value { (double)res };;
   }));
 
@@ -2534,7 +2543,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawcontactmanifold_contact_fid1", HOSTFN("rawcontactmanifold_contact_fid1", 2) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    auto res = w2c_rapier__wasm3d__bg_rawcontactmanifold_contact_fid1(&nativeState->rootCtx, args[0].asNumber(), args[1].asNumber());
+    auto res = w2c_rapier__wasm3d__bg_rawcontactmanifold_contact_fid1(&nativeState->rootCtx, getNumericVal(args[0]), getNumericVal(args[1]));
     return jsi::Value { (double)res };;
   }));
 
@@ -2543,7 +2552,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawcontactmanifold_contact_fid2", HOSTFN("rawcontactmanifold_contact_fid2", 2) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    auto res = w2c_rapier__wasm3d__bg_rawcontactmanifold_contact_fid2(&nativeState->rootCtx, args[0].asNumber(), args[1].asNumber());
+    auto res = w2c_rapier__wasm3d__bg_rawcontactmanifold_contact_fid2(&nativeState->rootCtx, getNumericVal(args[0]), getNumericVal(args[1]));
     return jsi::Value { (double)res };;
   }));
 
@@ -2552,7 +2561,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawcontactmanifold_contact_impulse", HOSTFN("rawcontactmanifold_contact_impulse", 2) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    auto res = w2c_rapier__wasm3d__bg_rawcontactmanifold_contact_impulse(&nativeState->rootCtx, args[0].asNumber(), args[1].asNumber());
+    auto res = w2c_rapier__wasm3d__bg_rawcontactmanifold_contact_impulse(&nativeState->rootCtx, getNumericVal(args[0]), getNumericVal(args[1]));
     return jsi::Value { (double)res };;
   }));
 
@@ -2561,7 +2570,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawcontactmanifold_contact_tangent_impulse_x", HOSTFN("rawcontactmanifold_contact_tangent_impulse_x", 2) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    auto res = w2c_rapier__wasm3d__bg_rawcontactmanifold_contact_tangent_impulse_x(&nativeState->rootCtx, args[0].asNumber(), args[1].asNumber());
+    auto res = w2c_rapier__wasm3d__bg_rawcontactmanifold_contact_tangent_impulse_x(&nativeState->rootCtx, getNumericVal(args[0]), getNumericVal(args[1]));
     return jsi::Value { (double)res };;
   }));
 
@@ -2570,7 +2579,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawcontactmanifold_contact_tangent_impulse_y", HOSTFN("rawcontactmanifold_contact_tangent_impulse_y", 2) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    auto res = w2c_rapier__wasm3d__bg_rawcontactmanifold_contact_tangent_impulse_y(&nativeState->rootCtx, args[0].asNumber(), args[1].asNumber());
+    auto res = w2c_rapier__wasm3d__bg_rawcontactmanifold_contact_tangent_impulse_y(&nativeState->rootCtx, getNumericVal(args[0]), getNumericVal(args[1]));
     return jsi::Value { (double)res };;
   }));
 
@@ -2579,7 +2588,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawcontactmanifold_num_solver_contacts", HOSTFN("rawcontactmanifold_num_solver_contacts", 1) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    auto res = w2c_rapier__wasm3d__bg_rawcontactmanifold_num_solver_contacts(&nativeState->rootCtx, args[0].asNumber());
+    auto res = w2c_rapier__wasm3d__bg_rawcontactmanifold_num_solver_contacts(&nativeState->rootCtx, getNumericVal(args[0]));
     return jsi::Value { (double)res };;
   }));
 
@@ -2588,7 +2597,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawcontactmanifold_solver_contact_point", HOSTFN("rawcontactmanifold_solver_contact_point", 2) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    auto res = w2c_rapier__wasm3d__bg_rawcontactmanifold_solver_contact_point(&nativeState->rootCtx, args[0].asNumber(), args[1].asNumber());
+    auto res = w2c_rapier__wasm3d__bg_rawcontactmanifold_solver_contact_point(&nativeState->rootCtx, getNumericVal(args[0]), getNumericVal(args[1]));
     return jsi::Value { (double)res };;
   }));
 
@@ -2597,7 +2606,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawcontactmanifold_solver_contact_dist", HOSTFN("rawcontactmanifold_solver_contact_dist", 2) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    auto res = w2c_rapier__wasm3d__bg_rawcontactmanifold_solver_contact_dist(&nativeState->rootCtx, args[0].asNumber(), args[1].asNumber());
+    auto res = w2c_rapier__wasm3d__bg_rawcontactmanifold_solver_contact_dist(&nativeState->rootCtx, getNumericVal(args[0]), getNumericVal(args[1]));
     return jsi::Value { (double)res };;
   }));
 
@@ -2606,7 +2615,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawcontactmanifold_solver_contact_friction", HOSTFN("rawcontactmanifold_solver_contact_friction", 2) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    auto res = w2c_rapier__wasm3d__bg_rawcontactmanifold_solver_contact_friction(&nativeState->rootCtx, args[0].asNumber(), args[1].asNumber());
+    auto res = w2c_rapier__wasm3d__bg_rawcontactmanifold_solver_contact_friction(&nativeState->rootCtx, getNumericVal(args[0]), getNumericVal(args[1]));
     return jsi::Value { (double)res };;
   }));
 
@@ -2615,7 +2624,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawcontactmanifold_solver_contact_restitution", HOSTFN("rawcontactmanifold_solver_contact_restitution", 2) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    auto res = w2c_rapier__wasm3d__bg_rawcontactmanifold_solver_contact_restitution(&nativeState->rootCtx, args[0].asNumber(), args[1].asNumber());
+    auto res = w2c_rapier__wasm3d__bg_rawcontactmanifold_solver_contact_restitution(&nativeState->rootCtx, getNumericVal(args[0]), getNumericVal(args[1]));
     return jsi::Value { (double)res };;
   }));
 
@@ -2624,7 +2633,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawcontactmanifold_solver_contact_tangent_velocity", HOSTFN("rawcontactmanifold_solver_contact_tangent_velocity", 2) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    auto res = w2c_rapier__wasm3d__bg_rawcontactmanifold_solver_contact_tangent_velocity(&nativeState->rootCtx, args[0].asNumber(), args[1].asNumber());
+    auto res = w2c_rapier__wasm3d__bg_rawcontactmanifold_solver_contact_tangent_velocity(&nativeState->rootCtx, getNumericVal(args[0]), getNumericVal(args[1]));
     return jsi::Value { (double)res };;
   }));
 
@@ -2633,7 +2642,7 @@ namespace facebook::react {
   exports.setProperty(rt, "__wbg_rawpointprojection_free", HOSTFN("__wbg_rawpointprojection_free", 1) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    w2c_rapier__wasm3d__bg_0x5F_wbg_rawpointprojection_free(&nativeState->rootCtx, args[0].asNumber());
+    w2c_rapier__wasm3d__bg_0x5F_wbg_rawpointprojection_free(&nativeState->rootCtx, getNumericVal(args[0]));
     return jsi::Value::undefined();
   }));
 
@@ -2642,7 +2651,7 @@ namespace facebook::react {
   exports.setProperty(rt, "__wbg_rawpointcolliderprojection_free", HOSTFN("__wbg_rawpointcolliderprojection_free", 1) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    w2c_rapier__wasm3d__bg_0x5F_wbg_rawpointcolliderprojection_free(&nativeState->rootCtx, args[0].asNumber());
+    w2c_rapier__wasm3d__bg_0x5F_wbg_rawpointcolliderprojection_free(&nativeState->rootCtx, getNumericVal(args[0]));
     return jsi::Value::undefined();
   }));
 
@@ -2651,7 +2660,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawpointcolliderprojection_colliderHandle", HOSTFN("rawpointcolliderprojection_colliderHandle", 1) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    auto res = w2c_rapier__wasm3d__bg_rawpointcolliderprojection_colliderHandle(&nativeState->rootCtx, args[0].asNumber());
+    auto res = w2c_rapier__wasm3d__bg_rawpointcolliderprojection_colliderHandle(&nativeState->rootCtx, getNumericVal(args[0]));
     return jsi::Value { (double)res };;
   }));
 
@@ -2660,7 +2669,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawpointcolliderprojection_featureType", HOSTFN("rawpointcolliderprojection_featureType", 1) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    auto res = w2c_rapier__wasm3d__bg_rawpointcolliderprojection_featureType(&nativeState->rootCtx, args[0].asNumber());
+    auto res = w2c_rapier__wasm3d__bg_rawpointcolliderprojection_featureType(&nativeState->rootCtx, getNumericVal(args[0]));
     return jsi::Value { (double)res };;
   }));
 
@@ -2669,7 +2678,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawpointcolliderprojection_featureId", HOSTFN("rawpointcolliderprojection_featureId", 2) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    w2c_rapier__wasm3d__bg_rawpointcolliderprojection_featureId(&nativeState->rootCtx, args[0].asNumber(), args[1].asNumber());
+    w2c_rapier__wasm3d__bg_rawpointcolliderprojection_featureId(&nativeState->rootCtx, getNumericVal(args[0]), getNumericVal(args[1]));
     return jsi::Value::undefined();
   }));
 
@@ -2678,7 +2687,7 @@ namespace facebook::react {
   exports.setProperty(rt, "__wbg_rawrayintersection_free", HOSTFN("__wbg_rawrayintersection_free", 1) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    w2c_rapier__wasm3d__bg_0x5F_wbg_rawrayintersection_free(&nativeState->rootCtx, args[0].asNumber());
+    w2c_rapier__wasm3d__bg_0x5F_wbg_rawrayintersection_free(&nativeState->rootCtx, getNumericVal(args[0]));
     return jsi::Value::undefined();
   }));
 
@@ -2687,7 +2696,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawrayintersection_featureType", HOSTFN("rawrayintersection_featureType", 1) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    auto res = w2c_rapier__wasm3d__bg_rawrayintersection_featureType(&nativeState->rootCtx, args[0].asNumber());
+    auto res = w2c_rapier__wasm3d__bg_rawrayintersection_featureType(&nativeState->rootCtx, getNumericVal(args[0]));
     return jsi::Value { (double)res };;
   }));
 
@@ -2696,7 +2705,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawrayintersection_featureId", HOSTFN("rawrayintersection_featureId", 2) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    w2c_rapier__wasm3d__bg_rawrayintersection_featureId(&nativeState->rootCtx, args[0].asNumber(), args[1].asNumber());
+    w2c_rapier__wasm3d__bg_rawrayintersection_featureId(&nativeState->rootCtx, getNumericVal(args[0]), getNumericVal(args[1]));
     return jsi::Value::undefined();
   }));
 
@@ -2705,7 +2714,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawraycolliderintersection_normal", HOSTFN("rawraycolliderintersection_normal", 1) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    auto res = w2c_rapier__wasm3d__bg_rawraycolliderintersection_normal(&nativeState->rootCtx, args[0].asNumber());
+    auto res = w2c_rapier__wasm3d__bg_rawraycolliderintersection_normal(&nativeState->rootCtx, getNumericVal(args[0]));
     return jsi::Value { (double)res };;
   }));
 
@@ -2714,7 +2723,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawraycolliderintersection_toi", HOSTFN("rawraycolliderintersection_toi", 1) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    auto res = w2c_rapier__wasm3d__bg_rawraycolliderintersection_toi(&nativeState->rootCtx, args[0].asNumber());
+    auto res = w2c_rapier__wasm3d__bg_rawraycolliderintersection_toi(&nativeState->rootCtx, getNumericVal(args[0]));
     return jsi::Value { (double)res };;
   }));
 
@@ -2723,7 +2732,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawraycolliderintersection_featureType", HOSTFN("rawraycolliderintersection_featureType", 1) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    auto res = w2c_rapier__wasm3d__bg_rawraycolliderintersection_featureType(&nativeState->rootCtx, args[0].asNumber());
+    auto res = w2c_rapier__wasm3d__bg_rawraycolliderintersection_featureType(&nativeState->rootCtx, getNumericVal(args[0]));
     return jsi::Value { (double)res };;
   }));
 
@@ -2732,7 +2741,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawraycolliderintersection_featureId", HOSTFN("rawraycolliderintersection_featureId", 2) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    w2c_rapier__wasm3d__bg_rawraycolliderintersection_featureId(&nativeState->rootCtx, args[0].asNumber(), args[1].asNumber());
+    w2c_rapier__wasm3d__bg_rawraycolliderintersection_featureId(&nativeState->rootCtx, getNumericVal(args[0]), getNumericVal(args[1]));
     return jsi::Value::undefined();
   }));
 
@@ -2741,7 +2750,7 @@ namespace facebook::react {
   exports.setProperty(rt, "__wbg_rawraycollidertoi_free", HOSTFN("__wbg_rawraycollidertoi_free", 1) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    w2c_rapier__wasm3d__bg_0x5F_wbg_rawraycollidertoi_free(&nativeState->rootCtx, args[0].asNumber());
+    w2c_rapier__wasm3d__bg_0x5F_wbg_rawraycollidertoi_free(&nativeState->rootCtx, getNumericVal(args[0]));
     return jsi::Value::undefined();
   }));
 
@@ -2750,7 +2759,7 @@ namespace facebook::react {
   exports.setProperty(rt, "__wbg_rawshape_free", HOSTFN("__wbg_rawshape_free", 1) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    w2c_rapier__wasm3d__bg_0x5F_wbg_rawshape_free(&nativeState->rootCtx, args[0].asNumber());
+    w2c_rapier__wasm3d__bg_0x5F_wbg_rawshape_free(&nativeState->rootCtx, getNumericVal(args[0]));
     return jsi::Value::undefined();
   }));
 
@@ -2759,7 +2768,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawshape_cuboid", HOSTFN("rawshape_cuboid", 3) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    auto res = w2c_rapier__wasm3d__bg_rawshape_cuboid(&nativeState->rootCtx, args[0].asNumber(), args[1].asNumber(), args[2].asNumber());
+    auto res = w2c_rapier__wasm3d__bg_rawshape_cuboid(&nativeState->rootCtx, getNumericVal(args[0]), getNumericVal(args[1]), getNumericVal(args[2]));
     return jsi::Value { (double)res };;
   }));
 
@@ -2768,7 +2777,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawshape_roundCuboid", HOSTFN("rawshape_roundCuboid", 4) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    auto res = w2c_rapier__wasm3d__bg_rawshape_roundCuboid(&nativeState->rootCtx, args[0].asNumber(), args[1].asNumber(), args[2].asNumber(), args[3].asNumber());
+    auto res = w2c_rapier__wasm3d__bg_rawshape_roundCuboid(&nativeState->rootCtx, getNumericVal(args[0]), getNumericVal(args[1]), getNumericVal(args[2]), getNumericVal(args[3]));
     return jsi::Value { (double)res };;
   }));
 
@@ -2777,7 +2786,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawshape_ball", HOSTFN("rawshape_ball", 1) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    auto res = w2c_rapier__wasm3d__bg_rawshape_ball(&nativeState->rootCtx, args[0].asNumber());
+    auto res = w2c_rapier__wasm3d__bg_rawshape_ball(&nativeState->rootCtx, getNumericVal(args[0]));
     return jsi::Value { (double)res };;
   }));
 
@@ -2786,7 +2795,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawshape_halfspace", HOSTFN("rawshape_halfspace", 1) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    auto res = w2c_rapier__wasm3d__bg_rawshape_halfspace(&nativeState->rootCtx, args[0].asNumber());
+    auto res = w2c_rapier__wasm3d__bg_rawshape_halfspace(&nativeState->rootCtx, getNumericVal(args[0]));
     return jsi::Value { (double)res };;
   }));
 
@@ -2795,7 +2804,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawshape_capsule", HOSTFN("rawshape_capsule", 2) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    auto res = w2c_rapier__wasm3d__bg_rawshape_capsule(&nativeState->rootCtx, args[0].asNumber(), args[1].asNumber());
+    auto res = w2c_rapier__wasm3d__bg_rawshape_capsule(&nativeState->rootCtx, getNumericVal(args[0]), getNumericVal(args[1]));
     return jsi::Value { (double)res };;
   }));
 
@@ -2804,7 +2813,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawshape_cylinder", HOSTFN("rawshape_cylinder", 2) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    auto res = w2c_rapier__wasm3d__bg_rawshape_cylinder(&nativeState->rootCtx, args[0].asNumber(), args[1].asNumber());
+    auto res = w2c_rapier__wasm3d__bg_rawshape_cylinder(&nativeState->rootCtx, getNumericVal(args[0]), getNumericVal(args[1]));
     return jsi::Value { (double)res };;
   }));
 
@@ -2813,7 +2822,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawshape_roundCylinder", HOSTFN("rawshape_roundCylinder", 3) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    auto res = w2c_rapier__wasm3d__bg_rawshape_roundCylinder(&nativeState->rootCtx, args[0].asNumber(), args[1].asNumber(), args[2].asNumber());
+    auto res = w2c_rapier__wasm3d__bg_rawshape_roundCylinder(&nativeState->rootCtx, getNumericVal(args[0]), getNumericVal(args[1]), getNumericVal(args[2]));
     return jsi::Value { (double)res };;
   }));
 
@@ -2822,7 +2831,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawshape_cone", HOSTFN("rawshape_cone", 2) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    auto res = w2c_rapier__wasm3d__bg_rawshape_cone(&nativeState->rootCtx, args[0].asNumber(), args[1].asNumber());
+    auto res = w2c_rapier__wasm3d__bg_rawshape_cone(&nativeState->rootCtx, getNumericVal(args[0]), getNumericVal(args[1]));
     return jsi::Value { (double)res };;
   }));
 
@@ -2831,7 +2840,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawshape_roundCone", HOSTFN("rawshape_roundCone", 3) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    auto res = w2c_rapier__wasm3d__bg_rawshape_roundCone(&nativeState->rootCtx, args[0].asNumber(), args[1].asNumber(), args[2].asNumber());
+    auto res = w2c_rapier__wasm3d__bg_rawshape_roundCone(&nativeState->rootCtx, getNumericVal(args[0]), getNumericVal(args[1]), getNumericVal(args[2]));
     return jsi::Value { (double)res };;
   }));
 
@@ -2840,7 +2849,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawshape_polyline", HOSTFN("rawshape_polyline", 4) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    auto res = w2c_rapier__wasm3d__bg_rawshape_polyline(&nativeState->rootCtx, args[0].asNumber(), args[1].asNumber(), args[2].asNumber(), args[3].asNumber());
+    auto res = w2c_rapier__wasm3d__bg_rawshape_polyline(&nativeState->rootCtx, getNumericVal(args[0]), getNumericVal(args[1]), getNumericVal(args[2]), getNumericVal(args[3]));
     return jsi::Value { (double)res };;
   }));
 
@@ -2849,7 +2858,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawshape_trimesh", HOSTFN("rawshape_trimesh", 4) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    auto res = w2c_rapier__wasm3d__bg_rawshape_trimesh(&nativeState->rootCtx, args[0].asNumber(), args[1].asNumber(), args[2].asNumber(), args[3].asNumber());
+    auto res = w2c_rapier__wasm3d__bg_rawshape_trimesh(&nativeState->rootCtx, getNumericVal(args[0]), getNumericVal(args[1]), getNumericVal(args[2]), getNumericVal(args[3]));
     return jsi::Value { (double)res };;
   }));
 
@@ -2858,7 +2867,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawshape_heightfield", HOSTFN("rawshape_heightfield", 5) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    auto res = w2c_rapier__wasm3d__bg_rawshape_heightfield(&nativeState->rootCtx, args[0].asNumber(), args[1].asNumber(), args[2].asNumber(), args[3].asNumber(), args[4].asNumber());
+    auto res = w2c_rapier__wasm3d__bg_rawshape_heightfield(&nativeState->rootCtx, getNumericVal(args[0]), getNumericVal(args[1]), getNumericVal(args[2]), getNumericVal(args[3]), getNumericVal(args[4]));
     return jsi::Value { (double)res };;
   }));
 
@@ -2867,7 +2876,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawshape_segment", HOSTFN("rawshape_segment", 2) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    auto res = w2c_rapier__wasm3d__bg_rawshape_segment(&nativeState->rootCtx, args[0].asNumber(), args[1].asNumber());
+    auto res = w2c_rapier__wasm3d__bg_rawshape_segment(&nativeState->rootCtx, getNumericVal(args[0]), getNumericVal(args[1]));
     return jsi::Value { (double)res };;
   }));
 
@@ -2876,7 +2885,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawshape_triangle", HOSTFN("rawshape_triangle", 3) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    auto res = w2c_rapier__wasm3d__bg_rawshape_triangle(&nativeState->rootCtx, args[0].asNumber(), args[1].asNumber(), args[2].asNumber());
+    auto res = w2c_rapier__wasm3d__bg_rawshape_triangle(&nativeState->rootCtx, getNumericVal(args[0]), getNumericVal(args[1]), getNumericVal(args[2]));
     return jsi::Value { (double)res };;
   }));
 
@@ -2885,7 +2894,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawshape_roundTriangle", HOSTFN("rawshape_roundTriangle", 4) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    auto res = w2c_rapier__wasm3d__bg_rawshape_roundTriangle(&nativeState->rootCtx, args[0].asNumber(), args[1].asNumber(), args[2].asNumber(), args[3].asNumber());
+    auto res = w2c_rapier__wasm3d__bg_rawshape_roundTriangle(&nativeState->rootCtx, getNumericVal(args[0]), getNumericVal(args[1]), getNumericVal(args[2]), getNumericVal(args[3]));
     return jsi::Value { (double)res };;
   }));
 
@@ -2894,7 +2903,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawshape_convexHull", HOSTFN("rawshape_convexHull", 2) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    auto res = w2c_rapier__wasm3d__bg_rawshape_convexHull(&nativeState->rootCtx, args[0].asNumber(), args[1].asNumber());
+    auto res = w2c_rapier__wasm3d__bg_rawshape_convexHull(&nativeState->rootCtx, getNumericVal(args[0]), getNumericVal(args[1]));
     return jsi::Value { (double)res };;
   }));
 
@@ -2903,7 +2912,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawshape_roundConvexHull", HOSTFN("rawshape_roundConvexHull", 3) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    auto res = w2c_rapier__wasm3d__bg_rawshape_roundConvexHull(&nativeState->rootCtx, args[0].asNumber(), args[1].asNumber(), args[2].asNumber());
+    auto res = w2c_rapier__wasm3d__bg_rawshape_roundConvexHull(&nativeState->rootCtx, getNumericVal(args[0]), getNumericVal(args[1]), getNumericVal(args[2]));
     return jsi::Value { (double)res };;
   }));
 
@@ -2912,7 +2921,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawshape_convexMesh", HOSTFN("rawshape_convexMesh", 4) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    auto res = w2c_rapier__wasm3d__bg_rawshape_convexMesh(&nativeState->rootCtx, args[0].asNumber(), args[1].asNumber(), args[2].asNumber(), args[3].asNumber());
+    auto res = w2c_rapier__wasm3d__bg_rawshape_convexMesh(&nativeState->rootCtx, getNumericVal(args[0]), getNumericVal(args[1]), getNumericVal(args[2]), getNumericVal(args[3]));
     return jsi::Value { (double)res };;
   }));
 
@@ -2921,7 +2930,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawshape_roundConvexMesh", HOSTFN("rawshape_roundConvexMesh", 5) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    auto res = w2c_rapier__wasm3d__bg_rawshape_roundConvexMesh(&nativeState->rootCtx, args[0].asNumber(), args[1].asNumber(), args[2].asNumber(), args[3].asNumber(), args[4].asNumber());
+    auto res = w2c_rapier__wasm3d__bg_rawshape_roundConvexMesh(&nativeState->rootCtx, getNumericVal(args[0]), getNumericVal(args[1]), getNumericVal(args[2]), getNumericVal(args[3]), getNumericVal(args[4]));
     return jsi::Value { (double)res };;
   }));
 
@@ -2930,7 +2939,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawshape_castShape", HOSTFN("rawshape_castShape", 10) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    auto res = w2c_rapier__wasm3d__bg_rawshape_castShape(&nativeState->rootCtx, args[0].asNumber(), args[1].asNumber(), args[2].asNumber(), args[3].asNumber(), args[4].asNumber(), args[5].asNumber(), args[6].asNumber(), args[7].asNumber(), args[8].asNumber(), args[9].asNumber());
+    auto res = w2c_rapier__wasm3d__bg_rawshape_castShape(&nativeState->rootCtx, getNumericVal(args[0]), getNumericVal(args[1]), getNumericVal(args[2]), getNumericVal(args[3]), getNumericVal(args[4]), getNumericVal(args[5]), getNumericVal(args[6]), getNumericVal(args[7]), getNumericVal(args[8]), getNumericVal(args[9]));
     return jsi::Value { (double)res };;
   }));
 
@@ -2939,7 +2948,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawshape_intersectsShape", HOSTFN("rawshape_intersectsShape", 6) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    auto res = w2c_rapier__wasm3d__bg_rawshape_intersectsShape(&nativeState->rootCtx, args[0].asNumber(), args[1].asNumber(), args[2].asNumber(), args[3].asNumber(), args[4].asNumber(), args[5].asNumber());
+    auto res = w2c_rapier__wasm3d__bg_rawshape_intersectsShape(&nativeState->rootCtx, getNumericVal(args[0]), getNumericVal(args[1]), getNumericVal(args[2]), getNumericVal(args[3]), getNumericVal(args[4]), getNumericVal(args[5]));
     return jsi::Value { (double)res };;
   }));
 
@@ -2948,7 +2957,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawshape_contactShape", HOSTFN("rawshape_contactShape", 7) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    auto res = w2c_rapier__wasm3d__bg_rawshape_contactShape(&nativeState->rootCtx, args[0].asNumber(), args[1].asNumber(), args[2].asNumber(), args[3].asNumber(), args[4].asNumber(), args[5].asNumber(), args[6].asNumber());
+    auto res = w2c_rapier__wasm3d__bg_rawshape_contactShape(&nativeState->rootCtx, getNumericVal(args[0]), getNumericVal(args[1]), getNumericVal(args[2]), getNumericVal(args[3]), getNumericVal(args[4]), getNumericVal(args[5]), getNumericVal(args[6]));
     return jsi::Value { (double)res };;
   }));
 
@@ -2957,7 +2966,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawshape_containsPoint", HOSTFN("rawshape_containsPoint", 4) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    auto res = w2c_rapier__wasm3d__bg_rawshape_containsPoint(&nativeState->rootCtx, args[0].asNumber(), args[1].asNumber(), args[2].asNumber(), args[3].asNumber());
+    auto res = w2c_rapier__wasm3d__bg_rawshape_containsPoint(&nativeState->rootCtx, getNumericVal(args[0]), getNumericVal(args[1]), getNumericVal(args[2]), getNumericVal(args[3]));
     return jsi::Value { (double)res };;
   }));
 
@@ -2966,7 +2975,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawshape_projectPoint", HOSTFN("rawshape_projectPoint", 5) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    auto res = w2c_rapier__wasm3d__bg_rawshape_projectPoint(&nativeState->rootCtx, args[0].asNumber(), args[1].asNumber(), args[2].asNumber(), args[3].asNumber(), args[4].asNumber());
+    auto res = w2c_rapier__wasm3d__bg_rawshape_projectPoint(&nativeState->rootCtx, getNumericVal(args[0]), getNumericVal(args[1]), getNumericVal(args[2]), getNumericVal(args[3]), getNumericVal(args[4]));
     return jsi::Value { (double)res };;
   }));
 
@@ -2975,7 +2984,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawshape_intersectsRay", HOSTFN("rawshape_intersectsRay", 6) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    auto res = w2c_rapier__wasm3d__bg_rawshape_intersectsRay(&nativeState->rootCtx, args[0].asNumber(), args[1].asNumber(), args[2].asNumber(), args[3].asNumber(), args[4].asNumber(), args[5].asNumber());
+    auto res = w2c_rapier__wasm3d__bg_rawshape_intersectsRay(&nativeState->rootCtx, getNumericVal(args[0]), getNumericVal(args[1]), getNumericVal(args[2]), getNumericVal(args[3]), getNumericVal(args[4]), getNumericVal(args[5]));
     return jsi::Value { (double)res };;
   }));
 
@@ -2984,7 +2993,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawshape_castRay", HOSTFN("rawshape_castRay", 7) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    auto res = w2c_rapier__wasm3d__bg_rawshape_castRay(&nativeState->rootCtx, args[0].asNumber(), args[1].asNumber(), args[2].asNumber(), args[3].asNumber(), args[4].asNumber(), args[5].asNumber(), args[6].asNumber());
+    auto res = w2c_rapier__wasm3d__bg_rawshape_castRay(&nativeState->rootCtx, getNumericVal(args[0]), getNumericVal(args[1]), getNumericVal(args[2]), getNumericVal(args[3]), getNumericVal(args[4]), getNumericVal(args[5]), getNumericVal(args[6]));
     return jsi::Value { (double)res };;
   }));
 
@@ -2993,7 +3002,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawshape_castRayAndGetNormal", HOSTFN("rawshape_castRayAndGetNormal", 7) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    auto res = w2c_rapier__wasm3d__bg_rawshape_castRayAndGetNormal(&nativeState->rootCtx, args[0].asNumber(), args[1].asNumber(), args[2].asNumber(), args[3].asNumber(), args[4].asNumber(), args[5].asNumber(), args[6].asNumber());
+    auto res = w2c_rapier__wasm3d__bg_rawshape_castRayAndGetNormal(&nativeState->rootCtx, getNumericVal(args[0]), getNumericVal(args[1]), getNumericVal(args[2]), getNumericVal(args[3]), getNumericVal(args[4]), getNumericVal(args[5]), getNumericVal(args[6]));
     return jsi::Value { (double)res };;
   }));
 
@@ -3002,7 +3011,7 @@ namespace facebook::react {
   exports.setProperty(rt, "__wbg_rawshapetoi_free", HOSTFN("__wbg_rawshapetoi_free", 1) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    w2c_rapier__wasm3d__bg_0x5F_wbg_rawshapetoi_free(&nativeState->rootCtx, args[0].asNumber());
+    w2c_rapier__wasm3d__bg_0x5F_wbg_rawshapetoi_free(&nativeState->rootCtx, getNumericVal(args[0]));
     return jsi::Value::undefined();
   }));
 
@@ -3011,7 +3020,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawshapetoi_witness1", HOSTFN("rawshapetoi_witness1", 1) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    auto res = w2c_rapier__wasm3d__bg_rawshapetoi_witness1(&nativeState->rootCtx, args[0].asNumber());
+    auto res = w2c_rapier__wasm3d__bg_rawshapetoi_witness1(&nativeState->rootCtx, getNumericVal(args[0]));
     return jsi::Value { (double)res };;
   }));
 
@@ -3020,7 +3029,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawshapetoi_normal1", HOSTFN("rawshapetoi_normal1", 1) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    auto res = w2c_rapier__wasm3d__bg_rawshapetoi_normal1(&nativeState->rootCtx, args[0].asNumber());
+    auto res = w2c_rapier__wasm3d__bg_rawshapetoi_normal1(&nativeState->rootCtx, getNumericVal(args[0]));
     return jsi::Value { (double)res };;
   }));
 
@@ -3029,7 +3038,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawshapetoi_normal2", HOSTFN("rawshapetoi_normal2", 1) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    auto res = w2c_rapier__wasm3d__bg_rawshapetoi_normal2(&nativeState->rootCtx, args[0].asNumber());
+    auto res = w2c_rapier__wasm3d__bg_rawshapetoi_normal2(&nativeState->rootCtx, getNumericVal(args[0]));
     return jsi::Value { (double)res };;
   }));
 
@@ -3038,7 +3047,7 @@ namespace facebook::react {
   exports.setProperty(rt, "__wbg_rawshapecollidertoi_free", HOSTFN("__wbg_rawshapecollidertoi_free", 1) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    w2c_rapier__wasm3d__bg_0x5F_wbg_rawshapecollidertoi_free(&nativeState->rootCtx, args[0].asNumber());
+    w2c_rapier__wasm3d__bg_0x5F_wbg_rawshapecollidertoi_free(&nativeState->rootCtx, getNumericVal(args[0]));
     return jsi::Value::undefined();
   }));
 
@@ -3047,7 +3056,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawshapecollidertoi_witness2", HOSTFN("rawshapecollidertoi_witness2", 1) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    auto res = w2c_rapier__wasm3d__bg_rawshapecollidertoi_witness2(&nativeState->rootCtx, args[0].asNumber());
+    auto res = w2c_rapier__wasm3d__bg_rawshapecollidertoi_witness2(&nativeState->rootCtx, getNumericVal(args[0]));
     return jsi::Value { (double)res };;
   }));
 
@@ -3056,7 +3065,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawshapecollidertoi_normal2", HOSTFN("rawshapecollidertoi_normal2", 1) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    auto res = w2c_rapier__wasm3d__bg_rawshapecollidertoi_normal2(&nativeState->rootCtx, args[0].asNumber());
+    auto res = w2c_rapier__wasm3d__bg_rawshapecollidertoi_normal2(&nativeState->rootCtx, getNumericVal(args[0]));
     return jsi::Value { (double)res };;
   }));
 
@@ -3065,7 +3074,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawrotation_new", HOSTFN("rawrotation_new", 4) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    auto res = w2c_rapier__wasm3d__bg_rawrotation_new(&nativeState->rootCtx, args[0].asNumber(), args[1].asNumber(), args[2].asNumber(), args[3].asNumber());
+    auto res = w2c_rapier__wasm3d__bg_rawrotation_new(&nativeState->rootCtx, getNumericVal(args[0]), getNumericVal(args[1]), getNumericVal(args[2]), getNumericVal(args[3]));
     return jsi::Value { (double)res };;
   }));
 
@@ -3083,7 +3092,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawrotation_y", HOSTFN("rawrotation_y", 1) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    auto res = w2c_rapier__wasm3d__bg_rawrotation_y(&nativeState->rootCtx, args[0].asNumber());
+    auto res = w2c_rapier__wasm3d__bg_rawrotation_y(&nativeState->rootCtx, getNumericVal(args[0]));
     return jsi::Value { (double)res };;
   }));
 
@@ -3092,7 +3101,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawrotation_w", HOSTFN("rawrotation_w", 1) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    auto res = w2c_rapier__wasm3d__bg_rawrotation_w(&nativeState->rootCtx, args[0].asNumber());
+    auto res = w2c_rapier__wasm3d__bg_rawrotation_w(&nativeState->rootCtx, getNumericVal(args[0]));
     return jsi::Value { (double)res };;
   }));
 
@@ -3110,7 +3119,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawvector_new", HOSTFN("rawvector_new", 3) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    auto res = w2c_rapier__wasm3d__bg_rawvector_new(&nativeState->rootCtx, args[0].asNumber(), args[1].asNumber(), args[2].asNumber());
+    auto res = w2c_rapier__wasm3d__bg_rawvector_new(&nativeState->rootCtx, getNumericVal(args[0]), getNumericVal(args[1]), getNumericVal(args[2]));
     return jsi::Value { (double)res };;
   }));
 
@@ -3119,7 +3128,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawvector_set_y", HOSTFN("rawvector_set_y", 2) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    w2c_rapier__wasm3d__bg_rawvector_set_y(&nativeState->rootCtx, args[0].asNumber(), args[1].asNumber());
+    w2c_rapier__wasm3d__bg_rawvector_set_y(&nativeState->rootCtx, getNumericVal(args[0]), getNumericVal(args[1]));
     return jsi::Value::undefined();
   }));
 
@@ -3128,7 +3137,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawvector_xyz", HOSTFN("rawvector_xyz", 1) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    auto res = w2c_rapier__wasm3d__bg_rawvector_xyz(&nativeState->rootCtx, args[0].asNumber());
+    auto res = w2c_rapier__wasm3d__bg_rawvector_xyz(&nativeState->rootCtx, getNumericVal(args[0]));
     return jsi::Value { (double)res };;
   }));
 
@@ -3137,7 +3146,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawvector_yxz", HOSTFN("rawvector_yxz", 1) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    auto res = w2c_rapier__wasm3d__bg_rawvector_yxz(&nativeState->rootCtx, args[0].asNumber());
+    auto res = w2c_rapier__wasm3d__bg_rawvector_yxz(&nativeState->rootCtx, getNumericVal(args[0]));
     return jsi::Value { (double)res };;
   }));
 
@@ -3146,7 +3155,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawvector_zxy", HOSTFN("rawvector_zxy", 1) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    auto res = w2c_rapier__wasm3d__bg_rawvector_zxy(&nativeState->rootCtx, args[0].asNumber());
+    auto res = w2c_rapier__wasm3d__bg_rawvector_zxy(&nativeState->rootCtx, getNumericVal(args[0]));
     return jsi::Value { (double)res };;
   }));
 
@@ -3155,7 +3164,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawvector_xzy", HOSTFN("rawvector_xzy", 1) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    auto res = w2c_rapier__wasm3d__bg_rawvector_xzy(&nativeState->rootCtx, args[0].asNumber());
+    auto res = w2c_rapier__wasm3d__bg_rawvector_xzy(&nativeState->rootCtx, getNumericVal(args[0]));
     return jsi::Value { (double)res };;
   }));
 
@@ -3164,7 +3173,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawvector_yzx", HOSTFN("rawvector_yzx", 1) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    auto res = w2c_rapier__wasm3d__bg_rawvector_yzx(&nativeState->rootCtx, args[0].asNumber());
+    auto res = w2c_rapier__wasm3d__bg_rawvector_yzx(&nativeState->rootCtx, getNumericVal(args[0]));
     return jsi::Value { (double)res };;
   }));
 
@@ -3173,7 +3182,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawvector_zyx", HOSTFN("rawvector_zyx", 1) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    auto res = w2c_rapier__wasm3d__bg_rawvector_zyx(&nativeState->rootCtx, args[0].asNumber());
+    auto res = w2c_rapier__wasm3d__bg_rawvector_zyx(&nativeState->rootCtx, getNumericVal(args[0]));
     return jsi::Value { (double)res };;
   }));
 
@@ -3182,7 +3191,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawsdpmatrix3_elements", HOSTFN("rawsdpmatrix3_elements", 1) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    auto res = w2c_rapier__wasm3d__bg_rawsdpmatrix3_elements(&nativeState->rootCtx, args[0].asNumber());
+    auto res = w2c_rapier__wasm3d__bg_rawsdpmatrix3_elements(&nativeState->rootCtx, getNumericVal(args[0]));
     return jsi::Value { (double)res };;
   }));
 
@@ -3191,7 +3200,7 @@ namespace facebook::react {
   exports.setProperty(rt, "__wbg_rawdebugrenderpipeline_free", HOSTFN("__wbg_rawdebugrenderpipeline_free", 1) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    w2c_rapier__wasm3d__bg_0x5F_wbg_rawdebugrenderpipeline_free(&nativeState->rootCtx, args[0].asNumber());
+    w2c_rapier__wasm3d__bg_0x5F_wbg_rawdebugrenderpipeline_free(&nativeState->rootCtx, getNumericVal(args[0]));
     return jsi::Value::undefined();
   }));
 
@@ -3209,7 +3218,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawdebugrenderpipeline_vertices", HOSTFN("rawdebugrenderpipeline_vertices", 1) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    auto res = w2c_rapier__wasm3d__bg_rawdebugrenderpipeline_vertices(&nativeState->rootCtx, args[0].asNumber());
+    auto res = w2c_rapier__wasm3d__bg_rawdebugrenderpipeline_vertices(&nativeState->rootCtx, getNumericVal(args[0]));
     return jsi::Value { (double)res };;
   }));
 
@@ -3218,7 +3227,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawdebugrenderpipeline_colors", HOSTFN("rawdebugrenderpipeline_colors", 1) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    auto res = w2c_rapier__wasm3d__bg_rawdebugrenderpipeline_colors(&nativeState->rootCtx, args[0].asNumber());
+    auto res = w2c_rapier__wasm3d__bg_rawdebugrenderpipeline_colors(&nativeState->rootCtx, getNumericVal(args[0]));
     return jsi::Value { (double)res };;
   }));
 
@@ -3227,7 +3236,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawdebugrenderpipeline_render", HOSTFN("rawdebugrenderpipeline_render", 6) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    w2c_rapier__wasm3d__bg_rawdebugrenderpipeline_render(&nativeState->rootCtx, args[0].asNumber(), args[1].asNumber(), args[2].asNumber(), args[3].asNumber(), args[4].asNumber(), args[5].asNumber());
+    w2c_rapier__wasm3d__bg_rawdebugrenderpipeline_render(&nativeState->rootCtx, getNumericVal(args[0]), getNumericVal(args[1]), getNumericVal(args[2]), getNumericVal(args[3]), getNumericVal(args[4]), getNumericVal(args[5]));
     return jsi::Value::undefined();
   }));
 
@@ -3236,7 +3245,7 @@ namespace facebook::react {
   exports.setProperty(rt, "__wbg_raweventqueue_free", HOSTFN("__wbg_raweventqueue_free", 1) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    w2c_rapier__wasm3d__bg_0x5F_wbg_raweventqueue_free(&nativeState->rootCtx, args[0].asNumber());
+    w2c_rapier__wasm3d__bg_0x5F_wbg_raweventqueue_free(&nativeState->rootCtx, getNumericVal(args[0]));
     return jsi::Value::undefined();
   }));
 
@@ -3245,7 +3254,7 @@ namespace facebook::react {
   exports.setProperty(rt, "__wbg_rawcontactforceevent_free", HOSTFN("__wbg_rawcontactforceevent_free", 1) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    w2c_rapier__wasm3d__bg_0x5F_wbg_rawcontactforceevent_free(&nativeState->rootCtx, args[0].asNumber());
+    w2c_rapier__wasm3d__bg_0x5F_wbg_rawcontactforceevent_free(&nativeState->rootCtx, getNumericVal(args[0]));
     return jsi::Value::undefined();
   }));
 
@@ -3254,7 +3263,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawcontactforceevent_collider2", HOSTFN("rawcontactforceevent_collider2", 1) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    auto res = w2c_rapier__wasm3d__bg_rawcontactforceevent_collider2(&nativeState->rootCtx, args[0].asNumber());
+    auto res = w2c_rapier__wasm3d__bg_rawcontactforceevent_collider2(&nativeState->rootCtx, getNumericVal(args[0]));
     return jsi::Value { (double)res };;
   }));
 
@@ -3263,7 +3272,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawcontactforceevent_total_force", HOSTFN("rawcontactforceevent_total_force", 1) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    auto res = w2c_rapier__wasm3d__bg_rawcontactforceevent_total_force(&nativeState->rootCtx, args[0].asNumber());
+    auto res = w2c_rapier__wasm3d__bg_rawcontactforceevent_total_force(&nativeState->rootCtx, getNumericVal(args[0]));
     return jsi::Value { (double)res };;
   }));
 
@@ -3272,7 +3281,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawcontactforceevent_total_force_magnitude", HOSTFN("rawcontactforceevent_total_force_magnitude", 1) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    auto res = w2c_rapier__wasm3d__bg_rawcontactforceevent_total_force_magnitude(&nativeState->rootCtx, args[0].asNumber());
+    auto res = w2c_rapier__wasm3d__bg_rawcontactforceevent_total_force_magnitude(&nativeState->rootCtx, getNumericVal(args[0]));
     return jsi::Value { (double)res };;
   }));
 
@@ -3281,7 +3290,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawcontactforceevent_max_force_direction", HOSTFN("rawcontactforceevent_max_force_direction", 1) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    auto res = w2c_rapier__wasm3d__bg_rawcontactforceevent_max_force_direction(&nativeState->rootCtx, args[0].asNumber());
+    auto res = w2c_rapier__wasm3d__bg_rawcontactforceevent_max_force_direction(&nativeState->rootCtx, getNumericVal(args[0]));
     return jsi::Value { (double)res };;
   }));
 
@@ -3290,7 +3299,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawcontactforceevent_max_force_magnitude", HOSTFN("rawcontactforceevent_max_force_magnitude", 1) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    auto res = w2c_rapier__wasm3d__bg_rawcontactforceevent_max_force_magnitude(&nativeState->rootCtx, args[0].asNumber());
+    auto res = w2c_rapier__wasm3d__bg_rawcontactforceevent_max_force_magnitude(&nativeState->rootCtx, getNumericVal(args[0]));
     return jsi::Value { (double)res };;
   }));
 
@@ -3299,7 +3308,7 @@ namespace facebook::react {
   exports.setProperty(rt, "raweventqueue_new", HOSTFN("raweventqueue_new", 1) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    auto res = w2c_rapier__wasm3d__bg_raweventqueue_new(&nativeState->rootCtx, args[0].asNumber());
+    auto res = w2c_rapier__wasm3d__bg_raweventqueue_new(&nativeState->rootCtx, getNumericVal(args[0]));
     return jsi::Value { (double)res };;
   }));
 
@@ -3308,7 +3317,7 @@ namespace facebook::react {
   exports.setProperty(rt, "raweventqueue_drainCollisionEvents", HOSTFN("raweventqueue_drainCollisionEvents", 2) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    w2c_rapier__wasm3d__bg_raweventqueue_drainCollisionEvents(&nativeState->rootCtx, args[0].asNumber(), args[1].asNumber());
+    w2c_rapier__wasm3d__bg_raweventqueue_drainCollisionEvents(&nativeState->rootCtx, getNumericVal(args[0]), getNumericVal(args[1]));
     return jsi::Value::undefined();
   }));
 
@@ -3317,7 +3326,7 @@ namespace facebook::react {
   exports.setProperty(rt, "raweventqueue_drainContactForceEvents", HOSTFN("raweventqueue_drainContactForceEvents", 2) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    w2c_rapier__wasm3d__bg_raweventqueue_drainContactForceEvents(&nativeState->rootCtx, args[0].asNumber(), args[1].asNumber());
+    w2c_rapier__wasm3d__bg_raweventqueue_drainContactForceEvents(&nativeState->rootCtx, getNumericVal(args[0]), getNumericVal(args[1]));
     return jsi::Value::undefined();
   }));
 
@@ -3326,7 +3335,7 @@ namespace facebook::react {
   exports.setProperty(rt, "raweventqueue_clear", HOSTFN("raweventqueue_clear", 1) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    w2c_rapier__wasm3d__bg_raweventqueue_clear(&nativeState->rootCtx, args[0].asNumber());
+    w2c_rapier__wasm3d__bg_raweventqueue_clear(&nativeState->rootCtx, getNumericVal(args[0]));
     return jsi::Value::undefined();
   }));
 
@@ -3335,7 +3344,7 @@ namespace facebook::react {
   exports.setProperty(rt, "__wbg_rawphysicspipeline_free", HOSTFN("__wbg_rawphysicspipeline_free", 1) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    w2c_rapier__wasm3d__bg_0x5F_wbg_rawphysicspipeline_free(&nativeState->rootCtx, args[0].asNumber());
+    w2c_rapier__wasm3d__bg_0x5F_wbg_rawphysicspipeline_free(&nativeState->rootCtx, getNumericVal(args[0]));
     return jsi::Value::undefined();
   }));
 
@@ -3353,7 +3362,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawphysicspipeline_step", HOSTFN("rawphysicspipeline_step", 11) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    w2c_rapier__wasm3d__bg_rawphysicspipeline_step(&nativeState->rootCtx, args[0].asNumber(), args[1].asNumber(), args[2].asNumber(), args[3].asNumber(), args[4].asNumber(), args[5].asNumber(), args[6].asNumber(), args[7].asNumber(), args[8].asNumber(), args[9].asNumber(), args[10].asNumber());
+    w2c_rapier__wasm3d__bg_rawphysicspipeline_step(&nativeState->rootCtx, getNumericVal(args[0]), getNumericVal(args[1]), getNumericVal(args[2]), getNumericVal(args[3]), getNumericVal(args[4]), getNumericVal(args[5]), getNumericVal(args[6]), getNumericVal(args[7]), getNumericVal(args[8]), getNumericVal(args[9]), getNumericVal(args[10]));
     return jsi::Value::undefined();
   }));
 
@@ -3362,7 +3371,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawphysicspipeline_stepWithEvents", HOSTFN("rawphysicspipeline_stepWithEvents", 15) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    w2c_rapier__wasm3d__bg_rawphysicspipeline_stepWithEvents(&nativeState->rootCtx, args[0].asNumber(), args[1].asNumber(), args[2].asNumber(), args[3].asNumber(), args[4].asNumber(), args[5].asNumber(), args[6].asNumber(), args[7].asNumber(), args[8].asNumber(), args[9].asNumber(), args[10].asNumber(), args[11].asNumber(), args[12].asNumber(), args[13].asNumber(), args[14].asNumber());
+    w2c_rapier__wasm3d__bg_rawphysicspipeline_stepWithEvents(&nativeState->rootCtx, getNumericVal(args[0]), getNumericVal(args[1]), getNumericVal(args[2]), getNumericVal(args[3]), getNumericVal(args[4]), getNumericVal(args[5]), getNumericVal(args[6]), getNumericVal(args[7]), getNumericVal(args[8]), getNumericVal(args[9]), getNumericVal(args[10]), getNumericVal(args[11]), getNumericVal(args[12]), getNumericVal(args[13]), getNumericVal(args[14]));
     return jsi::Value::undefined();
   }));
 
@@ -3371,7 +3380,7 @@ namespace facebook::react {
   exports.setProperty(rt, "__wbg_rawquerypipeline_free", HOSTFN("__wbg_rawquerypipeline_free", 1) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    w2c_rapier__wasm3d__bg_0x5F_wbg_rawquerypipeline_free(&nativeState->rootCtx, args[0].asNumber());
+    w2c_rapier__wasm3d__bg_0x5F_wbg_rawquerypipeline_free(&nativeState->rootCtx, getNumericVal(args[0]));
     return jsi::Value::undefined();
   }));
 
@@ -3389,7 +3398,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawquerypipeline_update", HOSTFN("rawquerypipeline_update", 3) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    w2c_rapier__wasm3d__bg_rawquerypipeline_update(&nativeState->rootCtx, args[0].asNumber(), args[1].asNumber(), args[2].asNumber());
+    w2c_rapier__wasm3d__bg_rawquerypipeline_update(&nativeState->rootCtx, getNumericVal(args[0]), getNumericVal(args[1]), getNumericVal(args[2]));
     return jsi::Value::undefined();
   }));
 
@@ -3398,7 +3407,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawquerypipeline_castRay", HOSTFN("rawquerypipeline_castRay", 15) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    auto res = w2c_rapier__wasm3d__bg_rawquerypipeline_castRay(&nativeState->rootCtx, args[0].asNumber(), args[1].asNumber(), args[2].asNumber(), args[3].asNumber(), args[4].asNumber(), args[5].asNumber(), args[6].asNumber(), args[7].asNumber(), args[8].asNumber(), args[9].asNumber(), args[10].asNumber(), args[11].asNumber(), args[12].asNumber(), args[13].asNumber(), args[14].asNumber());
+    auto res = w2c_rapier__wasm3d__bg_rawquerypipeline_castRay(&nativeState->rootCtx, getNumericVal(args[0]), getNumericVal(args[1]), getNumericVal(args[2]), getNumericVal(args[3]), getNumericVal(args[4]), getNumericVal(args[5]), getNumericVal(args[6]), getNumericVal(args[7]), getNumericVal(args[8]), getNumericVal(args[9]), getNumericVal(args[10]), getNumericVal(args[11]), getNumericVal(args[12]), getNumericVal(args[13]), getNumericVal(args[14]));
     return jsi::Value { (double)res };;
   }));
 
@@ -3407,7 +3416,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawquerypipeline_castRayAndGetNormal", HOSTFN("rawquerypipeline_castRayAndGetNormal", 15) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    auto res = w2c_rapier__wasm3d__bg_rawquerypipeline_castRayAndGetNormal(&nativeState->rootCtx, args[0].asNumber(), args[1].asNumber(), args[2].asNumber(), args[3].asNumber(), args[4].asNumber(), args[5].asNumber(), args[6].asNumber(), args[7].asNumber(), args[8].asNumber(), args[9].asNumber(), args[10].asNumber(), args[11].asNumber(), args[12].asNumber(), args[13].asNumber(), args[14].asNumber());
+    auto res = w2c_rapier__wasm3d__bg_rawquerypipeline_castRayAndGetNormal(&nativeState->rootCtx, getNumericVal(args[0]), getNumericVal(args[1]), getNumericVal(args[2]), getNumericVal(args[3]), getNumericVal(args[4]), getNumericVal(args[5]), getNumericVal(args[6]), getNumericVal(args[7]), getNumericVal(args[8]), getNumericVal(args[9]), getNumericVal(args[10]), getNumericVal(args[11]), getNumericVal(args[12]), getNumericVal(args[13]), getNumericVal(args[14]));
     return jsi::Value { (double)res };;
   }));
 
@@ -3416,7 +3425,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawquerypipeline_intersectionsWithRay", HOSTFN("rawquerypipeline_intersectionsWithRay", 16) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    w2c_rapier__wasm3d__bg_rawquerypipeline_intersectionsWithRay(&nativeState->rootCtx, args[0].asNumber(), args[1].asNumber(), args[2].asNumber(), args[3].asNumber(), args[4].asNumber(), args[5].asNumber(), args[6].asNumber(), args[7].asNumber(), args[8].asNumber(), args[9].asNumber(), args[10].asNumber(), args[11].asNumber(), args[12].asNumber(), args[13].asNumber(), args[14].asNumber(), args[15].asNumber());
+    w2c_rapier__wasm3d__bg_rawquerypipeline_intersectionsWithRay(&nativeState->rootCtx, getNumericVal(args[0]), getNumericVal(args[1]), getNumericVal(args[2]), getNumericVal(args[3]), getNumericVal(args[4]), getNumericVal(args[5]), getNumericVal(args[6]), getNumericVal(args[7]), getNumericVal(args[8]), getNumericVal(args[9]), getNumericVal(args[10]), getNumericVal(args[11]), getNumericVal(args[12]), getNumericVal(args[13]), getNumericVal(args[14]), getNumericVal(args[15]));
     return jsi::Value::undefined();
   }));
 
@@ -3425,7 +3434,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawquerypipeline_intersectionWithShape", HOSTFN("rawquerypipeline_intersectionWithShape", 15) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    w2c_rapier__wasm3d__bg_rawquerypipeline_intersectionWithShape(&nativeState->rootCtx, args[0].asNumber(), args[1].asNumber(), args[2].asNumber(), args[3].asNumber(), args[4].asNumber(), args[5].asNumber(), args[6].asNumber(), args[7].asNumber(), args[8].asNumber(), args[9].asNumber(), args[10].asNumber(), args[11].asNumber(), args[12].asNumber(), args[13].asNumber(), args[14].asNumber());
+    w2c_rapier__wasm3d__bg_rawquerypipeline_intersectionWithShape(&nativeState->rootCtx, getNumericVal(args[0]), getNumericVal(args[1]), getNumericVal(args[2]), getNumericVal(args[3]), getNumericVal(args[4]), getNumericVal(args[5]), getNumericVal(args[6]), getNumericVal(args[7]), getNumericVal(args[8]), getNumericVal(args[9]), getNumericVal(args[10]), getNumericVal(args[11]), getNumericVal(args[12]), getNumericVal(args[13]), getNumericVal(args[14]));
     return jsi::Value::undefined();
   }));
 
@@ -3434,7 +3443,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawquerypipeline_projectPoint", HOSTFN("rawquerypipeline_projectPoint", 13) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    auto res = w2c_rapier__wasm3d__bg_rawquerypipeline_projectPoint(&nativeState->rootCtx, args[0].asNumber(), args[1].asNumber(), args[2].asNumber(), args[3].asNumber(), args[4].asNumber(), args[5].asNumber(), args[6].asNumber(), args[7].asNumber(), args[8].asNumber(), args[9].asNumber(), args[10].asNumber(), args[11].asNumber(), args[12].asNumber());
+    auto res = w2c_rapier__wasm3d__bg_rawquerypipeline_projectPoint(&nativeState->rootCtx, getNumericVal(args[0]), getNumericVal(args[1]), getNumericVal(args[2]), getNumericVal(args[3]), getNumericVal(args[4]), getNumericVal(args[5]), getNumericVal(args[6]), getNumericVal(args[7]), getNumericVal(args[8]), getNumericVal(args[9]), getNumericVal(args[10]), getNumericVal(args[11]), getNumericVal(args[12]));
     return jsi::Value { (double)res };;
   }));
 
@@ -3443,7 +3452,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawquerypipeline_projectPointAndGetFeature", HOSTFN("rawquerypipeline_projectPointAndGetFeature", 12) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    auto res = w2c_rapier__wasm3d__bg_rawquerypipeline_projectPointAndGetFeature(&nativeState->rootCtx, args[0].asNumber(), args[1].asNumber(), args[2].asNumber(), args[3].asNumber(), args[4].asNumber(), args[5].asNumber(), args[6].asNumber(), args[7].asNumber(), args[8].asNumber(), args[9].asNumber(), args[10].asNumber(), args[11].asNumber());
+    auto res = w2c_rapier__wasm3d__bg_rawquerypipeline_projectPointAndGetFeature(&nativeState->rootCtx, getNumericVal(args[0]), getNumericVal(args[1]), getNumericVal(args[2]), getNumericVal(args[3]), getNumericVal(args[4]), getNumericVal(args[5]), getNumericVal(args[6]), getNumericVal(args[7]), getNumericVal(args[8]), getNumericVal(args[9]), getNumericVal(args[10]), getNumericVal(args[11]));
     return jsi::Value { (double)res };;
   }));
 
@@ -3452,7 +3461,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawquerypipeline_intersectionsWithPoint", HOSTFN("rawquerypipeline_intersectionsWithPoint", 13) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    w2c_rapier__wasm3d__bg_rawquerypipeline_intersectionsWithPoint(&nativeState->rootCtx, args[0].asNumber(), args[1].asNumber(), args[2].asNumber(), args[3].asNumber(), args[4].asNumber(), args[5].asNumber(), args[6].asNumber(), args[7].asNumber(), args[8].asNumber(), args[9].asNumber(), args[10].asNumber(), args[11].asNumber(), args[12].asNumber());
+    w2c_rapier__wasm3d__bg_rawquerypipeline_intersectionsWithPoint(&nativeState->rootCtx, getNumericVal(args[0]), getNumericVal(args[1]), getNumericVal(args[2]), getNumericVal(args[3]), getNumericVal(args[4]), getNumericVal(args[5]), getNumericVal(args[6]), getNumericVal(args[7]), getNumericVal(args[8]), getNumericVal(args[9]), getNumericVal(args[10]), getNumericVal(args[11]), getNumericVal(args[12]));
     return jsi::Value::undefined();
   }));
 
@@ -3461,7 +3470,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawquerypipeline_castShape", HOSTFN("rawquerypipeline_castShape", 17) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    auto res = w2c_rapier__wasm3d__bg_rawquerypipeline_castShape(&nativeState->rootCtx, args[0].asNumber(), args[1].asNumber(), args[2].asNumber(), args[3].asNumber(), args[4].asNumber(), args[5].asNumber(), args[6].asNumber(), args[7].asNumber(), args[8].asNumber(), args[9].asNumber(), args[10].asNumber(), args[11].asNumber(), args[12].asNumber(), args[13].asNumber(), args[14].asNumber(), args[15].asNumber(), args[16].asNumber());
+    auto res = w2c_rapier__wasm3d__bg_rawquerypipeline_castShape(&nativeState->rootCtx, getNumericVal(args[0]), getNumericVal(args[1]), getNumericVal(args[2]), getNumericVal(args[3]), getNumericVal(args[4]), getNumericVal(args[5]), getNumericVal(args[6]), getNumericVal(args[7]), getNumericVal(args[8]), getNumericVal(args[9]), getNumericVal(args[10]), getNumericVal(args[11]), getNumericVal(args[12]), getNumericVal(args[13]), getNumericVal(args[14]), getNumericVal(args[15]), getNumericVal(args[16]));
     return jsi::Value { (double)res };;
   }));
 
@@ -3470,7 +3479,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawquerypipeline_intersectionsWithShape", HOSTFN("rawquerypipeline_intersectionsWithShape", 15) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    w2c_rapier__wasm3d__bg_rawquerypipeline_intersectionsWithShape(&nativeState->rootCtx, args[0].asNumber(), args[1].asNumber(), args[2].asNumber(), args[3].asNumber(), args[4].asNumber(), args[5].asNumber(), args[6].asNumber(), args[7].asNumber(), args[8].asNumber(), args[9].asNumber(), args[10].asNumber(), args[11].asNumber(), args[12].asNumber(), args[13].asNumber(), args[14].asNumber());
+    w2c_rapier__wasm3d__bg_rawquerypipeline_intersectionsWithShape(&nativeState->rootCtx, getNumericVal(args[0]), getNumericVal(args[1]), getNumericVal(args[2]), getNumericVal(args[3]), getNumericVal(args[4]), getNumericVal(args[5]), getNumericVal(args[6]), getNumericVal(args[7]), getNumericVal(args[8]), getNumericVal(args[9]), getNumericVal(args[10]), getNumericVal(args[11]), getNumericVal(args[12]), getNumericVal(args[13]), getNumericVal(args[14]));
     return jsi::Value::undefined();
   }));
 
@@ -3479,7 +3488,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawquerypipeline_collidersWithAabbIntersectingAabb", HOSTFN("rawquerypipeline_collidersWithAabbIntersectingAabb", 4) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    w2c_rapier__wasm3d__bg_rawquerypipeline_collidersWithAabbIntersectingAabb(&nativeState->rootCtx, args[0].asNumber(), args[1].asNumber(), args[2].asNumber(), args[3].asNumber());
+    w2c_rapier__wasm3d__bg_rawquerypipeline_collidersWithAabbIntersectingAabb(&nativeState->rootCtx, getNumericVal(args[0]), getNumericVal(args[1]), getNumericVal(args[2]), getNumericVal(args[3]));
     return jsi::Value::undefined();
   }));
 
@@ -3488,7 +3497,7 @@ namespace facebook::react {
   exports.setProperty(rt, "__wbg_rawdeserializedworld_free", HOSTFN("__wbg_rawdeserializedworld_free", 1) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    w2c_rapier__wasm3d__bg_0x5F_wbg_rawdeserializedworld_free(&nativeState->rootCtx, args[0].asNumber());
+    w2c_rapier__wasm3d__bg_0x5F_wbg_rawdeserializedworld_free(&nativeState->rootCtx, getNumericVal(args[0]));
     return jsi::Value::undefined();
   }));
 
@@ -3497,7 +3506,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawdeserializedworld_takeGravity", HOSTFN("rawdeserializedworld_takeGravity", 1) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    auto res = w2c_rapier__wasm3d__bg_rawdeserializedworld_takeGravity(&nativeState->rootCtx, args[0].asNumber());
+    auto res = w2c_rapier__wasm3d__bg_rawdeserializedworld_takeGravity(&nativeState->rootCtx, getNumericVal(args[0]));
     return jsi::Value { (double)res };;
   }));
 
@@ -3506,7 +3515,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawdeserializedworld_takeIntegrationParameters", HOSTFN("rawdeserializedworld_takeIntegrationParameters", 1) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    auto res = w2c_rapier__wasm3d__bg_rawdeserializedworld_takeIntegrationParameters(&nativeState->rootCtx, args[0].asNumber());
+    auto res = w2c_rapier__wasm3d__bg_rawdeserializedworld_takeIntegrationParameters(&nativeState->rootCtx, getNumericVal(args[0]));
     return jsi::Value { (double)res };;
   }));
 
@@ -3515,7 +3524,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawdeserializedworld_takeIslandManager", HOSTFN("rawdeserializedworld_takeIslandManager", 1) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    auto res = w2c_rapier__wasm3d__bg_rawdeserializedworld_takeIslandManager(&nativeState->rootCtx, args[0].asNumber());
+    auto res = w2c_rapier__wasm3d__bg_rawdeserializedworld_takeIslandManager(&nativeState->rootCtx, getNumericVal(args[0]));
     return jsi::Value { (double)res };;
   }));
 
@@ -3524,7 +3533,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawdeserializedworld_takeBroadPhase", HOSTFN("rawdeserializedworld_takeBroadPhase", 1) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    auto res = w2c_rapier__wasm3d__bg_rawdeserializedworld_takeBroadPhase(&nativeState->rootCtx, args[0].asNumber());
+    auto res = w2c_rapier__wasm3d__bg_rawdeserializedworld_takeBroadPhase(&nativeState->rootCtx, getNumericVal(args[0]));
     return jsi::Value { (double)res };;
   }));
 
@@ -3533,7 +3542,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawdeserializedworld_takeNarrowPhase", HOSTFN("rawdeserializedworld_takeNarrowPhase", 1) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    auto res = w2c_rapier__wasm3d__bg_rawdeserializedworld_takeNarrowPhase(&nativeState->rootCtx, args[0].asNumber());
+    auto res = w2c_rapier__wasm3d__bg_rawdeserializedworld_takeNarrowPhase(&nativeState->rootCtx, getNumericVal(args[0]));
     return jsi::Value { (double)res };;
   }));
 
@@ -3542,7 +3551,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawdeserializedworld_takeBodies", HOSTFN("rawdeserializedworld_takeBodies", 1) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    auto res = w2c_rapier__wasm3d__bg_rawdeserializedworld_takeBodies(&nativeState->rootCtx, args[0].asNumber());
+    auto res = w2c_rapier__wasm3d__bg_rawdeserializedworld_takeBodies(&nativeState->rootCtx, getNumericVal(args[0]));
     return jsi::Value { (double)res };;
   }));
 
@@ -3551,7 +3560,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawdeserializedworld_takeColliders", HOSTFN("rawdeserializedworld_takeColliders", 1) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    auto res = w2c_rapier__wasm3d__bg_rawdeserializedworld_takeColliders(&nativeState->rootCtx, args[0].asNumber());
+    auto res = w2c_rapier__wasm3d__bg_rawdeserializedworld_takeColliders(&nativeState->rootCtx, getNumericVal(args[0]));
     return jsi::Value { (double)res };;
   }));
 
@@ -3560,7 +3569,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawdeserializedworld_takeImpulseJoints", HOSTFN("rawdeserializedworld_takeImpulseJoints", 1) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    auto res = w2c_rapier__wasm3d__bg_rawdeserializedworld_takeImpulseJoints(&nativeState->rootCtx, args[0].asNumber());
+    auto res = w2c_rapier__wasm3d__bg_rawdeserializedworld_takeImpulseJoints(&nativeState->rootCtx, getNumericVal(args[0]));
     return jsi::Value { (double)res };;
   }));
 
@@ -3569,7 +3578,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawdeserializedworld_takeMultibodyJoints", HOSTFN("rawdeserializedworld_takeMultibodyJoints", 1) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    auto res = w2c_rapier__wasm3d__bg_rawdeserializedworld_takeMultibodyJoints(&nativeState->rootCtx, args[0].asNumber());
+    auto res = w2c_rapier__wasm3d__bg_rawdeserializedworld_takeMultibodyJoints(&nativeState->rootCtx, getNumericVal(args[0]));
     return jsi::Value { (double)res };;
   }));
 
@@ -3578,7 +3587,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawserializationpipeline_serializeAll", HOSTFN("rawserializationpipeline_serializeAll", 10) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    auto res = w2c_rapier__wasm3d__bg_rawserializationpipeline_serializeAll(&nativeState->rootCtx, args[0].asNumber(), args[1].asNumber(), args[2].asNumber(), args[3].asNumber(), args[4].asNumber(), args[5].asNumber(), args[6].asNumber(), args[7].asNumber(), args[8].asNumber(), args[9].asNumber());
+    auto res = w2c_rapier__wasm3d__bg_rawserializationpipeline_serializeAll(&nativeState->rootCtx, getNumericVal(args[0]), getNumericVal(args[1]), getNumericVal(args[2]), getNumericVal(args[3]), getNumericVal(args[4]), getNumericVal(args[5]), getNumericVal(args[6]), getNumericVal(args[7]), getNumericVal(args[8]), getNumericVal(args[9]));
     return jsi::Value { (double)res };;
   }));
 
@@ -3587,7 +3596,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawserializationpipeline_deserializeAll", HOSTFN("rawserializationpipeline_deserializeAll", 2) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    auto res = w2c_rapier__wasm3d__bg_rawserializationpipeline_deserializeAll(&nativeState->rootCtx, args[0].asNumber(), args[1].asNumber());
+    auto res = w2c_rapier__wasm3d__bg_rawserializationpipeline_deserializeAll(&nativeState->rootCtx, getNumericVal(args[0]), getNumericVal(args[1]));
     return jsi::Value { (double)res };;
   }));
 
@@ -3596,7 +3605,7 @@ namespace facebook::react {
   exports.setProperty(rt, "__wbg_rawcontactpair_free", HOSTFN("__wbg_rawcontactpair_free", 1) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    w2c_rapier__wasm3d__bg_0x5F_wbg_rawcontactpair_free(&nativeState->rootCtx, args[0].asNumber());
+    w2c_rapier__wasm3d__bg_0x5F_wbg_rawcontactpair_free(&nativeState->rootCtx, getNumericVal(args[0]));
     return jsi::Value::undefined();
   }));
 
@@ -3605,7 +3614,7 @@ namespace facebook::react {
   exports.setProperty(rt, "__wbg_rawraycolliderintersection_free", HOSTFN("__wbg_rawraycolliderintersection_free", 1) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    w2c_rapier__wasm3d__bg_0x5F_wbg_rawraycolliderintersection_free(&nativeState->rootCtx, args[0].asNumber());
+    w2c_rapier__wasm3d__bg_0x5F_wbg_rawraycolliderintersection_free(&nativeState->rootCtx, getNumericVal(args[0]));
     return jsi::Value::undefined();
   }));
 
@@ -3614,7 +3623,7 @@ namespace facebook::react {
   exports.setProperty(rt, "__wbg_rawrotation_free", HOSTFN("__wbg_rawrotation_free", 1) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    w2c_rapier__wasm3d__bg_0x5F_wbg_rawrotation_free(&nativeState->rootCtx, args[0].asNumber());
+    w2c_rapier__wasm3d__bg_0x5F_wbg_rawrotation_free(&nativeState->rootCtx, getNumericVal(args[0]));
     return jsi::Value::undefined();
   }));
 
@@ -3623,7 +3632,7 @@ namespace facebook::react {
   exports.setProperty(rt, "__wbg_rawvector_free", HOSTFN("__wbg_rawvector_free", 1) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    w2c_rapier__wasm3d__bg_0x5F_wbg_rawvector_free(&nativeState->rootCtx, args[0].asNumber());
+    w2c_rapier__wasm3d__bg_0x5F_wbg_rawvector_free(&nativeState->rootCtx, getNumericVal(args[0]));
     return jsi::Value::undefined();
   }));
 
@@ -3632,7 +3641,7 @@ namespace facebook::react {
   exports.setProperty(rt, "__wbg_rawsdpmatrix3_free", HOSTFN("__wbg_rawsdpmatrix3_free", 1) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    w2c_rapier__wasm3d__bg_0x5F_wbg_rawsdpmatrix3_free(&nativeState->rootCtx, args[0].asNumber());
+    w2c_rapier__wasm3d__bg_0x5F_wbg_rawsdpmatrix3_free(&nativeState->rootCtx, getNumericVal(args[0]));
     return jsi::Value::undefined();
   }));
 
@@ -3641,7 +3650,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawvector_set_x", HOSTFN("rawvector_set_x", 2) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    w2c_rapier__wasm3d__bg_rawvector_set_x(&nativeState->rootCtx, args[0].asNumber(), args[1].asNumber());
+    w2c_rapier__wasm3d__bg_rawvector_set_x(&nativeState->rootCtx, getNumericVal(args[0]), getNumericVal(args[1]));
     return jsi::Value::undefined();
   }));
 
@@ -3650,7 +3659,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawvector_set_z", HOSTFN("rawvector_set_z", 2) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    w2c_rapier__wasm3d__bg_rawvector_set_z(&nativeState->rootCtx, args[0].asNumber(), args[1].asNumber());
+    w2c_rapier__wasm3d__bg_rawvector_set_z(&nativeState->rootCtx, getNumericVal(args[0]), getNumericVal(args[1]));
     return jsi::Value::undefined();
   }));
 
@@ -3659,7 +3668,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawpointprojection_isInside", HOSTFN("rawpointprojection_isInside", 1) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    auto res = w2c_rapier__wasm3d__bg_rawpointprojection_isInside(&nativeState->rootCtx, args[0].asNumber());
+    auto res = w2c_rapier__wasm3d__bg_rawpointprojection_isInside(&nativeState->rootCtx, getNumericVal(args[0]));
     return jsi::Value { (double)res };;
   }));
 
@@ -3668,7 +3677,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawpointcolliderprojection_isInside", HOSTFN("rawpointcolliderprojection_isInside", 1) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    auto res = w2c_rapier__wasm3d__bg_rawpointcolliderprojection_isInside(&nativeState->rootCtx, args[0].asNumber());
+    auto res = w2c_rapier__wasm3d__bg_rawpointcolliderprojection_isInside(&nativeState->rootCtx, getNumericVal(args[0]));
     return jsi::Value { (double)res };;
   }));
 
@@ -3677,7 +3686,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawcolliderset_isHandleValid", HOSTFN("rawcolliderset_isHandleValid", 2) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    auto res = w2c_rapier__wasm3d__bg_rawcolliderset_isHandleValid(&nativeState->rootCtx, args[0].asNumber(), args[1].asNumber());
+    auto res = w2c_rapier__wasm3d__bg_rawcolliderset_isHandleValid(&nativeState->rootCtx, getNumericVal(args[0]), getNumericVal(args[1]));
     return jsi::Value { (double)res };;
   }));
 
@@ -3686,7 +3695,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawshapecontact_point1", HOSTFN("rawshapecontact_point1", 1) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    auto res = w2c_rapier__wasm3d__bg_rawshapecontact_point1(&nativeState->rootCtx, args[0].asNumber());
+    auto res = w2c_rapier__wasm3d__bg_rawshapecontact_point1(&nativeState->rootCtx, getNumericVal(args[0]));
     return jsi::Value { (double)res };;
   }));
 
@@ -3695,7 +3704,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawshapecontact_point2", HOSTFN("rawshapecontact_point2", 1) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    auto res = w2c_rapier__wasm3d__bg_rawshapecontact_point2(&nativeState->rootCtx, args[0].asNumber());
+    auto res = w2c_rapier__wasm3d__bg_rawshapecontact_point2(&nativeState->rootCtx, getNumericVal(args[0]));
     return jsi::Value { (double)res };;
   }));
 
@@ -3704,7 +3713,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawshapecontact_normal2", HOSTFN("rawshapecontact_normal2", 1) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    auto res = w2c_rapier__wasm3d__bg_rawshapecontact_normal2(&nativeState->rootCtx, args[0].asNumber());
+    auto res = w2c_rapier__wasm3d__bg_rawshapecontact_normal2(&nativeState->rootCtx, getNumericVal(args[0]));
     return jsi::Value { (double)res };;
   }));
 
@@ -3713,7 +3722,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawpointprojection_point", HOSTFN("rawpointprojection_point", 1) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    auto res = w2c_rapier__wasm3d__bg_rawpointprojection_point(&nativeState->rootCtx, args[0].asNumber());
+    auto res = w2c_rapier__wasm3d__bg_rawpointprojection_point(&nativeState->rootCtx, getNumericVal(args[0]));
     return jsi::Value { (double)res };;
   }));
 
@@ -3722,7 +3731,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawpointcolliderprojection_point", HOSTFN("rawpointcolliderprojection_point", 1) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    auto res = w2c_rapier__wasm3d__bg_rawpointcolliderprojection_point(&nativeState->rootCtx, args[0].asNumber());
+    auto res = w2c_rapier__wasm3d__bg_rawpointcolliderprojection_point(&nativeState->rootCtx, getNumericVal(args[0]));
     return jsi::Value { (double)res };;
   }));
 
@@ -3731,7 +3740,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawrayintersection_normal", HOSTFN("rawrayintersection_normal", 1) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    auto res = w2c_rapier__wasm3d__bg_rawrayintersection_normal(&nativeState->rootCtx, args[0].asNumber());
+    auto res = w2c_rapier__wasm3d__bg_rawrayintersection_normal(&nativeState->rootCtx, getNumericVal(args[0]));
     return jsi::Value { (double)res };;
   }));
 
@@ -3740,7 +3749,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawshapecollidertoi_witness1", HOSTFN("rawshapecollidertoi_witness1", 1) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    auto res = w2c_rapier__wasm3d__bg_rawshapecollidertoi_witness1(&nativeState->rootCtx, args[0].asNumber());
+    auto res = w2c_rapier__wasm3d__bg_rawshapecollidertoi_witness1(&nativeState->rootCtx, getNumericVal(args[0]));
     return jsi::Value { (double)res };;
   }));
 
@@ -3749,7 +3758,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawshapecontact_normal1", HOSTFN("rawshapecontact_normal1", 1) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    auto res = w2c_rapier__wasm3d__bg_rawshapecontact_normal1(&nativeState->rootCtx, args[0].asNumber());
+    auto res = w2c_rapier__wasm3d__bg_rawshapecontact_normal1(&nativeState->rootCtx, getNumericVal(args[0]));
     return jsi::Value { (double)res };;
   }));
 
@@ -3758,7 +3767,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawshapecollidertoi_normal1", HOSTFN("rawshapecollidertoi_normal1", 1) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    auto res = w2c_rapier__wasm3d__bg_rawshapecollidertoi_normal1(&nativeState->rootCtx, args[0].asNumber());
+    auto res = w2c_rapier__wasm3d__bg_rawshapecollidertoi_normal1(&nativeState->rootCtx, getNumericVal(args[0]));
     return jsi::Value { (double)res };;
   }));
 
@@ -3767,7 +3776,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawshapetoi_witness2", HOSTFN("rawshapetoi_witness2", 1) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    auto res = w2c_rapier__wasm3d__bg_rawshapetoi_witness2(&nativeState->rootCtx, args[0].asNumber());
+    auto res = w2c_rapier__wasm3d__bg_rawshapetoi_witness2(&nativeState->rootCtx, getNumericVal(args[0]));
     return jsi::Value { (double)res };;
   }));
 
@@ -3785,7 +3794,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawintegrationparameters_erp", HOSTFN("rawintegrationparameters_erp", 1) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    auto res = w2c_rapier__wasm3d__bg_rawintegrationparameters_erp(&nativeState->rootCtx, args[0].asNumber());
+    auto res = w2c_rapier__wasm3d__bg_rawintegrationparameters_erp(&nativeState->rootCtx, getNumericVal(args[0]));
     return jsi::Value { (double)res };;
   }));
 
@@ -3794,7 +3803,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawrayintersection_toi", HOSTFN("rawrayintersection_toi", 1) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    auto res = w2c_rapier__wasm3d__bg_rawrayintersection_toi(&nativeState->rootCtx, args[0].asNumber());
+    auto res = w2c_rapier__wasm3d__bg_rawrayintersection_toi(&nativeState->rootCtx, getNumericVal(args[0]));
     return jsi::Value { (double)res };;
   }));
 
@@ -3803,7 +3812,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawraycollidertoi_toi", HOSTFN("rawraycollidertoi_toi", 1) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    auto res = w2c_rapier__wasm3d__bg_rawraycollidertoi_toi(&nativeState->rootCtx, args[0].asNumber());
+    auto res = w2c_rapier__wasm3d__bg_rawraycollidertoi_toi(&nativeState->rootCtx, getNumericVal(args[0]));
     return jsi::Value { (double)res };;
   }));
 
@@ -3812,7 +3821,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawshapetoi_toi", HOSTFN("rawshapetoi_toi", 1) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    auto res = w2c_rapier__wasm3d__bg_rawshapetoi_toi(&nativeState->rootCtx, args[0].asNumber());
+    auto res = w2c_rapier__wasm3d__bg_rawshapetoi_toi(&nativeState->rootCtx, getNumericVal(args[0]));
     return jsi::Value { (double)res };;
   }));
 
@@ -3821,7 +3830,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawshapecollidertoi_toi", HOSTFN("rawshapecollidertoi_toi", 1) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    auto res = w2c_rapier__wasm3d__bg_rawshapecollidertoi_toi(&nativeState->rootCtx, args[0].asNumber());
+    auto res = w2c_rapier__wasm3d__bg_rawshapecollidertoi_toi(&nativeState->rootCtx, getNumericVal(args[0]));
     return jsi::Value { (double)res };;
   }));
 
@@ -3830,7 +3839,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawrotation_x", HOSTFN("rawrotation_x", 1) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    auto res = w2c_rapier__wasm3d__bg_rawrotation_x(&nativeState->rootCtx, args[0].asNumber());
+    auto res = w2c_rapier__wasm3d__bg_rawrotation_x(&nativeState->rootCtx, getNumericVal(args[0]));
     return jsi::Value { (double)res };;
   }));
 
@@ -3839,7 +3848,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawrotation_z", HOSTFN("rawrotation_z", 1) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    auto res = w2c_rapier__wasm3d__bg_rawrotation_z(&nativeState->rootCtx, args[0].asNumber());
+    auto res = w2c_rapier__wasm3d__bg_rawrotation_z(&nativeState->rootCtx, getNumericVal(args[0]));
     return jsi::Value { (double)res };;
   }));
 
@@ -3848,7 +3857,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawvector_x", HOSTFN("rawvector_x", 1) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    auto res = w2c_rapier__wasm3d__bg_rawvector_x(&nativeState->rootCtx, args[0].asNumber());
+    auto res = w2c_rapier__wasm3d__bg_rawvector_x(&nativeState->rootCtx, getNumericVal(args[0]));
     return jsi::Value { (double)res };;
   }));
 
@@ -3857,7 +3866,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawvector_y", HOSTFN("rawvector_y", 1) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    auto res = w2c_rapier__wasm3d__bg_rawvector_y(&nativeState->rootCtx, args[0].asNumber());
+    auto res = w2c_rapier__wasm3d__bg_rawvector_y(&nativeState->rootCtx, getNumericVal(args[0]));
     return jsi::Value { (double)res };;
   }));
 
@@ -3866,7 +3875,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawvector_z", HOSTFN("rawvector_z", 1) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    auto res = w2c_rapier__wasm3d__bg_rawvector_z(&nativeState->rootCtx, args[0].asNumber());
+    auto res = w2c_rapier__wasm3d__bg_rawvector_z(&nativeState->rootCtx, getNumericVal(args[0]));
     return jsi::Value { (double)res };;
   }));
 
@@ -3875,7 +3884,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawraycolliderintersection_colliderHandle", HOSTFN("rawraycolliderintersection_colliderHandle", 1) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    auto res = w2c_rapier__wasm3d__bg_rawraycolliderintersection_colliderHandle(&nativeState->rootCtx, args[0].asNumber());
+    auto res = w2c_rapier__wasm3d__bg_rawraycolliderintersection_colliderHandle(&nativeState->rootCtx, getNumericVal(args[0]));
     return jsi::Value { (double)res };;
   }));
 
@@ -3884,7 +3893,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawraycollidertoi_colliderHandle", HOSTFN("rawraycollidertoi_colliderHandle", 1) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    auto res = w2c_rapier__wasm3d__bg_rawraycollidertoi_colliderHandle(&nativeState->rootCtx, args[0].asNumber());
+    auto res = w2c_rapier__wasm3d__bg_rawraycollidertoi_colliderHandle(&nativeState->rootCtx, getNumericVal(args[0]));
     return jsi::Value { (double)res };;
   }));
 
@@ -3893,7 +3902,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawshapecollidertoi_colliderHandle", HOSTFN("rawshapecollidertoi_colliderHandle", 1) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    auto res = w2c_rapier__wasm3d__bg_rawshapecollidertoi_colliderHandle(&nativeState->rootCtx, args[0].asNumber());
+    auto res = w2c_rapier__wasm3d__bg_rawshapecollidertoi_colliderHandle(&nativeState->rootCtx, getNumericVal(args[0]));
     return jsi::Value { (double)res };;
   }));
 
@@ -3902,7 +3911,7 @@ namespace facebook::react {
   exports.setProperty(rt, "rawcontactforceevent_collider1", HOSTFN("rawcontactforceevent_collider1", 1) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    auto res = w2c_rapier__wasm3d__bg_rawcontactforceevent_collider1(&nativeState->rootCtx, args[0].asNumber());
+    auto res = w2c_rapier__wasm3d__bg_rawcontactforceevent_collider1(&nativeState->rootCtx, getNumericVal(args[0]));
     return jsi::Value { (double)res };;
   }));
 
@@ -3911,7 +3920,7 @@ namespace facebook::react {
   exports.setProperty(rt, "__wbg_rawserializationpipeline_free", HOSTFN("__wbg_rawserializationpipeline_free", 1) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    w2c_rapier__wasm3d__bg_0x5F_wbg_rawserializationpipeline_free(&nativeState->rootCtx, args[0].asNumber());
+    w2c_rapier__wasm3d__bg_0x5F_wbg_rawserializationpipeline_free(&nativeState->rootCtx, getNumericVal(args[0]));
     return jsi::Value::undefined();
   }));
 
@@ -3920,7 +3929,7 @@ namespace facebook::react {
   exports.setProperty(rt, "__wbindgen_add_to_stack_pointer", HOSTFN("__wbindgen_add_to_stack_pointer", 1) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    auto res = w2c_rapier__wasm3d__bg_0x5F_wbindgen_add_to_stack_pointer(&nativeState->rootCtx, args[0].asNumber());
+    auto res = w2c_rapier__wasm3d__bg_0x5F_wbindgen_add_to_stack_pointer(&nativeState->rootCtx, getNumericVal(args[0]));
     return jsi::Value { (double)res };;
   }));
 
@@ -3929,7 +3938,7 @@ namespace facebook::react {
   exports.setProperty(rt, "__wbindgen_free", HOSTFN("__wbindgen_free", 2) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    w2c_rapier__wasm3d__bg_0x5F_wbindgen_free(&nativeState->rootCtx, args[0].asNumber(), args[1].asNumber());
+    w2c_rapier__wasm3d__bg_0x5F_wbindgen_free(&nativeState->rootCtx, getNumericVal(args[0]), getNumericVal(args[1]));
     return jsi::Value::undefined();
   }));
 
@@ -3938,7 +3947,7 @@ namespace facebook::react {
   exports.setProperty(rt, "__wbindgen_malloc", HOSTFN("__wbindgen_malloc", 1) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    auto res = w2c_rapier__wasm3d__bg_0x5F_wbindgen_malloc(&nativeState->rootCtx, args[0].asNumber());
+    auto res = w2c_rapier__wasm3d__bg_0x5F_wbindgen_malloc(&nativeState->rootCtx, getNumericVal(args[0]));
     return jsi::Value { (double)res };;
   }));
 
@@ -3947,7 +3956,7 @@ namespace facebook::react {
   exports.setProperty(rt, "__wbindgen_exn_store", HOSTFN("__wbindgen_exn_store", 1) {
     auto nativeState = getRapier__wasm3d__bgModuleContextContext(rt, thisValue);
     assert(nativeState != nullptr);
-    w2c_rapier__wasm3d__bg_0x5F_wbindgen_exn_store(&nativeState->rootCtx, args[0].asNumber());
+    w2c_rapier__wasm3d__bg_0x5F_wbindgen_exn_store(&nativeState->rootCtx, getNumericVal(args[0]));
     return jsi::Value::undefined();
   }));
 
