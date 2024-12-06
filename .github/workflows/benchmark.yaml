@@ -129,12 +129,12 @@ jobs:
           node-version: 22
 
       - name: Install dependencies
-        run: npm install
+        run: npm ci
 
       - name: Create Appium Test Zip
         run: |
           cd packages/benchmark-server
-          npm install
+          npm ci
           npm run bundle
 
       - name: Configure AWS credentials
@@ -189,12 +189,12 @@ jobs:
           node-version: 22
 
       - name: Install dependencies
-        run: npm install
+        run: npm ci
 
       - name: Build benchmark parser
         run: |
           cd packages/benchmark-parser
-          npm install
+          npm ci
           npm run build
 
       - name: Download JSC Artifacts
