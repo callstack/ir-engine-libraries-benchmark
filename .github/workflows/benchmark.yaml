@@ -129,12 +129,12 @@ jobs:
           node-version: 22
 
       - name: Install dependencies
-        run: npm ci
+        run: npm install
 
       - name: Create Appium Test Zip
         run: |
           cd packages/benchmark-server
-          npm ci
+          npm install
           npm run bundle
 
       - name: Configure AWS credentials
